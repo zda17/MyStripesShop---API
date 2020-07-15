@@ -13,7 +13,6 @@ CREATE TABLE orders (
         NOT NULL,   
     product_ids
         INTEGER[]
-        REFERENCES products(id) ON DELETE CASCADE
         NOT NULL,
     amount_cents
         INTEGER
