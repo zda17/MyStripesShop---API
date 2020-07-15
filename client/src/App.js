@@ -7,11 +7,9 @@ import AText from "./components/AText";
 
 function App() {
   return (
-    <Fragment>
       <div className="container">
         <AText /> {/*animated text*/}
       </div>
-    </Fragment>
   );
 }
 
