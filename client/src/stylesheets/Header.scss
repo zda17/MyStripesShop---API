@@ -10,11 +10,14 @@ $primaryColor: #387bbf;
 .Container-Header {
     width: 100%;
     height: 33px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .Text-Header {
-    
     color: $primaryColor;
+    width: fit-content;
 
     text: {
         align: center;
