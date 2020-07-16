@@ -8,7 +8,7 @@ const Header = (props) => {
     return(
         <header className={headerClass}>
             <div className={divClass}>
-                <h2 className={hClass} align="center">
+                <h2 className={hClass}>
                     {title}
                 </h2>
             </div>
