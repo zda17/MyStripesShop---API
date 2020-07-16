@@ -8,6 +8,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import AText from "./components/AText";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+
+//routes
 import About from "./routes/About";
 import Product from "./routes/Product";
 import Cart from "./routes/Cart";
@@ -42,9 +44,7 @@ function App() {
         <Contact />
       </Route>
       <Route>
-      <div className="container">
-        <AText /> {/*animated text*/}
-      </div>
+        {/* Error page? */}
       </Route>
     </Switch>
     </Router>
