@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../stylesheets/Buttons.scss';
 
 const Button = (props) => {
     const {to, classes, text} = props;
