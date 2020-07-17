@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
-const Image = (props) => {
+const ProductForm = () => {
     return(null);
 };
 
-export default Image;
+export default ProductForm;

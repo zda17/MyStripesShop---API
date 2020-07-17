@@ -1,0 +1,40 @@
+$mainFont: Comic Sans MS;
+$mainFontColor:#1e2b43;
+.footerMain{
+    width:100%;
+    background-color:#1D67A8;
+    color:$mainFontColor;
+    padding-top:2em;
+    padding-bottom:2em;
+    padding-left:1em;
+    position: relative;
+    bottom:0;
+    display:flex;
+    justify-content: center;
+
+}
+.about{
+    width:300px;
+    text-align: center;
+    justify-content: center;
+    font-family: $mainFont;
+
+}
+.contactUs{
+    width:300px;
+    text-align: center;
+    justify-content: center;
+}
+li{
+    list-style-type: none;
+
+}
+li a{
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    color:$mainFontColor;
+    margin-right: 40px;
+    font-family: $mainFont;
+}
+
