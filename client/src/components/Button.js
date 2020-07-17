@@ -7,11 +7,11 @@ const Button = (props) => {
 
     // Mens/Womens Button
     if (classes.includes("Button_Mens-Womens")) {
-        return (<Link to={to} class={classes}>{text}</Link>);
+        return (<Link to={to} className={classes}>{text}</Link>);
     }
     // Animated Button
     if (classes.includes("Button_Animated")) {
-        return (<Link to={to} class={classes}>{text}</Link>);
+        return (<Link to={to} className={classes}>{text}</Link>);
     }
 };
 

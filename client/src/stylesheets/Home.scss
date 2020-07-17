@@ -15,6 +15,7 @@
 		}
 		// Mens/Womens Tab Buttons
 		.tab-button-container {
+			// Each button
 			.tab-item {
 				font-size: 22px;
 				position: relative;
@@ -30,6 +31,7 @@
 			.tab-item + .tab-item {
 				margin-left: 28px;
 			}
+			// Underline for active tab
 			.tab-item::after {
 				position: relative;
 				display: block;
@@ -41,6 +43,7 @@
 				background:#3d2d27;
 				transition: width 0.25s ease-in-out
 			}
+			// Transition width for underline when active
 			.tab-item.is-active::after {
 				width: calc(100% - 0.2em);
 			}
