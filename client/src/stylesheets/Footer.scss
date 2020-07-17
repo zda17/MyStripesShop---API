@@ -1,28 +1,33 @@
-$mainFont: Comic Sans MS;
+$mainFont: 'Montserrat';
 $mainFontColor:#1e2b43;
 footer {
     display: flex;
     flex-wrap: wrap;
     background-color:#1D67A8;
     color:$mainFontColor;
-    padding: 2rem .5rem 2rem 1rem;
+    padding: 34px 24px;
     position: relative;
     bottom:0;
     display:flex;
     justify-content: center;
-
 }
 .about{
-    width:300px;
-    text-align: center;
+    width:280px;
+    text-align: left;
     justify-content: center;
     font-family: $mainFont;
 
 }
 .contactUs{
-    width:300px;
-    text-align: center;
+    width:280px;
+    text-align: left;
     justify-content: center;
+    .footerHead {
+        margin-bottom: 0;
+    }
+}
+ul {
+    padding: 0;
 }
 li{
     list-style-type: none;
