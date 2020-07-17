@@ -1,7 +1,8 @@
 $mainFont: Comic Sans MS;
 $mainFontColor:#1e2b43;
-.footerMain{
-    width:100%;
+footer {
+    display: flex;
+    flex-wrap: wrap;
     background-color:#1D67A8;
     color:$mainFontColor;
     padding-top:2em;
