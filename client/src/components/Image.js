@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const Image = () => {
+const Image = (props) => {
     return(null);
 };
 

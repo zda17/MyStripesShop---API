@@ -1,8 +1,11 @@
 import React, { Fragment } from 'react';
 
+
 //components
 import AText from "../components/AText";
 import Header from '../components/Header';
+
+import Image from '../components/Image';
 
 const Home = () => {
     return(
