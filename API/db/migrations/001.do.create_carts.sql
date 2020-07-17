@@ -1,5 +1,13 @@
 CREATE TABLE carts (
-	created_at TIMESTAMP(6) NOT NULL DEFAULT now(),
-	updated_at TIMESTAMP NOT NULL DEFAULT now()
+ 	id 
+		SERIAL
+		PRIMARY KEY,
+	created_at
+		TIMESTAMPTZ
+		NOT NULL 
+		DEFAULT now(),
+	updated_at
+		TIMESTAMPTZ
+		NOT NULL
+		DEFAULT now()
 );
-
