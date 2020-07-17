@@ -15,8 +15,10 @@ const Home = () => {
             hClass="Title-Header"
             subHClass="No-Sub"
         /> {/*header with custom title and no sub heading*/}
-        <ProductDescription />
-        <ProductForm defaultColor="Blue"/>
+        <div className="Container">
+          <ProductDescription />
+          <ProductForm defaultColor="Blue"/>
+        </div>
         </>
     );
 };

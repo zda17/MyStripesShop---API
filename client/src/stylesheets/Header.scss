@@ -22,6 +22,7 @@ $primaryColor: #387bbf;
         transform: translate(-50%, -50%)
     }
     h3 {
+        padding-top: 20px;
         position: absolute;
         top: 33%;
         left: 50%;
@@ -66,4 +67,8 @@ $primaryColor: #387bbf;
 
 .Bold {
     font-weight: bold;
+}
+
+.Padding {
+    padding-top: 30px;
 }
