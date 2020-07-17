@@ -9,8 +9,8 @@ const Banner = () => {
             <div className="banner-content">
                 <h2 className="banner-header">NEW ARRIVALS</h2>
                 <div className="button-container">
-                    <Link to="/collections/mens" className="Button Button_Mens-Womens">SHOP MENS</Link>
-                    <Button to="/collections/womens" classes="Button Button_Mens-Womens" text="SHOP WOMENS" />
+                    <Link to="/collections/mens" className="Button Button_Banner">SHOP MENS</Link>
+                    <Link to="/collections/womens" className="Button Button_Banner">SHOP WOMENS</Link>
                 </div>
             </div>
         </section>
