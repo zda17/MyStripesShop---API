@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 //components
 import AText from "../components/AText";
 import Header from '../components/Header';
+import Banner from '../components/Banner';
 
 const Home = () => {
     return(
@@ -13,6 +14,7 @@ const Home = () => {
             divClass="Container-Header"
             hClass="Text-Header"
         /> {/*header with custom title*/}
+        <Banner />
         </>
     );
 };

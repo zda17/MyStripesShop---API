@@ -1,0 +1,28 @@
+.Button {
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	padding: 14px 28px;
+	line-height: normal;
+	font-size: 12px;
+	text-align: center;
+	letter-spacing: 0.1rem;
+	font-family: "ITC Avant Garde Gothic",sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	z-index: 1;
+}
+
+.Button_Mens-Womens {
+	color: #ffefca;
+	background-color: #3d2d27;
+	margin: 8px;
+	white-space: nowrap;
+	width: 100%;
+	max-width: 245px;
+	flex: 1 1 0;
+}
+
+.Button_Animated {
+
+}
