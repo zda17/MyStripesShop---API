@@ -1,18 +1,22 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 //components
-import AText from "../components/AText";
 import Header from '../components/Header';
+import ProductDescription from '../components/ProductDescription';
+import ProductForm from '../components/ProductForm';
 
 const Home = () => {
     return(
         <>
         <Header 
             title="Welcome to My Stripes!" 
-            headerClass="Title-Header"
+            headerClass="Main-Header"
             divClass="Container-Header"
-            hClass="Text-Header"
-        /> {/*header with custom title*/}
+            hClass="Title-Header"
+            subHClass="No-Sub"
+        /> {/*header with custom title and no sub heading*/}
+        <ProductDescription />
+        <ProductForm defaultColor="Blue"/>
         </>
     );
 };

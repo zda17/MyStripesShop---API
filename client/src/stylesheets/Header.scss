@@ -1,29 +1,69 @@
-$mainFont: Comic Sans MS;
+$mainFont: Consolas;
 $primaryColor: #387bbf;
 
-.Title-Header {
+.Main-Header {
     width: 100%;
     height: 100px;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .Container-Header {
+    position: relative;
     width: 100%;
-    height: 33px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+    height: 100%;
+    text-align: center;
+    h2 {
+        position: absolute;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+    h3 {
+        position: absolute;
+        top: 33%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
 }
 
-.Text-Header {
+.Title-Header {
     color: $primaryColor;
     width: fit-content;
 
-    text: {
-        align: center;
-    }
     font: {
         size: 26px;
         family: $mainFont;
     }
+}
+
+.Product-Header {
+    color: black;
+    width: fit-content;
+
+    font: {
+        size: 26px;
+        family: $mainFont;
+    }
+}
+
+.Sub-Header {
+    color: black;
+    width: fit-content;
+
+    font: {
+        size: 18px;
+        family: $mainFont;
+    }
+}
+
+.No-Sub {
+    display: none;
+}
+
+.Bold {
+    font-weight: bold;
 }
