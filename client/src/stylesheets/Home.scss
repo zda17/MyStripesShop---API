@@ -1,0 +1,49 @@
+.featured-collections {
+	padding-top: 50px;
+	header {
+		margin-bottom: 40px;
+		text-align: center;
+		// "New Arrivals" Header
+		.sub-heading {
+			font-size: 13px;
+			font-family: "ITC Avant Garde Gothic",sans-serif;
+			font-weight: 600;
+			font-style: normal;
+			color: #3d2d27;
+			transition: color 0.2s ease-in-out;
+			letter-spacing: 0.2em;
+		}
+		// Mens/Womens Tab Buttons
+		.tab-button-container {
+			.tab-item {
+				font-size: 22px;
+				position: relative;
+				padding: 0;
+				overflow: visible;
+				background: none;
+				border: none;
+				border-radius: 0;
+				cursor: pointer;
+				letter-spacing: 0.2em;
+			}
+			// Set Margin only on Women's button
+			.tab-item + .tab-item {
+				margin-left: 28px;
+			}
+			.tab-item::after {
+				position: relative;
+				display: block;
+				content: '';
+				bottom: 1px;
+				left: 0;
+				height: 1px;
+				width: 0;
+				background:#3d2d27;
+				transition: width 0.25s ease-in-out
+			}
+			.tab-item.is-active::after {
+				width: calc(100% - 0.2em);
+			}
+	}
+	}
+}
