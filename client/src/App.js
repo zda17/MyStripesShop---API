@@ -24,37 +24,34 @@ function App() {
   return (
     <div className="App">
       <>
-      <NavBar />
-      <Router>
-
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/Product">
-          <Product />
-        </Route>
-        <Route exact path="/Cart">
-          <Cart />
-        </Route>
-        <Route exact path="/ShowAll">
-          <ShowAll />
-        </Route>
-        <Route exact path="/About">
-          <About />
-        </Route>
-        <Route exact path="/Contact">
-          <Contact />
-        </Route>
-        <Route>
-          {/* Error page? */}
-        </Route>
-      </Switch>
-        <Route>
-          <Footer />
-        </Route>
+        <NavBar />
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/Product">
+              <Product />
+            </Route>
+            <Route exact path="/Cart">
+              <Cart />
+            </Route>
+            <Route exact path="/ShowAll">
+              <ShowAll />
+            </Route>
+            <Route exact path="/About">
+              <About />
+            </Route>
+            <Route exact path="/Contact">
+              <Contact />
+            </Route>
+            <Route>
+              {/* Error page? */}
+            </Route>
+          </Switch>
         </Router>
-        </>
+        <Footer />
+      </>
     </div>
   );
 }
