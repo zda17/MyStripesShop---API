@@ -1,9 +1,12 @@
 import React from 'react';
 
+
 //components
 import Header from '../components/Header';
 import ProductDescription from '../components/ProductDescription';
 import ProductForm from '../components/ProductForm';
+
+import Image from '../components/Image';
 
 const Home = () => {
     return(

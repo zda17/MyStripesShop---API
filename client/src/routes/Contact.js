@@ -1,7 +1,13 @@
 import React, { Fragment } from 'react';
 
 const Contact = () => {
-    return(null);
+    return(
+        <div>
+            <h1>
+                Contact
+            </h1>
+        </div>
+    );
 };
 
 export default Contact;
