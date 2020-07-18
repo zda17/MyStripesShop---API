@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -22,10 +21,9 @@ import Home from "./routes/Home";
 
 function App() {
   return (
-    <div className="App">
-      <>
-        <NavBar />
-        <Router>
+      <Router>
+        <>
+          <NavBar />
           <Switch>
             <Route exact path="/">
               <Home />
@@ -49,10 +47,9 @@ function App() {
               {/* Error page? */}
             </Route>
           </Switch>
-        </Router>
-        <Footer />
-      </>
-    </div>
+          <Footer />
+        </>
+      </Router>
   );
 }
 
