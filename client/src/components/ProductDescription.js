@@ -18,7 +18,7 @@ const ProductDescription = () => {
             hClass="Product-Header"
             subHClass="Sub-Header"
         /> {/*header with custom title and sub header*/}
-        <ProductForm/>
+        <ProductForm pink="none"/>
     </div>
     );
 };
