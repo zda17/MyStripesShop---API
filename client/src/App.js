@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
 import './stylesheets/Buttons.scss';
 import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import { MyContext } from '../src/utils/Context';
 
 
 //components
 import AText from "./components/AText";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer";
 
 //routes
@@ -21,41 +21,46 @@ import Home from "./routes/Home";
 
 
 function App() {
-  return (
-    <div className="App">
-      <>
-      <NavBar />
-      <Router>
 
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/Product">
-          <Product />
-        </Route>
-        <Route exact path="/Cart">
-          <Cart />
-        </Route>
-        <Route exact path="/ShowAll">
-          <ShowAll />
-        </Route>
-        <Route exact path="/About">
-          <About />
-        </Route>
-        <Route exact path="/Contact">
-          <Contact />
-        </Route>
-        <Route>
-          {/* Error page? */}
-        </Route>
-      </Switch>
-        <Route>
-          <Footer />
-        </Route>
-        </Router>
-        </>
-    </div>
+  const { menuOpenState, setMenuOpenState } = useContext(MyContext)
+
+  useEffect(() => {
+    document.body.onclick = function () {
+      menuOpenState && setMenuOpenState(!menuOpenState);
+    }
+  }, [menuOpenState]);
+
+
+  return (
+    <Router>
+      <>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/Product">
+            <Product />
+          </Route>
+          <Route exact path="/Cart">
+            <Cart />
+          </Route>
+          <Route exact path="/ShowAll">
+            <ShowAll />
+          </Route>
+          <Route exact path="/About">
+            <About />
+          </Route>
+          <Route exact path="/Contact">
+            <Contact />
+          </Route>
+          <Route>
+            {/* Error page? */}
+          </Route>
+        </Switch>
+        <Footer />
+      </>
+    </Router>
   );
 }
 
