@@ -22,7 +22,7 @@ import Home from "./routes/Home";
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <>
       <NavBar />
       <Router>
@@ -55,7 +55,7 @@ function App() {
         </Route>
         </Router>
         </>
-    </div>
+    </main>
   );
 }
 

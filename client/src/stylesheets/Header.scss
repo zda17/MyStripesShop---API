@@ -1,62 +1,83 @@
-$mainFont: Consolas;
+$mainFont: 'Monsterrat', sans-serif;
 $primaryColor: #387bbf;
 
-.Main-Header {
+
+header {
     width: 100%;
-    height: 100px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    background-color: #1D67A8;
+
+    div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        h2 {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+        }
+        h3 {
+            width: 100%;
+            height: auto;
+            padding-top: 20px;
+            position: absolute;
+            top: 33%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+        }
+    }
+
 }
 
-.Container-Header {
-    position: relative;
+.Main-Header {
     width: 100%;
-    height: 100%;
-    text-align: center;
-    h2 {
-        position: absolute;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%)
-    }
-    h3 {
-        padding-top: 20px;
-        position: absolute;
-        top: 33%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%)
-    }
+    height: 5vh;
+}
+
+.Other-Header {
+    background-color: white;
+    width: 100%;
+    height: 100px;
+    
+}
+
+.sep {
+    border-bottom: solid gray 1px;
 }
 
 .Title-Header {
-    color: $primaryColor;
-    width: fit-content;
+    color: white;
+    top: 33%;
+    height: 100%;
 
     font: {
-        size: 26px;
+        size: 24px;
         family: $mainFont;
     }
 }
 
 .Product-Header {
     color: black;
-    width: fit-content;
 
     font: {
-        size: 26px;
+        size: 22px;
         family: $mainFont;
     }
 }
 
 .Sub-Header {
     color: black;
-    width: fit-content;
 
     font: {
-        size: 18px;
+        size: 16px;
         family: $mainFont;
     }
 }
@@ -71,4 +92,21 @@ $primaryColor: #387bbf;
 
 .Padding {
     padding-top: 30px;
+}
+
+@media screen and (max-width: 424px) {
+
+    .Title-Header {
+        font-size: 18px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+
+    .Title-Header {
+        font-size: 12px;
+        top: 50%;
+    }
+
 }

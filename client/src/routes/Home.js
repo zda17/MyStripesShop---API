@@ -4,23 +4,22 @@ import React from 'react';
 //components
 import Header from '../components/Header';
 import ProductDescription from '../components/ProductDescription';
-import ProductForm from '../components/ProductForm';
+
 
 import Image from '../components/Image';
 
 const Home = () => {
     return(
         <>
-        <Header 
-            title="Welcome to My Stripes!" 
+        <div id="content-wrap">
+         <Header 
+            title="COMMUNITY CONSCIOUS CLOTHING" 
             headerClass="Main-Header"
             divClass="Container-Header"
             hClass="Title-Header"
             subHClass="No-Sub"
-        /> {/*header with custom title and no sub heading*/}
-        <div className="Container">
+            /> {/*header with custom title and no sub heading*/}
           <ProductDescription />
-          <ProductForm defaultColor="Blue"/>
         </div>
         </>
     );

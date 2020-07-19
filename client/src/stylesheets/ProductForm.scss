@@ -1,3 +1,121 @@
-.Color-Pick {
-    list-style: none;
+$colors: (
+  red: #DB2828,
+  orange: #F2711C,
+  yellow: #FBBD08,
+  olive: #B5CC18,
+  green: #21BA45,
+  teal: #00B5AD,
+  blue: #2185D0,
+  violet: #6435C9,
+  purple: #A333C8,
+  pink: #E03997
+);
+
+* {
+  box-sizing: border-box;
 }
+
+.Colors {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    ul {
+      margin: 0 auto;
+      list-style: none;
+      width: fit-content;
+      width: -moz-fit-content;
+      width: -webkit-fit-content;
+      height: auto;
+    }
+    li {
+        float: left;
+        width: 100% / 10;
+        margin: 5px;
+    }
+
+    input[type="radio"] {
+        display: none;
+        &:checked + label > span {
+            
+          @each $name, $value in $colors {
+            &.selector {
+              border-bottom: solid 2px $value;
+            }
+          } // !@each
+        } // !&:checked + label
+      }
+}
+
+label {
+    display: inline-block;
+    width: 48px;
+    height: 54px;
+    margin-right: 10px;
+    cursor: pointer;
+    
+    span {
+      @each $name, $value in $colors {
+        &.#{$name} {
+          display: block;
+          background: $value;
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  
+  } 
+
+.Sizes {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+
+    ul {
+      margin: 0 auto;
+      list-style: none;
+      width: fit-content;
+      width: -moz-fit-content;
+      width: -webkit-fit-content;
+      height: auto;
+    }
+    li {
+        float: left;
+        width: 100% / 7;
+        margin: 5px;
+    }
+
+    input[type="radio"] {
+        display: none;
+        &:checked + label {
+            
+          
+            span {
+              border: solid 2px black;
+            }
+        } // !&:checked + label
+      }
+
+      label {
+        width: fit-content;
+        height: auto;
+      }
+
+    span {
+        border: solid 1px black;
+        padding: 5px;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+.selector {
+    padding-top: 4px;
+    width: 48px;
+    height: 2px;
+    display: block;
+  }

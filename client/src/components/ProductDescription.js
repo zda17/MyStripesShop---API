@@ -5,6 +5,7 @@ import '../stylesheets/ProductDescription.scss';
 
 //component
 import Header from '../components/Header';
+import ProductForm from '../components/ProductForm';
 
 const ProductDescription = () => {
     return(
@@ -12,11 +13,12 @@ const ProductDescription = () => {
         <Header 
             title="MY STRIPES TEE" 
             description="$22"
-            headerClass="Main-Header"
+            headerClass="Other-Header sep"
             divClass="Container-Header"
             hClass="Product-Header"
             subHClass="Sub-Header"
         /> {/*header with custom title and sub header*/}
+        <ProductForm/>
     </div>
     );
 };
