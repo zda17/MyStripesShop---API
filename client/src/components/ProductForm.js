@@ -26,36 +26,36 @@ const ProductForm = () => {
                   <div className="Colors">
                     <ul>
                         <li>
-                            <input type="radio" name="color" id="red" value="red" ref={register({ required: true })}/>
-                            <label htmlFor="red"><span className="red"></span><span className="selector"></span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="color" id="green" value="green" ref={register({ required: true })}/>
-                            <label htmlFor="green"><span className="green"></span><span className="selector"></span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="color" id="yellow" value="yellow" ref={register({ required: true })}/>
-                            <label htmlFor="yellow"><span className="yellow"></span><span className="selector"></span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="color" id="olive" value="olive" ref={register({ required: true })}/>
-                            <label htmlFor="olive"><span className="olive"></span><span className="selector"></span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="color" id="orange" value="orange" ref={register({ required: true })}/>
-                            <label htmlFor="orange"><span className="orange"></span><span className="selector"></span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="color" id="teal" value="teal" ref={register({ required: true })}/>
-                            <label htmlFor="teal"><span className="teal"></span><span className="selector"></span></label>
+                            <input type="radio" name="color" id="darkBlue" value="darkBlue" ref={register({ required: true })}/>
+                            <label htmlFor="darkBlue"><span className="darkBlue"></span><span className="selector"></span></label>
                         </li>
                         <li>
                             <input type="radio" name="color" id="blue" value="blue" ref={register({ required: true })}/>
                             <label htmlFor="blue"><span className="blue"></span><span className="selector"></span></label>
                         </li>
                         <li>
-                            <input type="radio" name="color" id="violet" value="violet" ref={register({ required: true })}/>
-                            <label htmlFor="violet"><span className="violet"></span><span className="selector"></span></label>
+                            <input type="radio" name="color" id="green" value="green" ref={register({ required: true })}/>
+                            <label htmlFor="green"><span className="green"></span><span className="selector"></span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="color" id="peach" value="peach" ref={register({ required: true })}/>
+                            <label htmlFor="peach"><span className="peach"></span><span className="selector"></span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="color" id="gold" value="gold" ref={register({ required: true })}/>
+                            <label htmlFor="gold"><span className="gold"></span><span className="selector"></span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="color" id="red" value="red" ref={register({ required: true })}/>
+                            <label htmlFor="red"><span className="red"></span><span className="selector"></span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="color" id="yellow" value="yellow" ref={register({ required: true })}/>
+                            <label htmlFor="yellow"><span className="yellow"></span><span className="selector"></span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="color" id="orange" value="orange" ref={register({ required: true })}/>
+                            <label htmlFor="orange"><span className="orange"></span><span className="selector"></span></label>
                         </li>
                         <li>
                             <input type="radio" name="color" id="purple" value="purple" ref={register({ required: true })}/>
