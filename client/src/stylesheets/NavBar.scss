@@ -1,0 +1,35 @@
+$color:  rgb(3, 103, 179);
+$dark-blue: rgb(0, 38, 72);
+
+nav {
+    background-color: $color;
+    margin-bottom: 0px;
+    
+    .logo {
+        height: 100px;
+        width: 100px;
+      }
+
+    .cart {
+        position: absolute;
+        right: 84px;
+        top: 32px;
+        height: 40px;
+        width: 40px;
+        transform: rotateY(180deg);
+    }
+}
+
+.tagline {
+    background-color: $dark-blue;
+    height: 50px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h4 {
+        color: white;
+        text-align: center;
+    }
+}
