@@ -8,7 +8,7 @@ import { MyContext } from '../src/utils/Context';
 
 //components
 import AText from "./components/AText";
-import NavBar from "./components/NavBar/NavBar";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
 //routes
