@@ -18,12 +18,6 @@ class Home extends React.Component {
     render() {
         return(
             <div className="content-wrap">
-                <Header 
-                    title="COMMUNITY CONSCIOUS CLOTHING" 
-                    headerClass="Title-Header"
-                    divClass="Container-Header"
-                    hClass="Text-Header"
-                /> {/*header with custom title*/}
                 <Banner />
                 <section className="featured-collections">
                     <header>
