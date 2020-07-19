@@ -1,0 +1,174 @@
+$colors: (
+  darkBlue: #1d3650,
+  blue: #1f7bc5,
+  green: #72b46c,
+  peach: #d57956,
+  gold: #c07d39,
+  red: #DB2828,
+  orange: #F2711C,
+  yellow: #FBBD08,
+  purple: #A333C8,
+  pink: #E03997
+);
+
+$sizes: (
+  x-small: XS,
+  small: S,
+  medium: M,
+  large: L,
+  x-large: XL,
+  xx-large: XXL,
+  xxx-large: XXXL
+);
+
+$primaryColor: #1f7bc5;
+
+* {
+  box-sizing: border-box;
+}
+
+.Colors {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    ul {
+      margin: 0 auto;
+      list-style: none;
+      width: fit-content;
+      width: -moz-fit-content;
+      width: -webkit-fit-content;
+      height: auto;
+    }
+    li {
+        float: left;
+        width: 48px;
+        margin: 0 15px;
+    }
+
+    input[type="radio"] {
+        display: none;
+        &:checked + label > span {
+            
+          @each $name, $value in $colors {
+            &.selector {
+              border-bottom: solid 2px $value;
+            }
+          } // !@each
+        } // !&:checked + label
+      }
+}
+
+label {
+    display: inline-block;
+    width: 48px;
+    height: 54px;
+    margin-right: 10px;
+    cursor: pointer;
+    
+    span {
+      @each $name, $value in $colors {
+        &.#{$name} {
+          display: block;
+          background: $value;
+          width: 48px;
+          height: 48px;
+        }
+      }
+      
+    }
+  
+  } 
+
+.Sizes {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    ul {
+      margin: 0 auto;
+      list-style: none;
+      width: fit-content;
+      width: -moz-fit-content;
+      width: -webkit-fit-content;
+      height: auto;
+    }
+    li {
+        float: left;
+        width: 48px;
+        margin: 0 15px 5px;
+        padding: 5px;
+    }
+
+    input[type="radio"] {
+        display: none;
+        &:checked + label {
+            
+              border: solid 2px black;
+            
+        } // !&:checked + label
+      }
+
+      label {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        margin-right: 10px;
+        cursor: pointer;
+        border: solid 1px black;
+        align-items: center;
+        
+        span {
+          padding-top: 10px;
+          padding-right: 2px;
+          display: inline-block;
+          width: 48px;
+          height: 48px;
+          font-weight: bold;
+          text-align: center;
+          vertical-align: middle;
+        }
+      
+      } 
+
+}
+
+.ProductSelect {
+  align-items: center;
+  text-align: center;
+}
+
+input[type="submit"] {
+  width: 150px;
+  height: 5vh;
+  display: block;
+  border: none;
+  background-color: $primaryColor;
+  color: white;
+  margin: 5px auto;
+
+  font: {
+    size: 18px;
+    weight: bold;
+  }
+}
+
+.selector {
+    padding-top: 4px;
+    width: 48px;
+    height: 2px;
+    display: block;
+  }
+
+  .none {
+    display: none;
+  }
+
+  @media screen and (max-width: 425px) {
+    input[type="submit"] {
+      width: 100%;
+      margin: 5px auto 0;
+    }
+  }

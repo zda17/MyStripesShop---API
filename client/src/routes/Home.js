@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { useState} from 'react';
 import '../stylesheets/Home.scss';
 
 
 //components
-import AText from "../components/AText";
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Image from '../components/Image';
@@ -18,13 +17,7 @@ class Home extends React.Component {
 
     render() {
         return(
-            <main>
-                <Header 
-                    title="Welcome to My Stripes!" 
-                    headerClass="Title-Header"
-                    divClass="Container-Header"
-                    hClass="Text-Header"
-                /> {/*header with custom title*/}
+            <div className="content-wrap">
                 <Banner />
                 <section className="featured-collections">
                     <header>
@@ -35,7 +28,7 @@ class Home extends React.Component {
                         </div>
                     </header>
                 </section>
-            </main>
+            </div>
         );
     }
 }
