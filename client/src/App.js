@@ -24,9 +24,7 @@ function App() {
   const { menuOpenState, setMenuOpenState } = useContext(MyContext)
 
   useEffect(() => {
-    console.log(document.body);
     document.body.onclick = function () {
-      console.log('clicked body!');
       menuOpenState && setMenuOpenState(!menuOpenState);
     }
   }, [menuOpenState]);
