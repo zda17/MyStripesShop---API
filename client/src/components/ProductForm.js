@@ -79,36 +79,36 @@ const ProductForm = () => {
                     <ul>
                         <li>
                             <input type="radio" name="size" id="x-small" value="x-small" ref={register({ required: true })}/>
-                            <label htmlFor="x-small"><span className="x-small">x-small</span></label>
+                            <label htmlFor="x-small"><span className="x-small">XS</span></label>
                         </li>
                         <li>
                             <input type="radio" name="size" id="small" value="small" ref={register({ required: true })}/>
-                            <label htmlFor="small"><span className="small">small</span></label>
+                            <label htmlFor="small"><span className="small">S</span></label>
                         </li>
                         <li>
                             <input type="radio" name="size" id="medium" value="medium" ref={register({ required: true })}/>
-                            <label htmlFor="medium"><span className="medium">medium</span></label>
+                            <label htmlFor="medium"><span className="medium">M</span></label>
                         </li>
                         <li>
                             <input type="radio" name="size" id="large" value="large" ref={register({ required: true })}/>
-                            <label htmlFor="large"><span className="large">large</span></label>
+                            <label htmlFor="large"><span className="large">L</span></label>
                         </li>
                         <li>
                             <input type="radio" name="size" id="x-large" value="x-large" ref={register({ required: true })}/>
-                            <label htmlFor="x-large"><span className="x-large">x-large</span></label>
+                            <label htmlFor="x-large"><span className="x-large">XL</span></label>
                         </li>
                         <li>
                             <input type="radio" name="size" id="xx-large" value="xx-large" ref={register({ required: true })}/>
-                            <label htmlFor="xx-large"><span className="xx-large">xx-large</span></label>
+                            <label htmlFor="xx-large"><span className="xx-large">XXL</span></label>
                         </li>
                         <li>
                             <input type="radio" name="size" id="xxx-large" value="xxx-large" ref={register({ required: true })}/>
-                            <label htmlFor="xxx-large"><span className="xxx-large">xxx-large</span></label>
+                            <label htmlFor="xxx-large"><span className="xxx-large">XXXL</span></label>
                         </li>
                     </ul>
                     {errors.size && (<p>Size is required.</p>)}
-                    <input type="submit" value="Order"/>
                  </div>
+                 <input type="submit" value="ADD TO CART"/>
                 </div>
             </div>
         </form>
