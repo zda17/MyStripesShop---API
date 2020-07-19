@@ -1,28 +1,42 @@
-import React from 'react';
+import React, { useState} from 'react';
+import '../stylesheets/Home.scss';
 
 
 //components
 import Header from '../components/Header';
-import ProductDescription from '../components/ProductDescription';
-
-
+import Banner from '../components/Banner';
 import Image from '../components/Image';
 
-const Home = () => {
-    return(
-        <>
-        <div id="content-wrap">
-         <Header 
-            title="COMMUNITY CONSCIOUS CLOTHING" 
-            headerClass="Main-Header"
-            divClass="Container-Header"
-            hClass="Title-Header"
-            subHClass="No-Sub"
-            /> {/*header with custom title and no sub heading*/}
-          <ProductDescription />
-        </div>
-        </>
-    );
-};
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeSection: "mens"
+        }
+    }
+
+    render() {
+        return(
+            <div className="content-wrap">
+                <Header 
+                    title="COMMUNITY CONSCIOUS CLOTHING" 
+                    headerClass="Title-Header"
+                    divClass="Container-Header"
+                    hClass="Text-Header"
+                /> {/*header with custom title*/}
+                <Banner />
+                <section className="featured-collections">
+                    <header>
+                        <h3 className="sub-heading">NEW ARRIVALS</h3>
+                        <div className="tab-button-container">
+                            <button className={this.state.activeSection === 'mens' ? "tab-item is-active" : "tab-item"} onClick={() => this.setState({activeSection: "mens"})}>MENS</button>
+                            <button className={this.state.activeSection === 'womens' ? "tab-item is-active" : "tab-item"} onClick={() => this.setState({activeSection: "womens"})}>WOMENS</button>
+                        </div>
+                    </header>
+                </section>
+            </div>
+        );
+    }
+}
 
 export default Home;
