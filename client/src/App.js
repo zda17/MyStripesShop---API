@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import './App.css';
+import './stylesheets/Buttons.scss';
 import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { MyContext } from '../src/utils/Context';
