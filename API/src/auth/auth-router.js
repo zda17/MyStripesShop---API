@@ -36,7 +36,7 @@ authRouter
       // Check if passwords match
       const compareMatch = await AuthService.comparePasswords(
         loginUser.password,
-        dbUser.password
+        dbUser.encrypted_password
       );
 
       // If passwords don't match return 400
