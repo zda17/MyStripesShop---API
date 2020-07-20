@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 
 //style
@@ -15,6 +15,8 @@ const ProductForm = (props) => {
     const { darkBlue, blue, green, peach, gold, red, yellow, orange, purple, pink,
             xs, s, m, l, xl, xxl, xxxl } = props;
 
+
+
     return(
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
@@ -30,43 +32,43 @@ const ProductForm = (props) => {
                     <ul>
                         <li className={darkBlue}>
                             <input type="radio" name="color" id="darkBlue" value="darkBlue" ref={register({ required: true })}/>
-                            <label htmlFor="darkBlue"><span className="darkBlue"></span><span className="selector"></span></label>
+                            <label className="darkBlue" htmlFor="darkBlue"><span className="darkBlue"></span><span className="darkBlue__selector"/></label>
                         </li>
                         <li className={blue}>
                             <input type="radio" name="color" id="blue" value="blue" ref={register({ required: true })}/>
-                            <label htmlFor="blue"><span className="blue"></span><span className="selector"></span></label>
+                            <label htmlFor="blue"><span className="blue"></span><span className="blue__selector"/></label>
                         </li>
                         <li className={green}>
                             <input type="radio" name="color" id="green" value="green" ref={register({ required: true })}/>
-                            <label htmlFor="green"><span className="green"></span><span className="selector"></span></label>
+                            <label htmlFor="green"><span className="green"></span><span className="green__selector"/></label>
                         </li>
                         <li className={peach}>
                             <input type="radio" name="color" id="peach" value="peach" ref={register({ required: true })}/>
-                            <label htmlFor="peach"><span className="peach"></span><span className="selector"></span></label>
+                            <label htmlFor="peach"><span className="peach"></span><span className="peach__selector"/></label>
                         </li>
                         <li className={gold}>
                             <input type="radio" name="color" id="gold" value="gold" ref={register({ required: true })}/>
-                            <label htmlFor="gold"><span className="gold"></span><span className="selector"></span></label>
+                            <label htmlFor="gold"><span className="gold"></span><span className="gold__selector"/></label>
                         </li>
                         <li className={red}>
                             <input type="radio" name="color" id="red" value="red" ref={register({ required: true })}/>
-                            <label htmlFor="red"><span className="red"></span><span className="selector"></span></label>
+                            <label htmlFor="red"><span className="red"></span><span className="red__selector"/></label>
                         </li>
                         <li className={yellow}>
                             <input type="radio" name="color" id="yellow" value="yellow" ref={register({ required: true })}/>
-                            <label htmlFor="yellow"><span className="yellow"></span><span className="selector"></span></label>
+                            <label htmlFor="yellow"><span className="yellow"></span><span className="yellow__selector"/></label>
                         </li>
                         <li className={orange}>
                             <input type="radio" name="color" id="orange" value="orange" ref={register({ required: true })}/>
-                            <label htmlFor="orange"><span className="orange"></span><span className="selector"></span></label>
+                            <label htmlFor="orange"><span className="orange"></span><span className="orange__selector"/></label>
                         </li>
                         <li className={purple}>
                             <input type="radio" name="color" id="purple" value="purple" ref={register({ required: true })}/>
-                            <label htmlFor="purple"><span className="purple"></span><span className="selector"></span></label>
+                            <label htmlFor="purple"><span className="purple"></span><span className="purple__selector"/></label>
                         </li>
                         <li className={pink}>
                             <input type="radio" name="color" id="pink" value="pink" ref={register({ required: true })}/>
-                            <label htmlFor="pink"><span className="pink"></span><span className="selector"></span></label>
+                            <label htmlFor="pink"><span className="pink"></span><span className="pink__selector"/></label>
                         </li>
                     </ul>
                     {errors.color && (<p>Color is required.</p>)}

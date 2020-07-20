@@ -49,12 +49,10 @@ $primaryColor: #1f7bc5;
     input[type="radio"] {
         display: none;
         &:checked + label > span {
-            
-          @each $name, $value in $colors {
-            &.selector {
-              border-bottom: solid 2px $value;
-            }
-          } // !@each
+          
+                display: block;
+              
+           // !@each
         } // !&:checked + label
       }
 }
@@ -73,6 +71,14 @@ label {
           background: $value;
           width: 48px;
           height: 48px;
+
+          &__selector {
+            padding-top: 4px;
+            width: 48px;
+            height: 2px;
+            display: none;
+            border-bottom: 2px solid $value;
+          }
         }
       }
       
@@ -155,18 +161,11 @@ input[type="submit"] {
   }
 }
 
-.selector {
-    padding-top: 4px;
-    width: 48px;
-    height: 2px;
-    display: block;
-  }
-
   .none {
     display: none;
   }
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 600px) {
     input[type="submit"] {
       width: 100%;
       margin: 5px auto 0;
