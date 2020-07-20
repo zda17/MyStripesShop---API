@@ -33,3 +33,8 @@ VALUES
 	('admin@mystripes.com', '$2a$10$ZYFRU.Gg/.e1G7cRJKNcueWH.M4TyRov9LTLV5uGxbhyQSLBK/RtS'),
 	('user@test.com', '$2a$10$hU98gp5TgV65aHgylvurcOZwMjsZspfhCsZdNYEWKXN6kF0bCSdfC'),
 	('demo@email.com', '$2a$10$3TFONhx44jc5xeEb23PmVOuq7LtQsNsLy1Rthjomspza02eJr94SS');
+
+INSERT INTO orders (email, address, state, product_ids, amount_cents, checkout_session_id, user_id)
+VALUES
+	('user@test.com', '123 Address Lane', 'OK', {1, 3, 5}, 7900, 1, 2),
+	('demo@email.com', '123 Address Lane', 'MN', {3, 4, 5}, 8200, 2, 3);
