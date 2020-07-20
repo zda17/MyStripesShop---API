@@ -48,42 +48,42 @@ class Home extends React.Component {
                         {this.state.activeSection === 'mens' ?
                             <>
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={tshirt}
                                     alt='T-shirt'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={tshirt}
                                     alt='T-shirt'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={tshirt}
                                     alt='T-shirt'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={tshirt}
                                     alt='T-shirt'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={tshirt}
                                     alt='T-shirt'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={tshirt}
@@ -93,42 +93,42 @@ class Home extends React.Component {
                             :
                             <>
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={pants}
                                     alt='Pants'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={pants}
                                     alt='Pants'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={pants}
                                     alt='Pants'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={pants}
                                     alt='Pants'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={pants}
                                     alt='Pants'
                                 />
                                 <Image
-                                    to='/Product.js'
+                                    to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     src={pants}
