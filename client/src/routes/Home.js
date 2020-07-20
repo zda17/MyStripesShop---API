@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../stylesheets/Home.scss';
+import '../stylesheets/Image.scss';
 
 
 //components
@@ -10,6 +11,10 @@ import Image from '../components/Image';
 // importing product list from db
 // import products from '';
 
+// import dummy images
+import tshirt from '../utils/images/tshirt.png';
+import pants from '../utils/images/pants.png';
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -18,9 +23,65 @@ class Home extends React.Component {
         }
     }
 
+
     render() {
+
+        const dummyShirts = [
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            }
+        ]
+
+        const dummyPants = [
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            }
+        ]
+
         return (
-            <div className="content-wrap">
+            <div className="content-wrap" >
                 <Banner />
                 <section className="featured-collections">
                     <header>
@@ -30,12 +91,31 @@ class Home extends React.Component {
                             <button className={this.state.activeSection === 'womens' ? "tab-item is-active" : "tab-item"} onClick={() => this.setState({ activeSection: "womens" })}>WOMENS</button>
                         </div>
                     </header>
-                    {/* Render product list from db and map through to display images */}
-                    {/* {products.map(item => (
-                        <Image
-                            item={item}
-                        />
-                    ))} */}
+                    <section className='products'>
+                        {this.state.activeSection === 'mens' ?
+                            <>
+                                {dummyShirts.map(product => (
+                                    <Image
+                                        to='/Product'
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                ))}
+                            </>
+                            :
+                            <>
+                                {dummyPants.map(product => (
+                                    <Image
+                                        to='/Product'
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                ))}
+                            </>
+                        }
+                    </section>
                 </section>
             </div>
         );
