@@ -17,6 +17,9 @@ CREATE TABLE products (
 	category
 		TEXT
 		NOT NULL,
+	description
+		TEXT
+		NOT NULL,
 	gender
 		TEXT
 		NOT NULL,

@@ -7,7 +7,8 @@ import '../stylesheets/ProductDescription.scss';
 import Header from '../components/Header';
 import ProductForm from '../components/ProductForm';
 
-const ProductDescription = () => {
+const ProductDescription = (props) => {
+    const {product} = props;
     return(
     <div className="ProductDesc">
         <Header 
