@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Image = ({ to, imgDivClass, imgClass, src, alt }) => {
-    // const { to, imgDivClass, imgClass, src, alt } = props.product;
+const Image = (props) => {
+    const { photo_url, name } = props.product;
+    const { to, imgDivClass, imgClass } = props;
     return (
         <div className={imgDivClass}>
             <Link to={to}>
-                <img className={imgClass} src={src} alt={alt} />
+                <img className={imgClass} src={photo_url} alt={name} />
             </Link>
         </div>
     );

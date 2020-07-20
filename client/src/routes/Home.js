@@ -11,7 +11,7 @@ import Image from '../components/Image';
 // importing product list from db
 // import products from '';
 
-// import images
+// import dummy images
 import tshirt from '../utils/images/tshirt.png';
 import pants from '../utils/images/pants.png';
 
@@ -23,9 +23,65 @@ class Home extends React.Component {
         }
     }
 
+
     render() {
+
+        const dummyShirts = [
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            },
+            {
+                name: 'T-shirt',
+                photo_url: tshirt
+            }
+        ]
+
+        const dummyPants = [
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            },
+            {
+                name: 'Pants',
+                photo_url: pants
+            }
+        ]
+
         return (
-            <div className="content-wrap">
+            <div className="content-wrap" >
                 <Banner />
                 <section className="featured-collections">
                     <header>
@@ -36,104 +92,27 @@ class Home extends React.Component {
                         </div>
                     </header>
                     <section className='products'>
-
-                        {/* Render product list from db and .map through to display images */}
-                        {/* {products.map(product => (
-                        <Image
-                            product={product}
-                        />
-                    ))} */}
-
-                        {/* Displaying hard-coded image components until we get a product list to .map through */}
                         {this.state.activeSection === 'mens' ?
                             <>
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={tshirt}
-                                    alt='T-shirt'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={tshirt}
-                                    alt='T-shirt'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={tshirt}
-                                    alt='T-shirt'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={tshirt}
-                                    alt='T-shirt'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={tshirt}
-                                    alt='T-shirt'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={tshirt}
-                                    alt='T-shirt'
-                                />
+                                {dummyShirts.map(product => (
+                                    <Image
+                                        to='/Product'
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                ))}
                             </>
                             :
                             <>
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={pants}
-                                    alt='Pants'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={pants}
-                                    alt='Pants'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={pants}
-                                    alt='Pants'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={pants}
-                                    alt='Pants'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={pants}
-                                    alt='Pants'
-                                />
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    src={pants}
-                                    alt='Pants'
-                                />
+                                {dummyPants.map(product => (
+                                    <Image
+                                        to='/Product'
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                ))}
                             </>
                         }
                     </section>
