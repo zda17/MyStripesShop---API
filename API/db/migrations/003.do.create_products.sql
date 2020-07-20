@@ -16,6 +16,7 @@ CREATE TABLE products (
 		NOT NULL,
 	category
 		TEXT
+		REFERENCES categories(name) ON DELETE CASCADE
 		NOT NULL,
 	description
 		TEXT
