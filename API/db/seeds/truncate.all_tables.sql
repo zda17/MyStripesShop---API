@@ -4,4 +4,4 @@ TRUNCATE TABLE
 	users,
 	products,
 	categories,
-	carts;
+	carts RESTART IDENTITY;

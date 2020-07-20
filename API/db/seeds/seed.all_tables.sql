@@ -38,3 +38,9 @@ INSERT INTO orders (email, address, state, product_ids, amount_cents, checkout_s
 VALUES
 	('user@test.com', '123 Address Lane', 'OK', '{1, 3, 5}', 7900, 1, 2),
 	('demo@email.com', '123 Address Lane', 'MN', '{3, 4, 5}', 8200, 2, 3);
+
+INSERT INTO line_items (quantity, product_id, cart_id, order_id)
+VALUES
+	(2, 2, 1, 1),
+	(2, 4, 1, 1),
+	(1, 3, 2, 2);
