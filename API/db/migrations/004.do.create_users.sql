@@ -10,7 +10,7 @@ CREATE TABLE users (
         NOT NULL,
     reset_password
         TEXT
-        NOT NULL,
+        DEFAULT NULL,
     reset_password_sent_at
         TIMESTAMPTZ
         NOT NULL

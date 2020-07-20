@@ -36,5 +36,5 @@ VALUES
 
 INSERT INTO orders (email, address, state, product_ids, amount_cents, checkout_session_id, user_id)
 VALUES
-	('user@test.com', '123 Address Lane', 'OK', {1, 3, 5}, 7900, 1, 2),
-	('demo@email.com', '123 Address Lane', 'MN', {3, 4, 5}, 8200, 2, 3);
+	('user@test.com', '123 Address Lane', 'OK', '{1, 3, 5}', 7900, 1, 2),
+	('demo@email.com', '123 Address Lane', 'MN', '{3, 4, 5}', 8200, 2, 3);
