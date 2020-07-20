@@ -11,20 +11,18 @@ authRouter
   .post(jsonBodyParser, async (req, res, next) => {
     // Required values are email and password
     const { email, password } = req.body;
-    const loginUser = { email, password };
 
-    // Check if any value is missing
-    for (const [key, value] of Object.entries(loginUser))
-      if (value == null)
-        return res.status(400).json({
-          error: `Missing '${key}' in request body`
-        });
+    // Check if email or password are missing
+    if (email == null || password == null)
+      return res.status(400).json({
+        error: `Missing '${email == null ? 'email' : 'password'}' in request body`
+      });    
 
     try {
       // Check if user with email exists
       const dbUser = await AuthService.getUserWithEmail(
         req.app.get('db'),
-        loginUser.email
+        email
       );
 
       // If no user exists, return 400
@@ -35,7 +33,7 @@ authRouter
 
       // Check if passwords match
       const compareMatch = await AuthService.comparePasswords(
-        loginUser.password,
+        password,
         dbUser.encrypted_password
       );
 
