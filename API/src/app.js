@@ -11,9 +11,12 @@ const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
 
-app.use(morgan(morganOption));
-app.use(helmet());
+// cors middleware for allowing cross origin
 app.use(cors());
+// morgan middleware for logging information
+app.use(morgan(morganOption));
+// helmet middleware for hiding our server type
+app.use(helmet());
 
 app.get('/', (req, res) => {
   res.send('Hello, boilerplate!');

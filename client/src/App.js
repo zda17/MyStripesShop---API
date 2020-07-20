@@ -14,7 +14,7 @@ import Footer from "./components/Footer";
 //routes
 import About from "./routes/About";
 import Product from "./routes/Product";
-import Cart from "./routes/Cart";
+import Checkout from "./routes/Checkout";
 import ShowAll from "./routes/ShowAll";
 import Contact from "./routes/Contact";
 import Home from "./routes/Home";
@@ -42,8 +42,8 @@ function App() {
           <Route exact path="/Product">
             <Product />
           </Route>
-          <Route exact path="/Cart">
-            <Cart />
+          <Route exact path="/Checkout">
+            <Checkout />
           </Route>
           <Route exact path="/ShowAll">
             <ShowAll />
