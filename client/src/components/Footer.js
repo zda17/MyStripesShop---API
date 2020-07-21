@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import '../stylesheets/Footer.scss';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
