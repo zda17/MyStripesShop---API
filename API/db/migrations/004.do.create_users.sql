@@ -26,5 +26,9 @@ CREATE TABLE users (
     updated_at
         TIMESTAMPTZ
         NOT NULL
-        DEFAULT now()
+        DEFAULT now(),
+    admin
+        BOOLEAN
+        NOT NULL
+        DEFAULT FALSE
 );
