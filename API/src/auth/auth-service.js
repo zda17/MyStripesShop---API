@@ -6,8 +6,7 @@ const AuthService = {
   // Gets a user row with a given email
   getUserWithEmail(db, email) {
     return db('users')
-      .where({ email })
-      .first();
+      .where({ email });
   },
   // Compare a given password to the hashed password in DB
   comparePasswords(password, hash) {

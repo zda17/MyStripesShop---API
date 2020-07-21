@@ -1,3 +1,11 @@
+TRUNCATE TABLE 
+	line_items,
+	orders,
+	users,
+	products,
+	categories,
+	carts RESTART IDENTITY;
+
 INSERT INTO carts (created_at, updated_at)
 VALUES
 	(now(), now()),
@@ -27,12 +35,12 @@ VALUES
 	-- world tour collection
 	('WTC-Hoodie-1', 'World Tour - Australia Hoodie', 'tops', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'U', 'https://res.cloudinary.com/dswxhdeob/image/upload/v1581615712/MyStripesProducts/World%20Tour%20Collection/Hoodies/World_Tour-_Austrilia_Hoodie_vkd1bz.png', now() ,now(), 3500, 'M');
 
-INSERT INTO users (email, encrypted_password)
+INSERT INTO users (email, encrypted_password, admin)
 VALUES
 	-- admin password is admin123
-	('admin@mystripes.com', '$2a$10$ZYFRU.Gg/.e1G7cRJKNcueWH.M4TyRov9LTLV5uGxbhyQSLBK/RtS'),
-	('user@test.com', '$2a$10$hU98gp5TgV65aHgylvurcOZwMjsZspfhCsZdNYEWKXN6kF0bCSdfC'),
-	('demo@email.com', '$2a$10$3TFONhx44jc5xeEb23PmVOuq7LtQsNsLy1Rthjomspza02eJr94SS');
+	('admin@mystripes.com', '$2a$10$ZYFRU.Gg/.e1G7cRJKNcueWH.M4TyRov9LTLV5uGxbhyQSLBK/RtS', TRUE),
+	('user@test.com', '$2a$10$hU98gp5TgV65aHgylvurcOZwMjsZspfhCsZdNYEWKXN6kF0bCSdfC', FALSE),
+	('demo@email.com', '$2a$10$3TFONhx44jc5xeEb23PmVOuq7LtQsNsLy1Rthjomspza02eJr94SS', FALSE);
 
 INSERT INTO orders (email, address, state, product_ids, amount_cents, checkout_session_id, user_id)
 VALUES
