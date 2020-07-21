@@ -5,8 +5,13 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 
+// Route imports
+const authRouter = require('./auth/auth-router');
+
+// Create express app
 const app = express();
 
+// Setup morgan option based on environment
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
@@ -18,10 +23,15 @@ app.use(morgan(morganOption));
 // helmet middleware for hiding our server type
 app.use(helmet());
 
+
+// Routes
+  // User Authorization
+app.use('/api/auth', authRouter);
 app.get('/', (req, res) => {
   res.send('Hello, boilerplate!');
 });
 
+// Error handler
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === 'production') {
