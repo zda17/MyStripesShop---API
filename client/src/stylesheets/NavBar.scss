@@ -1,5 +1,7 @@
 $color:  #1f7bc5;
+$hover-color: rgb(95, 171, 117); 
 $dark-blue: rgb(0, 38, 72);
+$font: "ITC Avant Garde Gothic",sans-serif;
 
 nav {
     background-color: $color;
@@ -7,7 +9,6 @@ nav {
 
     .cart {
         position: absolute;
-        right: 84px;
         top: 32px;
         height: 40px;
         width: 40px;
@@ -26,5 +27,29 @@ nav {
     h4 {
         color: white;
         text-align: center;
+    }
+}
+
+.nav-item-wrapper {
+    position: absolute;
+    top: 5px;
+    left: 70px;
+
+    .top-menu {
+        display: flex;
+    
+        li {
+            list-style-type: none;
+            padding: 15px;
+            font-size: 25px;
+            a {
+                text-decoration: none;
+                color: $dark-blue;
+                font-family: $font;
+            }
+            a:hover {
+                color: $hover-color;
+            }
+        }
     }
 }
