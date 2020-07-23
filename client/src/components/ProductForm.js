@@ -15,8 +15,6 @@ const ProductForm = (props) => {
     const { darkBlue, blue, green, peach, gold, red, yellow, orange, purple, pink,
             xs, s, m, l, xl, xxl, xxxl } = props;
 
-
-
     return(
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
@@ -27,10 +25,11 @@ const ProductForm = (props) => {
                     divClass="Container-Header"
                     hClass="Product-Header Padding"
                     subHClass="No-Sub"
-                 /> {/*Needs different hClass to make text smaller*/}
+                 />
+                 {/*Colors*/}
                   <div className="Colors">
                     <ul>
-                        <li className={darkBlue}>
+                        <li className={darkBlue}>{/*<-- prop used to display the colors or not*/}
                             <input type="radio" name="color" id="darkBlue" value="darkBlue" ref={register({ required: true })}/>
                             <label className="darkBlue" htmlFor="darkBlue"><span className="darkBlue"></span><span className="darkBlue__selector"/></label>
                         </li>
@@ -71,18 +70,20 @@ const ProductForm = (props) => {
                             <label htmlFor="pink"><span className="pink"></span><span className="pink__selector"/></label>
                         </li>
                     </ul>
-                    {errors.color && (<p>Color is required.</p>)}
+                    {errors.color && (<p>Color is required.</p>)}{/*Need to make better with scss*/}
                  </div>
+                 {/*Header for sizes*/}
                  <Header 
                     title="SIZES" 
                     headerClass="Other-Header"
                     divClass="Container-Header"
                     hClass="Product-Header Padding"
                     subHClass="No-Sub"
-                 /> {/*Needs different hClass to make text smaller*/}
+                 />
+                 {/*sizes you can pick*/}
                  <div className="Sizes">
                     <ul>
-                        <li className={xs}>
+                        <li className={xs}> {/*<--prop used for showing out of order (not made yet)*/}
                             <input type="radio" name="size" id="x-small" value="x-small" ref={register({ required: true })}/>
                             <label htmlFor="x-small"><span className="x-small">XS</span></label>
                         </li>
@@ -111,7 +112,7 @@ const ProductForm = (props) => {
                             <label htmlFor="xxx-large"><span className="xxx-large">XXXL</span></label>
                         </li>
                     </ul>
-                    {errors.size && (<p>Size is required.</p>)}
+                    {errors.size && (<p>Size is required.</p>)}{/*Need to make better with scss*/}
                  </div>
                  <input type="submit" value="ADD TO CART"/>
                 </div>

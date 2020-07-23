@@ -14,8 +14,8 @@ const ProductDescription = (props) => {
     return (
         <div className="ProductDesc">
             <Header
-                title="MY STRIPES TEE"
-                description="$22"
+                title={props.name}
+                description={props.price}
                 headerClass="Other-Header sep"
                 divClass="Container-Header"
                 hClass="Product-Header"
