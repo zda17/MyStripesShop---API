@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 
 //style
@@ -7,13 +7,31 @@ import '../stylesheets/ProductForm.scss';
 //components
 import Header from '../components/Header';
 
+//context
+import { CartContext } from '../utils/CartContext';
+
 const ProductForm = (props) => {
 
     const {handleSubmit, register, errors } = useForm();
-    const onSubmit = (values) =>  {console.log(values)};
+    const [cart, setCart] = useContext(CartContext);
+
+    //converts cents to dollar amount in string format
+    const centsToUSD = (price) => {
+        var dollars = price / 100;
+        var cents = price % 100;
+
+        return dollars + "." + cents;
+    } 
+    //const price_USD = centsToUSD(product.price_cents);
 
     const { darkBlue, blue, green, peach, gold, red, yellow, orange, purple, pink,
-            xs, s, m, l, xl, xxl, xxxl } = props;
+            xs, s, m, l, xl, xxl, xxxl, product } = props;
+
+        //add to cart button
+        const onSubmit = (values, props) =>  {
+            const lineItem = {name: props.name, price: 35.00, color: values.color, size: values.size};
+            setCart(curr => [...curr, lineItem]);
+        };
 
     return(
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
