@@ -10,12 +10,23 @@ import ProductForm from '../components/ProductForm';
 import Image from '../components/Image';
 
 const ProductDescription = (props) => {
+
     const { product } = props;
+
+    //converts cents to dollar amount in string format
+    const centsToUSD = (price) => {
+        var dollars = price / 100;
+        var cents = price % 100;
+
+        return dollars + "." + cents;
+    } 
+    const price_USD = centsToUSD(product.price_cents);
+    
     return (
         <div className="ProductDesc">
             <Header
-                title={props.name}
-                description={props.price}
+                title={product.name}
+                description={"$" + price_USD}
                 headerClass="Other-Header sep"
                 divClass="Container-Header"
                 hClass="Product-Header"

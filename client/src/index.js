@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import MyProvider from '../src/utils/Context';
+import MyProvider from './utils/Context';
+import { CartProvider } from './utils/CartContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <MyProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </MyProvider>
   </React.StrictMode>,
   document.getElementById('root')

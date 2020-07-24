@@ -1,8 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import { render } from "react-dom";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import cart from '../utils/images/cart.png';
+import { CartContext } from '../utils/CartContext';
 
 //cart item component to insert into cart pane
 const CartItem = () => {
@@ -11,6 +12,9 @@ const CartItem = () => {
 
 
 const Cart = () => {
+
+    //used to pass cart array
+    const [cart, setCart] = useContext(CartContext);
 
     //states for cart pane
     const [state, setState] = useState({
@@ -40,7 +44,7 @@ const Cart = () => {
                     {/*test data*/}
                     <div>
                         <h2>Cart</h2>
-                        <span>Items in cart: 0</span>
+                        <span>Items in cart: {cart.length}</span>
                         <br />
                         <span>Total price: 0</span>
                     </div>
