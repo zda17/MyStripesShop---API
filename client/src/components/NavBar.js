@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MyContext } from '../utils/Context';
 import { stack as Menu } from 'react-burger-menu';
@@ -7,7 +7,6 @@ import insta from '../utils/images/insta.png';
 import '../stylesheets/Burger.scss';
 import '../stylesheets/NavBar.scss';
 import Cart from '../components/Cart';
-
 
 // Instagram icon for bottom of side menu
 const Icon = () => {
@@ -43,13 +42,44 @@ const BurgerMenu = () => {
     )
 };
 
-// Navbar
-const NavBar = () => {
+// Non-burger top menu
+const NoBurger = () => {
     return (
         <>
-            <BurgerMenu />
+            <div className='nav-item-wrapper'>
+                <ul className='top-menu'>
+                    <li><Link id='shop' to='/ShowAll'>SHOP</Link></li>
+                    <li><Link id='about' to='/About'>ABOUT</Link></li>
+                    <li><Link id='contact' to='/Contact'>CONTACT</Link></li>
+                </ul>
+            </div>
+        </>
+    )
+}
+
+// Navbar
+const NavBar = () => {
+    const [windowWidth, setWindowWidth] = useState(0);
+    const [windowHeight, setWindowHeight] = useState(0);
+    let resizeWindow = () => {
+        setWindowWidth(window.innerWidth);
+        setWindowHeight(window.innerHeight);
+    };
+
+    useEffect(() => {
+        resizeWindow();
+        window.addEventListener("resize", resizeWindow);
+        return () => window.removeEventListener("resize", resizeWindow);
+    }, []);
+
+    return (
+        <>
+            {windowWidth <= 799 &&
+                <BurgerMenu />
+            }
             <nav>
                 <Link to='/'><img className='logo' src={logo} alt='logo' /></Link>
+                {windowWidth >= 800 && <NoBurger />}
                 <Cart/>
                 <div className='tagline'>
                     <h4>COMMUNITY CONSCIOUS CLOTHING</h4>
