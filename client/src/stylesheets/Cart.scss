@@ -1,0 +1,29 @@
+@import './NavBar.scss';
+
+.cart-wrapper {
+
+    input[type='image'] {
+        width: 40px;
+        height: 40px;
+        right: 10px;
+        color: rgb(95, 171, 117);
+    }
+}
+
+.slide-pane__header {
+    background-color: $dark-blue;
+    color: white;
+}
+
+.cart-pane {
+    background-color: $color;
+}
+
+@media screen and (max-width: 799px) {
+    .cart-wrapper {
+
+        input[type='image'] {
+            right: 80px;
+        }
+    }
+}

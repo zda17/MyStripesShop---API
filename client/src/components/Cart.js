@@ -4,6 +4,7 @@ import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import cartImg from '../utils/images/cart.png';
 import { CartContext } from '../utils/CartContext';
+import "../stylesheets/Cart.scss";
 
 //cart item component to insert into cart pane
 const CartItem = () => {
@@ -26,16 +27,14 @@ const Cart = () => {
 
 
     return(
-            <div>
+            <div className="cart-wrapper">
                 {/*cart button*/}
-                <button onClick={() => setState({ isPaneOpen: true })}>
-                <img className='cart' src={cartImg} alt='cart' />
-                </button>
+                <input type="image" onClick={() => setState({ isPaneOpen: true })} className='cart' src={cartImg} alt='cart' />
 
                 {/*pane and its contents*/}
                 <SlidingPane
-                    className="some-custom-class"
-                    overlayClassName="some-custom-overlay-class"
+                    className="cart-pane"
+                    overlayClassName="cart-overlay"
                     isOpen={state.isPaneOpen}
                     title="Cart"
                     onRequestClose={() => {
@@ -45,10 +44,10 @@ const Cart = () => {
                 >
                     {/*test data*/}
                     <div>
-                        <h2>Cart</h2>
                         <span>Items in cart: {cart.length}</span>
                         <br />
                         <span>Total price: {totalPrice}</span>
+                        
                     </div>
                 </SlidingPane>
             </div>

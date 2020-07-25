@@ -22,15 +22,15 @@ const ProductForm = (props) => {
 
         return dollars + "." + cents;
     } 
-    //const price_USD = centsToUSD(product.price_cents);
+    const price_USD = centsToUSD(props.price_cents);
 
     const { darkBlue, blue, green, peach, gold, red, yellow, orange, purple, pink,
             xs, s, m, l, xl, xxl, xxxl, product } = props;
 
         //add to cart button
         const onSubmit = (values, props) =>  {
-            const lineItem = {name: props.name, price: 35.00, color: values.color, size: values.size};
-            setCart(curr => [...curr, lineItem]);
+            const lineItem = {name: props.name, price: 22.99, color: values.color, size: values.size, img: props.photo_url};
+            setCart(currentState => [...currentState, lineItem]);
         };
 
     return(
