@@ -8,6 +8,12 @@ productRouter
 	.get(async (req, res, next) => {
 		const allProducts = await ProductService.getAllProducts(req.app.get('db'))
 		res.send({allProducts});
-	})
+	});
 
+productRouter
+	.route('/mens')
+	.get(async (req, res, next) => {
+		const mensProducts = await ProductService.getAllMens(req.app.get('db'));
+		res.send({mensProducts});
+	})
 module.exports = productRouter
