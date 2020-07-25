@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config');
 
 // Route imports
 const authRouter = require('./auth/auth-router');
+const productRouter = require('./products/product-router');
 
 // Create express app
 const app = express();
@@ -27,6 +28,7 @@ app.use(helmet());
 // Routes
   // User Authorization
 app.use('/api/auth', authRouter);
+app.use('/api/products', productRouter);
 app.get('/', (req, res) => {
   res.send('Hello, boilerplate!');
 });
