@@ -19,6 +19,20 @@
     background-color: $color;
 }
 
+.cart-item {
+    display: flex;
+
+    Image {
+        height: 150px;
+        width: auto;
+        float: left;
+    }
+
+    div {
+        float: left;
+    }
+}
+
 @media screen and (max-width: 799px) {
     .cart-wrapper {
 
