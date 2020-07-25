@@ -10,6 +10,7 @@ productRouter
 		res.send({allProducts});
 	});
 
+// Gender based routes
 productRouter
 	.route('/mens')
 	.get(async (req, res, next) => {
@@ -29,6 +30,28 @@ productRouter
 	.get(async (req, res, next) => {
 		const unisexProducts = await ProductService.getAllUnisex(req.app.get('db'));
 		res.send({unisexProducts});
+	});
+
+// Category based routes
+productRouter
+	.route('/tops')
+	.get(async (req, res, next) => {
+		const allTops = await ProductService.getAllTops(req.app.get('db'));
+		res.send({allTops});
+	});
+
+productRouter
+	.route('/bottoms')
+	.get(async (req, res, next) => {
+		const allBottoms = await ProductService.getAllBottoms(req.app.get('db'));
+		res.send({allBottoms});
+	});
+
+productRouter
+	.route('/accessories')
+	.get(async (req, res, next) => {
+		const allAccessories = await ProductService.getAllAccessories(req.app.get('db'));
+		res.send({allAccessories});
 	});
 
 module.exports = productRouter
