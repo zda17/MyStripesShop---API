@@ -16,6 +16,19 @@ const ProductService = {
 		return db('products')
 			.where({gender: 'U'});
 	},
+	// Category based product queries
+	getAllTops(db) {
+		return db('products')
+			.where({category: 'tops'});
+	},
+	getAllBottoms(db) {
+		return db('products')
+			.where({category: 'bottoms'});
+	},
+	getAllAccessories(db) {
+		return db('products')
+			.where({category: 'accessories'});
+	},
 };
 
 module.exports = ProductService;
