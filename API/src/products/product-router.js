@@ -10,7 +10,9 @@ productRouter
 		res.send({allProducts});
 	});
 
-// Gender based routes
+/*
+ * Gender based routes
+ */
 productRouter
 	.route('/mens')
 	.get(async (req, res, next) => {
@@ -32,7 +34,9 @@ productRouter
 		res.send({unisexProducts});
 	});
 
-// Category based routes
+/*
+ * Category based routes
+ */
 productRouter
 	.route('/tops')
 	.get(async (req, res, next) => {
