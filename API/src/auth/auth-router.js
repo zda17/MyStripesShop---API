@@ -7,7 +7,7 @@ const jsonBodyParser = express.json();
 
 // Route for authenticating a user login request
 authRouter
-  .route('/token')
+  .route('/')
   .post(jsonBodyParser, async (req, res, next) => {
     // Required values are email and password
     const { email, password } = req.body;
@@ -34,7 +34,7 @@ authRouter
       // Check if passwords match
       const compareMatch = await AuthService.comparePasswords(
         password,
-        dbUser.encrypted_password
+        dbUser[0].encrypted_password
       );
 
       // If passwords don't match return 400
@@ -44,7 +44,7 @@ authRouter
         });
 
       // Create JWT sub and payload
-      const sub = dbUser.email;
+      const sub = dbUser[0].email;
       const payload = {
         id: dbUser.id
       };
