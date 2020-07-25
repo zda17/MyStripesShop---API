@@ -65,14 +65,14 @@
     font-size: 30px;
     font-family: 'Lucida Console', Monaco, monospace;
     padding: 20px 10px;
-    color: $primary-color;
+    color: $dark-blue;
     font-family: $font;
     text-decoration: none;
     border-bottom: 0.5px solid $dark-blue-line;
   }
 
   .bm-item:hover {
-    color: $dark-blue;
+    color: $primary-color;
   }
 
   /* Insta icon styles */
