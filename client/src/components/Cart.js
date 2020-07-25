@@ -19,9 +19,25 @@ import "../stylesheets/Cart.scss";
 //cart item component to insert into cart pane
 const CartItem = (props) => {
 
-    const { product } = props;
-
     const [cart, setCart] = useContext(CartContext);
+  
+  const increment = () => {
+    setCart(prevState => [...prevState, ++cart.quantity]);
+  }
+  
+  const decrement = () => {
+    setCart(prevState => [...prevState, --cart.quantity]);
+  }
+
+  const remove = (e) => {
+    var array = [...cart]; // make a separate copy of the array
+    var index = array.indexOf(e.target.value)
+    if (index !== -1) {
+        array.splice(index, 1);
+        setCart({array});
+    }
+  }
+
 
     return(
         <div className="cart-item-wrapper">
@@ -38,12 +54,21 @@ const CartItem = (props) => {
                             />
                         </div>
                         <div className="cart-info">
-                            <h2>{product.name}</h2>
+                            <h2><strong>{product.name}</strong></h2>
                                 <span><p>{product.size} ~ {product.color}</p></span>
                             <span>${product.price}</span>
-                        </div>
-                        <div className="cart-options">
-                            <p>Remove buton goes here</p>
+                            <div className="cart-options">
+                                <div className="quantity-input">
+                                    <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
+                                    &mdash;
+                                    </button>
+                                    <input className="quantity-input__screen" type="text" value={product.quantity} readonly />
+                                    <button className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
+                                    &#xff0b;
+                                    </button>  
+                                </div>  
+                                <input className="cart-remove" type="button" value="Remove" onClick={remove}/>
+                            </div>
                         </div>
                     </div>
                 ))}

@@ -29,7 +29,7 @@ const ProductForm = (props) => {
 
         //add to cart button
         const onSubmit = (values, props) =>  {
-            const lineItem = {name: props.name, price: 22.99, color: values.color, size: values.size, img: props.photo_url};
+            const lineItem = {name: cart.name, price: 22.99, color: values.color, size: values.size, img: props.photo_url};
             setCart(currentState => [...currentState, lineItem]);
         };
 

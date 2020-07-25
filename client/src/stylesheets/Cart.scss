@@ -17,21 +17,134 @@
 
 .cart-pane {
     background-color: $color;
+    width: 100vw;
 }
 
 .cart-item {
     display: flex;
+    width: 100%;
 
-    Image {
-        height: 150px;
-        width: auto;
+    .cart-image {
+        float: left;
+
+        div {
+            height: 22vw;
+            width: 15vw;
+            max-height: 165px;
+            max-width: 125px;
+        }
+        
+    }
+
+    .cart-info {
         float: left;
     }
 
-    div {
-        float: left;
+    input {
+        margin: 10px 0px;
     }
+
+    .cart-remove {
+        color: rgb(66, 66, 66);
+        position:relative;
+        text-align: center;
+        transition: 1.5s;
+        cursor: pointer;
+        -webkit-transition:1.5s;
+        background: none;
+        border: none;
+    }
+
+    .cart-remove:hover {  background-color: transparent;  border-bottom: solid 1px black; color: #000000;} 
+
+    .cart-remove:hover:before{ 
+        transition-delay: .5s; 
+        width: 100% !important;
+        transition: 1.0s;
+    }
+
+    .cart-remove:before{
+        width: 0%;
+        height:100%;  
+        z-index: 3;   
+        content:'';  
+        position: absolute;  
+        bottom:-1px;   
+        left:0;  
+        box-sizing: border-box;  
+        transition: 1.0s;
+        border-bottom: 1px solid #000000;
+    }
+
 }
+
+$block: '.quantity-input';
+$border: 0 solid #dbdbdb;
+$border-radius: 3px;
+$color--primary: #f3f3f3;
+$modifier--text-color: #888;
+
+
+#{$block} {
+    margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50.38px;
+  background-color: white;
+  
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: $border-radius;
+  
+  &:focus {
+    background: red;
+  }
+}
+
+#{$block}__modifier,
+#{$block}__screen {
+  user-select: none;
+  outline: none;
+}
+
+#{$block}__modifier {
+  padding: .7rem;
+  width: 3rem;
+  font-size: 1.5rem;
+  
+  background: $color--primary;
+  color: $modifier--text-color;
+  border: $border;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(#fff, .6);
+  
+  cursor: pointer;
+  
+  &:hover {
+    background: darken($color--primary, 10%);
+    color: darken($modifier--text-color, 20%)
+  }
+  
+  &--left {
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+  
+  &--right {
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+}
+
+#{$block}__screen {
+  width: 4rem;
+  padding: .7rem;
+  font-size: 1.5rem;
+  
+  border: 0;
+  border-top: $border;
+  border-bottom: $border;
+  text-align: center;
+}
+
 
 @media screen and (max-width: 799px) {
     .cart-wrapper {
