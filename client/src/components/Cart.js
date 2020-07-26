@@ -47,19 +47,16 @@ const CartItem = (props) => {
 
 
     return(
-        <div className="cart-item-wrapper">
-                
+              <>  
                 {/*lists all items in cart*/}
                 {cart.map(product => (
                     <div className="cart-item">
-                        <div className="cart-image">
                             <Image
                                     to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
+                                    imgDivClass='img-div-product-page'
+                                    imgClass='product-img'
                                     product={product}
                             />
-                        </div>
                         <div className="cart-info">
                             <h2><strong>{product.name}</strong></h2>
                                 <span><p>{product.size} ~ {product.color}</p></span>
@@ -79,8 +76,7 @@ const CartItem = (props) => {
                         </div>
                     </div>
                 ))}
-
-        </div>
+</>
     );
 }
 
@@ -111,6 +107,7 @@ const Cart = () => {
                     overlayClassName="cart-overlay"
                     isOpen={state.isPaneOpen}
                     title="Cart"
+                    width="400px"
                     onRequestClose={() => {
                     // triggered on "<" on left top click or on outside click
                         setState({ isPaneOpen: false });

@@ -13,7 +13,7 @@ import { CartContext } from '../utils/CartContext';
 
 const ProductForm = (props) => {
 
-    const { XS, S, M, L, XL, XXL, XXXL, product} = props;
+    const { product } = props;
 
     const {handleSubmit, register, errors } = useForm();
     const [cart, setCart] = useContext(CartContext);
@@ -30,7 +30,7 @@ const ProductForm = (props) => {
 
         //add to cart button
         const onSubmit = (values) =>  {
-            const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, img: product.photo_url};
+            const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url};
             setCart(currentState => [...currentState, lineItem]);
         };
 
@@ -49,12 +49,12 @@ const ProductForm = (props) => {
                   <div className="Colors">
                     <ul>
                     {errors.color && (<p>COLOR IS REQUIRED.</p>)}{/*Need to make better with scss*/}
-                        {/*cart.map(product => (*/}
-                        <li className={product.color}>{/*<-- prop used to display the colors or not*/}
-                            <input type="radio" name="color" id={product.color} value={product.color} ref={register({ required: true })}/>
-                            <label className={product.color} htmlFor={product.color}><span className={product.color}></span><span className={product.color+"__selector"}/></label>
+                        {product.color.map(color => (
+                        <li className={color}>{/*<-- prop used to display the colors or not*/}
+                            <input type="radio" name="color" id={color} value={color} ref={register({ required: true })}/>
+                            <label className={color} htmlFor={color}><span className={color}></span><span className={color+"__selector"}/></label>
                         </li>
-                    {/*  ))   */}
+                      )) }
                     </ul>
                  </div>
                  {/*Header for sizes*/}
