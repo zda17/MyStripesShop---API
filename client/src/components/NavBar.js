@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { MyContext } from '../utils/Context';
 import { stack as Menu } from 'react-burger-menu';
 import logo from '../utils/images/logo.png';
-import cart from '../utils/images/cart.png';
 import insta from '../utils/images/insta.png';
 import '../stylesheets/Burger.scss';
 import '../stylesheets/NavBar.scss';
+import Cart from '../components/Cart';
 
 // Instagram icon for bottom of side menu
 const Icon = () => {
@@ -80,7 +80,7 @@ const NavBar = () => {
             <nav>
                 <Link to='/'><img className='logo' src={logo} alt='logo' /></Link>
                 {windowWidth >= 800 && <NoBurger />}
-                <Link to='/Cart'><img className='cart' style={{ right: windowWidth >= 800 ? '24px' : '84px' }} src={cart} alt='cart' /></Link>
+                <Cart/>
                 <div className='tagline'>
                     <h4>COMMUNITY CONSCIOUS CLOTHING</h4>
                 </div>

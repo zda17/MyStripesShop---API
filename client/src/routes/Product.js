@@ -4,10 +4,9 @@ import Header from '../components/Header';
 import ProductDescription from '../components/ProductDescription';
 
 const Product = () => {
-    const dummyProducts = [
+    const dummyProduct = [
         {
             sku: 'MSCM-Hoodie-1-S-G', 
-            base_sku: 'MSCM-Hoodie-1',
             name: 'My Stripes Hoodie', 
             category: 'tops', 
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 

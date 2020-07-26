@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Profiler } from 'react';
 import '../stylesheets/Home.scss';
 import '../stylesheets/Image.scss';
 
@@ -21,54 +21,66 @@ function Home() {
     const dummyShirts = [
         {
             name: 'T-shirt',
-            photo_url: tshirt
+            photo_url: tshirt,
+            price: 22.00
         },
         {
             name: 'T-shirt',
-            photo_url: tshirt
+            photo_url: tshirt,
+            price: 22.00
         },
         {
             name: 'T-shirt',
-            photo_url: tshirt
+            photo_url: tshirt,
+            price: 22.00
         },
         {
             name: 'T-shirt',
-            photo_url: tshirt
+            photo_url: tshirt,
+            price: 22.00
         },
         {
             name: 'T-shirt',
-            photo_url: tshirt
+            photo_url: tshirt,
+            price: 22.00
         },
         {
             name: 'T-shirt',
-            photo_url: tshirt
+            photo_url: tshirt,
+            price: 22.00
         }
     ]
 
     const dummyPants = [
         {
             name: 'Pants',
-            photo_url: pants
+            photo_url: pants,
+            price: 28.00
         },
         {
             name: 'Pants',
-            photo_url: pants
+            photo_url: pants,
+            price: 28.00
         },
         {
             name: 'Pants',
-            photo_url: pants
+            photo_url: pants,
+            price: 28.00
         },
         {
             name: 'Pants',
-            photo_url: pants
+            photo_url: pants,
+            price: 28.00
         },
         {
             name: 'Pants',
-            photo_url: pants
+            photo_url: pants,
+            price: 28.00
         },
         {
             name: 'Pants',
-            photo_url: pants
+            photo_url: pants,
+            price: 28.00
         }
     ]
 

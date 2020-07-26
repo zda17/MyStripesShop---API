@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 
 //style
@@ -6,9 +6,14 @@ import '../stylesheets/ProductForm.scss';
 
 //components
 import Header from '../components/Header';
+import Image from '../components/Image';
+
+//context
+import { CartContext } from '../utils/CartContext';
 
 const ProductForm = (props) => {
 
+<<<<<<< HEAD
     const { products } = props;
 
     const product = products[0];
@@ -18,13 +23,21 @@ const ProductForm = (props) => {
 
     const sizes = [];
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
+=======
+    const { product } = props;
+>>>>>>> ad23912e3ae3ab0ec2ac0279d975e060ae647615
 
     const {handleSubmit, register, errors } = useForm();
-    const onSubmit = (values) =>  {console.log(values)};
+    const [cart, setCart] = useContext(CartContext);
 
-    const { darkBlue, blue, green, peach, gold, red, yellow, orange, purple, pink,
-            xs, s, m, l, xl, xxl, xxxl } = props;
+    //converts cents to dollar amount
+    const centsToUSD = (price) => {
+        var dollars = price / 100;
+        //var cents = price % 100;
 
+        return dollars;
+    } 
+    const price_USD = centsToUSD(product.price_cents);
 
 
     //add to cart button
@@ -43,7 +56,8 @@ const ProductForm = (props) => {
                     divClass="Container-Header"
                     hClass="Product-Header Padding"
                     subHClass="No-Sub"
-                 /> {/*Needs different hClass to make text smaller*/}
+                 />
+                 {/*Colors*/}
                   <div className="Colors">
                     <ul>
                     {errors.color && (<p>COLOR IS REQUIRED.</p>)}{/*Need to make better with scss*/}
@@ -52,16 +66,18 @@ const ProductForm = (props) => {
                             <input type="radio" name="color" id={color} value={color} ref={register({ required: true })}/>
                             <label className={color} htmlFor={color}><span className={color}></span><span className={color+"__selector"}/></label>
                         </li>
+                      )) }
                     </ul>
-                    {errors.color && (<p>Color is required.</p>)}
                  </div>
+                 {/*Header for sizes*/}
                  <Header 
                     title="SIZES" 
                     headerClass="Other-Header"
                     divClass="Container-Header"
                     hClass="Product-Header Padding"
                     subHClass="No-Sub"
-                 /> {/*Needs different hClass to make text smaller*/}
+                 />
+                 {/*sizes you can pick*/}
                  <div className="Sizes">
                     <ul>
                     {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
@@ -72,7 +88,6 @@ const ProductForm = (props) => {
                         </li>
                        ))  }
                     </ul>
-                    {errors.size && (<p>Size is required.</p>)}
                  </div>
                  <input type="submit" value="ADD TO CART"/>
                 </div>
