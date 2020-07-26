@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import ProductDescription from '../components/ProductDescription';
 
 const Product = () => {
-    const dummyProduct = [
+    const dummyProducts = [
         {
             sku: 'MSCM-Hoodie-1-S-G', 
             name: 'My Stripes Hoodie', 

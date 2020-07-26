@@ -13,7 +13,6 @@ import { CartContext } from '../utils/CartContext';
 
 const ProductForm = (props) => {
 
-<<<<<<< HEAD
     const { products } = props;
 
     const product = products[0];
@@ -23,9 +22,6 @@ const ProductForm = (props) => {
 
     const sizes = [];
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
-=======
-    const { product } = props;
->>>>>>> ad23912e3ae3ab0ec2ac0279d975e060ae647615
 
     const {handleSubmit, register, errors } = useForm();
     const [cart, setCart] = useContext(CartContext);
