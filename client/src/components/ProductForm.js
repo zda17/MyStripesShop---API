@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 
 //style
@@ -6,16 +6,41 @@ import '../stylesheets/ProductForm.scss';
 
 //components
 import Header from '../components/Header';
+import Image from '../components/Image';
+
+//context
+import { CartContext } from '../utils/CartContext';
 
 const ProductForm = (props) => {
 
+    const { products } = props;
+
+    const product = products[0];
+
+    const colors = [];
+    products.map(product => colors.includes(product.color) ? null : colors.push(product.color));
+
+    const sizes = [];
+    products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
+
     const {handleSubmit, register, errors } = useForm();
-    const onSubmit = (values) =>  {console.log(values)};
+    const [cart, setCart] = useContext(CartContext);
 
-    const { darkBlue, blue, green, peach, gold, red, yellow, orange, purple, pink,
-            xs, s, m, l, xl, xxl, xxxl } = props;
+    //converts cents to dollar amount
+    const centsToUSD = (price) => {
+        var dollars = price / 100;
+        //var cents = price % 100;
+
+        return dollars;
+    } 
+    const price_USD = centsToUSD(product.price_cents);
 
 
+    //add to cart button
+    const onSubmit = (values) =>  {
+        const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url};
+        setCart(currentState => [...currentState, lineItem]);
+    };
 
     return(
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
@@ -27,91 +52,38 @@ const ProductForm = (props) => {
                     divClass="Container-Header"
                     hClass="Product-Header Padding"
                     subHClass="No-Sub"
-                 /> {/*Needs different hClass to make text smaller*/}
+                 />
+                 {/*Colors*/}
                   <div className="Colors">
                     <ul>
-                        <li className={darkBlue}>
-                            <input type="radio" name="color" id="darkBlue" value="darkBlue" ref={register({ required: true })}/>
-                            <label className="darkBlue" htmlFor="darkBlue"><span className="darkBlue"></span><span className="darkBlue__selector"/></label>
+                    {errors.color && (<p>COLOR IS REQUIRED.</p>)}{/*Need to make better with scss*/}
+                        {colors.map(color => (
+                        <li className={color}>{/*<-- prop used to display the colors or not*/}
+                            <input type="radio" name="color" id={color} value={color} ref={register({ required: true })}/>
+                            <label className={color} htmlFor={color}><span className={color}></span><span className={color+"__selector"}/></label>
                         </li>
-                        <li className={blue}>
-                            <input type="radio" name="color" id="blue" value="blue" ref={register({ required: true })}/>
-                            <label htmlFor="blue"><span className="blue"></span><span className="blue__selector"/></label>
-                        </li>
-                        <li className={green}>
-                            <input type="radio" name="color" id="green" value="green" ref={register({ required: true })}/>
-                            <label htmlFor="green"><span className="green"></span><span className="green__selector"/></label>
-                        </li>
-                        <li className={peach}>
-                            <input type="radio" name="color" id="peach" value="peach" ref={register({ required: true })}/>
-                            <label htmlFor="peach"><span className="peach"></span><span className="peach__selector"/></label>
-                        </li>
-                        <li className={gold}>
-                            <input type="radio" name="color" id="gold" value="gold" ref={register({ required: true })}/>
-                            <label htmlFor="gold"><span className="gold"></span><span className="gold__selector"/></label>
-                        </li>
-                        <li className={red}>
-                            <input type="radio" name="color" id="red" value="red" ref={register({ required: true })}/>
-                            <label htmlFor="red"><span className="red"></span><span className="red__selector"/></label>
-                        </li>
-                        <li className={yellow}>
-                            <input type="radio" name="color" id="yellow" value="yellow" ref={register({ required: true })}/>
-                            <label htmlFor="yellow"><span className="yellow"></span><span className="yellow__selector"/></label>
-                        </li>
-                        <li className={orange}>
-                            <input type="radio" name="color" id="orange" value="orange" ref={register({ required: true })}/>
-                            <label htmlFor="orange"><span className="orange"></span><span className="orange__selector"/></label>
-                        </li>
-                        <li className={purple}>
-                            <input type="radio" name="color" id="purple" value="purple" ref={register({ required: true })}/>
-                            <label htmlFor="purple"><span className="purple"></span><span className="purple__selector"/></label>
-                        </li>
-                        <li className={pink}>
-                            <input type="radio" name="color" id="pink" value="pink" ref={register({ required: true })}/>
-                            <label htmlFor="pink"><span className="pink"></span><span className="pink__selector"/></label>
-                        </li>
+                      )) }
                     </ul>
-                    {errors.color && (<p>Color is required.</p>)}
                  </div>
+                 {/*Header for sizes*/}
                  <Header 
                     title="SIZES" 
                     headerClass="Other-Header"
                     divClass="Container-Header"
                     hClass="Product-Header Padding"
                     subHClass="No-Sub"
-                 /> {/*Needs different hClass to make text smaller*/}
+                 />
+                 {/*sizes you can pick*/}
                  <div className="Sizes">
                     <ul>
-                        <li className={xs}>
-                            <input type="radio" name="size" id="x-small" value="x-small" ref={register({ required: true })}/>
-                            <label htmlFor="x-small"><span className="x-small">XS</span></label>
+                    {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
+                        {sizes.map(size => (
+                        <li className={size}> {/*<--prop used for showing out of order (not made yet)*/}
+                            <input type="radio" name="size" id={size} value={size} ref={register({ required: true })}/>
+                            <label htmlFor={size}><span className={size}>{size}</span></label>
                         </li>
-                        <li className={s}>
-                            <input type="radio" name="size" id="small" value="small" ref={register({ required: true })}/>
-                            <label htmlFor="small"><span className="small">S</span></label>
-                        </li>
-                        <li className={m}>
-                            <input type="radio" name="size" id="medium" value="medium" ref={register({ required: true })}/>
-                            <label htmlFor="medium"><span className="medium">M</span></label>
-                        </li>
-                        <li className={l}>
-                            <input type="radio" name="size" id="large" value="large" ref={register({ required: true })}/>
-                            <label htmlFor="large"><span className="large">L</span></label>
-                        </li>
-                        <li className={xl}>
-                            <input type="radio" name="size" id="x-large" value="x-large" ref={register({ required: true })}/>
-                            <label htmlFor="x-large"><span className="x-large">XL</span></label>
-                        </li>
-                        <li className={xxl}>
-                            <input type="radio" name="size" id="xx-large" value="xx-large" ref={register({ required: true })}/>
-                            <label htmlFor="xx-large"><span className="xx-large">XXL</span></label>
-                        </li>
-                        <li className={xxxl}>
-                            <input type="radio" name="size" id="xxx-large" value="xxx-large" ref={register({ required: true })}/>
-                            <label htmlFor="xxx-large"><span className="xxx-large">XXXL</span></label>
-                        </li>
+                       ))  }
                     </ul>
-                    {errors.size && (<p>Size is required.</p>)}
                  </div>
                  <input type="submit" value="ADD TO CART"/>
                 </div>

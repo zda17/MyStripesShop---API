@@ -43,7 +43,6 @@ $primaryColor: #1f7bc5;
     li {
         float: left;
         width: 48px;
-        margin: 0 15px;
     }
 
     input[type="radio"] {
@@ -55,14 +54,21 @@ $primaryColor: #1f7bc5;
            // !@each
         } // !&:checked + label
       }
+
+      p {
+        color: red;
+        margin: 0px 20px 20px 0px;
+      }
+
+
 }
 
 label {
     display: inline-block;
     width: 48px;
     height: 54px;
-    margin-right: 10px;
     cursor: pointer;
+    
     
     span {
       @each $name, $value in $colors {
@@ -104,7 +110,6 @@ label {
     li {
         float: left;
         width: 48px;
-        margin: 0 15px 5px;
         padding: 5px;
     }
 
@@ -121,7 +126,6 @@ label {
         display: inline-block;
         width: 48px;
         height: 48px;
-        margin-right: 10px;
         cursor: pointer;
         border: solid 1px black;
         align-items: center;
@@ -138,6 +142,11 @@ label {
         }
       
       } 
+
+      p {
+        color: red;
+        margin: 0px 20px 20px 0px;
+      }
 
 }
 

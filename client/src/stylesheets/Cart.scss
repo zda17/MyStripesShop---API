@@ -1,0 +1,247 @@
+@import './NavBar.scss';
+
+.cart-wrapper {
+
+    input[type='image'] {
+        width: 40px;
+        height: 40px;
+        right: 10px;
+        color: rgb(95, 171, 117);
+    }
+}
+
+.slide-pane__header {
+    background-color: $dark-blue;
+    color: white;
+}
+
+.slide-pane__content {
+  width: 100%;
+  height: fit-content;
+}
+
+.cart-pane {
+    background-color: $color;
+    width: 100%;
+
+    input[type="submit"] {
+      width: 80%;
+      height: 5vw;
+      display: block;
+      bottom: 10%;
+      border: none;
+      background-color: #3d2d27;
+      color: #ffefca;
+      margin: 50px auto 0px auto;
+    
+      font: {
+        size: 2vw;
+        weight: bold;
+      }
+    }
+
+}
+
+.cart-item-list {
+  width: 100%;
+  height: 100%;
+  border-bottom: solid 1px #3d2d27;;
+}
+
+.cart-item {
+    display: inline-block;
+    //width: 100%;
+    //height: 100%;
+
+    .cart-image {
+        position: relative;
+        float: left;
+        //width: auto;
+        //height: 165px;
+        margin-left: -30px;
+        
+    }
+
+    .cart-info {
+        text-align: left;
+        float: left;
+        padding-top: 10px;
+        padding-left: 50px;
+        margin: 0px 10px;
+        width: 67%;
+        height: 22vw;
+        font-size: 16px;
+    }
+
+
+    .cart-remove {
+        color: rgb(29, 17, 17);
+        position:relative;
+        text-align: center;
+        transition: 1.5s;
+        cursor: pointer;
+        -webkit-transition:1.5s;
+        background: none;
+        border: none;
+    }
+
+    .cart-remove:hover {  background-color: transparent;  border-bottom: none; color: #000000;} 
+
+    .cart-remove:hover:before{ 
+        transition-delay: .5s; 
+        width: 100% !important;
+        transition: 1.0s;
+    }
+
+    .cart-remove:before{
+        width: 0%;
+        height:100%;  
+        z-index: 3;   
+        content:'';  
+        position: absolute;  
+        bottom:-1px;   
+        left:0;  
+        box-sizing: border-box;  
+        transition: 1.0s;
+        border-bottom: 1px solid #000000;
+    }
+
+    .cart-options {
+      width: fit-content;
+      height: fit-content;
+    }
+
+}
+
+$block: '.quantity-input';
+$border: 0 solid #dbdbdb;
+$border-radius: 0px;
+$color--primary: #f3f3f3;
+$modifier--text-color: #888;
+
+
+#{$block} {
+    margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 160px;
+  max-height: 50px;
+  background-color: white;
+  
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: $border-radius;
+  
+  &:focus {
+    background: red;
+  }
+}
+
+#{$block}__modifier,
+#{$block}__screen {
+  user-select: none;
+  outline: none;
+}
+
+#{$block}__modifier {
+  width: 33.33%;
+  height: 100%;
+  font-size: 20px;
+  
+  background: $color--primary;
+  color: $modifier--text-color;
+  border: $border;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(#fff, .6);
+  
+  cursor: pointer;
+  
+  &:hover {
+    background: darken($color--primary, 10%);
+    color: darken($modifier--text-color, 20%)
+  }
+  
+  &--left {
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+  
+  &--right {
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+}
+
+#{$block}__screen {
+  width: 33.33%;
+  height: 100%;
+  font-size: 20px;
+  
+  border: 0;
+  border-top: $border;
+  border-bottom: $border;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 799px) {
+
+  #{$block} {
+    width: 140px;
+    height: 40px;
+  }
+  
+.cart-item {
+  .cart-info {
+    font-size: 12px;
+  }
+}
+
+    .cart-wrapper {
+
+
+        input[type='image'] {
+            right: 80px;
+        }
+    }
+}
+
+@media screen and (max-width: 504px) {
+
+  #{$block} {
+    width: 115px;
+    height: 30px;
+  }
+
+  #{$block}__modifier {
+    font-size: 14px;
+  }
+
+  #{$block}__screen {
+    font-size: 14px;
+  }
+  
+  .cart-item {
+
+    .cart-info {
+      font-size: 10px;
+    }
+  }
+  
+}
+
+@media screen and (max-width: 306px) {
+
+  #{$block} {
+    width: 80px;
+    height: 25px;
+  }
+
+  #{$block}__modifier {
+    font-size: 12px;
+  }
+
+  #{$block}__screen {
+    font-size: 12px;
+  }
+
+}

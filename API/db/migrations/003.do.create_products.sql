@@ -38,5 +38,8 @@ CREATE TABLE products (
 		NOT NULL
 		DEFAULT 0,
 	size
+		TEXT,
+	color
 		TEXT
+		NOT NULL
 );
