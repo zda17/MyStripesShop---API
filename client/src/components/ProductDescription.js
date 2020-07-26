@@ -10,7 +10,20 @@ import ProductForm from '../components/ProductForm';
 import Image from '../components/Image';
 
 const ProductDescription = (props) => {
-    const { product } = props;
+
+    const { products } = props;
+
+    const product = products[0];
+
+    //converts cents to dollar amount
+    const centsToUSD = (amount) => {
+        var dollars = amount / 100;
+        //var cents = amount % 100;
+
+        return dollars;
+    } 
+    const price_USD = centsToUSD(product.price_cents);
+    
     return (
         <div className="ProductDesc">
             <Header
@@ -28,7 +41,7 @@ const ProductDescription = (props) => {
                     imgClass='product-img'
                 />
             </div>
-            <ProductForm pink="none" />
+            <ProductForm products={products} />
         </div>
     );
 };
