@@ -41,12 +41,9 @@ const CartItem = (props) => {
   }
 
   const remove = (e) => {
-    var index = cart.indexOf(e.target.value)
-    if (index > -1) {
-        cart.pop(index);
-        setCart(cart);
-    }
-  }
+      const name = e.target.getAttribute("name")
+        setCart(cart.filter(prouct => product.name !== name));
+  };
 
 
     return(
@@ -77,7 +74,7 @@ const CartItem = (props) => {
                                     &#xff0b;
                                     </button>  
                                 </div>  
-                                <input className="cart-remove" type="button" value="Remove" onClick={remove}/>
+                                <span className="cart-remove" name={product.name} onClick={remove}>Remove</span>
                             </div>
                         </div>
                     </div>
