@@ -5,7 +5,7 @@ import ProductDescription from '../components/ProductDescription';
 
 const Product = () => {
     const dummyProduct = {
-        sku: 'MSCM-Hoodie-1', 
+        sku: 'MSCM-Hoodie-1-M-G', 
         name: 'My Stripes Hoodie', 
         category: 'tops', 
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
@@ -15,7 +15,7 @@ const Product = () => {
         updated_at: '2020-07-20 11:13:06', 
         price_cents: 3599, 
         size: 'M',
-        color: 'green'
+        color: ['green', 'blue']
     }
 
     return(
