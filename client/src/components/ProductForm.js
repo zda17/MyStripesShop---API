@@ -25,12 +25,12 @@ const ProductForm = (props) => {
 
         return dollars + "." + cents;
     } 
-    //const price_USD = centsToUSD(product.price_cents);
+    const price_USD = centsToUSD(product.price_cents);
 
 
         //add to cart button
         const onSubmit = (values) =>  {
-            const lineItem = {name: product.name, price: product.price_USD, color: values.color, size: values.size, img: product.photo_url};
+            const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, img: product.photo_url};
             setCart(currentState => [...currentState, lineItem]);
         };
 

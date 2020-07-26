@@ -41,8 +41,8 @@ const CartItem = (props) => {
   }
 
   const remove = (e) => {
-      const name = e.target.getAttribute("name")
-        setCart(cart.filter(prouct => product.name !== name));
+      const nameAttr = e.target.getAttribute("name")
+        setCart(cart.filter(lineItem => lineItem.name !== nameAttr));
   };
 
 
