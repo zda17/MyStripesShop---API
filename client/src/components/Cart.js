@@ -20,21 +20,31 @@ import "../stylesheets/Cart.scss";
 const CartItem = (props) => {
 
     const [cart, setCart] = useContext(CartContext);
+    let [quantity, setQuantity] = useState(1);
+
+    const { product } = props;
   
+    //adds 1 to quantity
   const increment = () => {
-    setCart(prevState => [...prevState, ++cart.quantity]);
+      console.log({cart});
+      setQuantity(++quantity);
   }
   
+  //minus 1 from quanitity
   const decrement = () => {
-    setCart(prevState => [...prevState, --cart.quantity]);
+    console.log("Minus 1");
+    if(quantity > 1) {
+    setQuantity(--quantity);
+    } else {
+        {/*remove cart item*/}
+    }
   }
 
   const remove = (e) => {
-    var array = [...cart]; // make a separate copy of the array
-    var index = array.indexOf(e.target.value)
-    if (index !== -1) {
-        array.splice(index, 1);
-        setCart({array});
+    var index = cart.indexOf(e.target.value)
+    if (index > -1) {
+        cart.pop(index);
+        setCart(cart);
     }
   }
 
@@ -62,7 +72,7 @@ const CartItem = (props) => {
                                     <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
                                     &mdash;
                                     </button>
-                                    <input className="quantity-input__screen" type="text" value={product.quantity} readonly />
+                                    <input className="quantity-input__screen" type="text" value={quantity} readOnly />
                                     <button className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
                                     &#xff0b;
                                     </button>  
@@ -113,6 +123,7 @@ const Cart = () => {
                     <div className="cart-item-list">
                         <CartItem />
                     </div>
+                    <input type="submit" value="CHECKOUT"/>
                 </SlidingPane>
             </div>
     );

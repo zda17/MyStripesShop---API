@@ -39,7 +39,7 @@ const ProductDescription = (props) => {
                     imgClass='product-img'
                 />
             </div>
-            <ProductForm pink="none" />
+            <ProductForm product={product} />
         </div>
     );
 };

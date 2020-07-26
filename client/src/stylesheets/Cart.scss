@@ -10,6 +10,21 @@
     }
 }
 
+input[type="submit"] {
+  width: 150px;
+  height: 5vh;
+  display: block;
+  border: none;
+  background-color: #3d2d27;
+  color: #ffefca;
+  margin: 5px auto;
+
+  font: {
+    size: 18px;
+    weight: bold;
+  }
+}
+
 .slide-pane__header {
     background-color: $dark-blue;
     color: white;
@@ -38,11 +53,9 @@
 
     .cart-info {
         float: left;
+        padding-top: 20px;
     }
 
-    input {
-        margin: 10px 0px;
-    }
 
     .cart-remove {
         color: rgb(66, 66, 66);
@@ -80,7 +93,7 @@
 
 $block: '.quantity-input';
 $border: 0 solid #dbdbdb;
-$border-radius: 3px;
+$border-radius: 0px;
 $color--primary: #f3f3f3;
 $modifier--text-color: #888;
 

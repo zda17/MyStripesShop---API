@@ -6,11 +6,14 @@ import '../stylesheets/ProductForm.scss';
 
 //components
 import Header from '../components/Header';
+import Image from '../components/Image';
 
 //context
 import { CartContext } from '../utils/CartContext';
 
 const ProductForm = (props) => {
+
+    const { xs, s, m, l, xl, xxl, xxxl, product} = props;
 
     const {handleSubmit, register, errors } = useForm();
     const [cart, setCart] = useContext(CartContext);
@@ -22,14 +25,12 @@ const ProductForm = (props) => {
 
         return dollars + "." + cents;
     } 
-    const price_USD = centsToUSD(props.price_cents);
+    //const price_USD = centsToUSD(product.price_cents);
 
-    const { darkBlue, blue, green, peach, gold, red, yellow, orange, purple, pink,
-            xs, s, m, l, xl, xxl, xxxl, product } = props;
 
         //add to cart button
-        const onSubmit = (values, props) =>  {
-            const lineItem = {name: cart.name, price: 22.99, color: values.color, size: values.size, img: props.photo_url};
+        const onSubmit = (values) =>  {
+            const lineItem = {name: product.name, price: product.price_USD, color: values.color, size: values.size, img: product.photo_url};
             setCart(currentState => [...currentState, lineItem]);
         };
 
@@ -47,46 +48,12 @@ const ProductForm = (props) => {
                  {/*Colors*/}
                   <div className="Colors">
                     <ul>
-                        <li className={darkBlue}>{/*<-- prop used to display the colors or not*/}
-                            <input type="radio" name="color" id="darkBlue" value="Dark Blue" ref={register({ required: true })}/>
-                            <label className="darkBlue" htmlFor="darkBlue"><span className="darkBlue"></span><span className="darkBlue__selector"/></label>
+                        {cart.map(product => (
+                        <li className={product.color}>{/*<-- prop used to display the colors or not*/}
+                            <input type="radio" name="color" id={product.color} value={product.color} ref={register({ required: true })}/>
+                            <label className={product.color} htmlFor={product.color}><span className={product.color}></span><span className={product.color&&"__selector"}/></label>
                         </li>
-                        <li className={blue}>
-                            <input type="radio" name="color" id="blue" value="BLUE" ref={register({ required: true })}/>
-                            <label htmlFor="blue"><span className="blue"></span><span className="blue__selector"/></label>
-                        </li>
-                        <li className={green}>
-                            <input type="radio" name="color" id="green" value="GREEN" ref={register({ required: true })}/>
-                            <label htmlFor="green"><span className="green"></span><span className="green__selector"/></label>
-                        </li>
-                        <li className={peach}>
-                            <input type="radio" name="color" id="peach" value="PEACH" ref={register({ required: true })}/>
-                            <label htmlFor="peach"><span className="peach"></span><span className="peach__selector"/></label>
-                        </li>
-                        <li className={gold}>
-                            <input type="radio" name="color" id="gold" value="GOLD" ref={register({ required: true })}/>
-                            <label htmlFor="gold"><span className="gold"></span><span className="gold__selector"/></label>
-                        </li>
-                        <li className={red}>
-                            <input type="radio" name="color" id="red" value="RED" ref={register({ required: true })}/>
-                            <label htmlFor="red"><span className="red"></span><span className="red__selector"/></label>
-                        </li>
-                        <li className={yellow}>
-                            <input type="radio" name="color" id="yellow" value="YELLOW" ref={register({ required: true })}/>
-                            <label htmlFor="yellow"><span className="yellow"></span><span className="yellow__selector"/></label>
-                        </li>
-                        <li className={orange}>
-                            <input type="radio" name="color" id="orange" value="ORANGE" ref={register({ required: true })}/>
-                            <label htmlFor="orange"><span className="orange"></span><span className="orange__selector"/></label>
-                        </li>
-                        <li className={purple}>
-                            <input type="radio" name="color" id="purple" value="PURPLE" ref={register({ required: true })}/>
-                            <label htmlFor="purple"><span className="purple"></span><span className="purple__selector"/></label>
-                        </li>
-                        <li className={pink}>
-                            <input type="radio" name="color" id="pink" value="PINK" ref={register({ required: true })}/>
-                            <label htmlFor="pink"><span className="pink"></span><span className="pink__selector"/></label>
-                        </li>
+                        ))}
                     </ul>
                     {errors.color && (<p>Color is required.</p>)}{/*Need to make better with scss*/}
                  </div>

@@ -14,7 +14,8 @@ const Product = () => {
         created_at: '2020-07-20 11:13:06', 
         updated_at: '2020-07-20 11:13:06', 
         price_cents: 3500, 
-        size: 'M'
+        size: 'M',
+        color: 'green'
     }
 
     return(
