@@ -4,14 +4,6 @@ CREATE TYPE genders AS enum (
 	'U'
 );
 
-CREATE TYPE color AS enum (
-	'darkBlue',
-	'blue',
-	'green',
-	'peach',
-	'gold'
-);
-
 CREATE TABLE products (
  	id
 		SERIAL
