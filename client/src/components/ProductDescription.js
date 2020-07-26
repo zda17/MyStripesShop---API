@@ -13,12 +13,12 @@ const ProductDescription = (props) => {
 
     const { product } = props;
 
-    //converts cents to dollar amount in string format
+    //converts cents to dollar amount
     const centsToUSD = (amount) => {
         var dollars = amount / 100;
-        var cents = amount % 100;
+        //var cents = amount % 100;
 
-        return dollars + "." + cents;
+        return dollars;
     } 
     const price_USD = centsToUSD(product.price_cents);
     

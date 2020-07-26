@@ -13,17 +13,17 @@ import { CartContext } from '../utils/CartContext';
 
 const ProductForm = (props) => {
 
-    const { xs, s, m, l, xl, xxl, xxxl, product} = props;
+    const { XS, S, M, L, XL, XXL, XXXL, product} = props;
 
     const {handleSubmit, register, errors } = useForm();
     const [cart, setCart] = useContext(CartContext);
 
-    //converts cents to dollar amount in string format
+    //converts cents to dollar amount
     const centsToUSD = (price) => {
         var dollars = price / 100;
-        var cents = price % 100;
+        //var cents = price % 100;
 
-        return dollars + "." + cents;
+        return dollars;
     } 
     const price_USD = centsToUSD(product.price_cents);
 
@@ -48,14 +48,14 @@ const ProductForm = (props) => {
                  {/*Colors*/}
                   <div className="Colors">
                     <ul>
-                        {cart.map(product => (
+                    {errors.color && (<p>COLOR IS REQUIRED.</p>)}{/*Need to make better with scss*/}
+                        {/*cart.map(product => (*/}
                         <li className={product.color}>{/*<-- prop used to display the colors or not*/}
                             <input type="radio" name="color" id={product.color} value={product.color} ref={register({ required: true })}/>
-                            <label className={product.color} htmlFor={product.color}><span className={product.color}></span><span className={product.color&&"__selector"}/></label>
+                            <label className={product.color} htmlFor={product.color}><span className={product.color}></span><span className={product.color+"__selector"}/></label>
                         </li>
-                        ))}
+                    {/*  ))   */}
                     </ul>
-                    {errors.color && (<p>Color is required.</p>)}{/*Need to make better with scss*/}
                  </div>
                  {/*Header for sizes*/}
                  <Header 
@@ -68,7 +68,14 @@ const ProductForm = (props) => {
                  {/*sizes you can pick*/}
                  <div className="Sizes">
                     <ul>
-                        <li className={xs}> {/*<--prop used for showing out of order (not made yet)*/}
+                    {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
+                        {/*cart.map(product => (*/}
+                        <li className={product.size}> {/*<--prop used for showing out of order (not made yet)*/}
+                            <input type="radio" name="size" id={product.size} value={product.size} ref={register({ required: true })}/>
+                            <label htmlFor={product.size}><span className={product.size}>{product.size}</span></label>
+                        </li>
+                    {/*    ))   */}
+                        {/*<li className={xs}> {//<--prop used for showing out of order (not made yet)//}
                             <input type="radio" name="size" id="x-small" value="X-SMALL" ref={register({ required: true })}/>
                             <label htmlFor="x-small"><span className="x-small">XS</span></label>
                         </li>
@@ -95,9 +102,8 @@ const ProductForm = (props) => {
                         <li className={xxxl}>
                             <input type="radio" name="size" id="xxx-large" value="XXX-LARGE" ref={register({ required: true })}/>
                             <label htmlFor="xxx-large"><span className="xxx-large">XXXL</span></label>
-                        </li>
+                        </li>*/}
                     </ul>
-                    {errors.size && (<p>Size is required.</p>)}{/*Need to make better with scss*/}
                  </div>
                  <input type="submit" value="ADD TO CART"/>
                 </div>

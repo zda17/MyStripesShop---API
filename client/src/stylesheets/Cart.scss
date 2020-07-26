@@ -10,55 +10,79 @@
     }
 }
 
-input[type="submit"] {
-  width: 150px;
-  height: 5vh;
-  display: block;
-  border: none;
-  background-color: #3d2d27;
-  color: #ffefca;
-  margin: 5px auto;
-
-  font: {
-    size: 18px;
-    weight: bold;
-  }
-}
-
 .slide-pane__header {
     background-color: $dark-blue;
     color: white;
 }
 
+.slide-pane__content {
+  width: 100%;
+  height: fit-content;
+}
+
 .cart-pane {
     background-color: $color;
-    width: 100vw;
+    width: 100%;
+
+    input[type="submit"] {
+      width: 80%;
+      height: 5vw;
+      display: block;
+      bottom: 10%;
+      border: none;
+      background-color: #3d2d27;
+      color: #ffefca;
+      margin: 50px auto 0px auto;
+    
+      font: {
+        size: 2vw;
+        weight: bold;
+      }
+    }
+
+}
+
+.cart-item-list {
+  width: 100%;
+  height: 100%;
+  border-bottom: solid 1px #3d2d27;;
 }
 
 .cart-item {
-    display: flex;
+    display: inline-block;
     width: 100%;
+    height: 30vw;
 
     .cart-image {
+        position: relative;
         float: left;
+        width: 20vw;
+        height: 100vw;
+        margin-left: -30px;
 
         div {
-            height: 22vw;
-            width: 15vw;
-            max-height: 165px;
-            max-width: 125px;
+            height: 100vw;
+            width: 20vw;
+            max-height: 220px;
+            max-width: 175px;
         }
         
     }
 
     .cart-info {
+        text-align: left;
         float: left;
-        padding-top: 20px;
+        padding-top: 10px;
+        padding-left: 50px;
+        margin: 0px 10px;
+        width: 67%;
+        height: 22vw;
+        font-size: 16px;
     }
 
 
     .cart-remove {
-        color: rgb(66, 66, 66);
+        color: rgb(29, 17, 17);
         position:relative;
         text-align: center;
         transition: 1.5s;
@@ -68,7 +92,7 @@ input[type="submit"] {
         border: none;
     }
 
-    .cart-remove:hover {  background-color: transparent;  border-bottom: solid 1px transparent; color: #000000;} 
+    .cart-remove:hover {  background-color: transparent;  border-bottom: none; color: #000000;} 
 
     .cart-remove:hover:before{ 
         transition-delay: .5s; 
@@ -89,6 +113,11 @@ input[type="submit"] {
         border-bottom: 1px solid #000000;
     }
 
+    .cart-options {
+      width: fit-content;
+      height: fit-content;
+    }
+
 }
 
 $block: '.quantity-input';
@@ -103,7 +132,9 @@ $modifier--text-color: #888;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50.38px;
+  height: 50px;
+  width: 160px;
+  max-height: 50px;
   background-color: white;
   
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -121,9 +152,9 @@ $modifier--text-color: #888;
 }
 
 #{$block}__modifier {
-  padding: .7rem;
-  width: 3rem;
-  font-size: 1.5rem;
+  width: 33.33%;
+  height: 100%;
+  font-size: 20px;
   
   background: $color--primary;
   color: $modifier--text-color;
@@ -148,9 +179,9 @@ $modifier--text-color: #888;
 }
 
 #{$block}__screen {
-  width: 4rem;
-  padding: .7rem;
-  font-size: 1.5rem;
+  width: 33.33%;
+  height: 100%;
+  font-size: 20px;
   
   border: 0;
   border-top: $border;
@@ -160,10 +191,78 @@ $modifier--text-color: #888;
 
 
 @media screen and (max-width: 799px) {
+
+  #{$block} {
+    width: 140px;
+    height: 40px;
+  }
+
+.cart-item {
+  .cart-image {
+
+    div {
+        max-height: 175px;
+    }
+    
+}
+  .cart-info {
+    font-size: 12px;
+  }
+}
+
     .cart-wrapper {
+
 
         input[type='image'] {
             right: 80px;
         }
     }
+}
+
+@media screen and (max-width: 504px) {
+
+  #{$block} {
+    width: 115px;
+    height: 30px;
+  }
+
+  #{$block}__modifier {
+    font-size: 14px;
+  }
+
+  #{$block}__screen {
+    font-size: 14px;
+  }
+  
+  .cart-item {
+    .cart-image {
+
+      div {
+          max-height: 150px;
+      }
+      
+  }
+
+    .cart-info {
+      font-size: 10px;
+    }
+  }
+  
+}
+
+@media screen and (max-width: 306px) {
+
+  #{$block} {
+    width: 80px;
+    height: 25px;
+  }
+
+  #{$block}__modifier {
+    font-size: 12px;
+  }
+
+  #{$block}__screen {
+    font-size: 12px;
+  }
+
 }

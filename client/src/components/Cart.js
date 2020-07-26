@@ -120,7 +120,7 @@ const Cart = () => {
                     <div className="cart-item-list">
                         <CartItem />
                     </div>
-                    <input type="submit" value="CHECKOUT"/>
+                    <input type="submit" value={"CHECKOUT ~ "+totalPrice}/>
                 </SlidingPane>
             </div>
     );

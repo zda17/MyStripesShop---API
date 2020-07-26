@@ -13,7 +13,7 @@ const Product = () => {
         photo_url: 'https://res.cloudinary.com/dswxhdeob/image/upload/v1581615690/MyStripesProducts/My%20Stripes%20Custom%20Merch/My_Stripes_Custom_Merch_Hoodie_gla8a9.png', 
         created_at: '2020-07-20 11:13:06', 
         updated_at: '2020-07-20 11:13:06', 
-        price_cents: 3500, 
+        price_cents: 3599, 
         size: 'M',
         color: 'green'
     }
