@@ -1,11 +1,12 @@
 @import './NavBar.scss';
 
+//for navbar cart icon
 .cart-wrapper {
 
     input[type='image'] {
         width: 40px;
         height: 40px;
-        right: 10px;
+        right: 20px;
         color: rgb(95, 171, 117);
     }
 }
@@ -13,64 +14,65 @@
 .slide-pane__header {
     background-color: $dark-blue;
     color: white;
+    
+}
+
+.slide-pane__title {
+  letter-spacing: 4px;
 }
 
 .slide-pane__content {
-  width: 100%;
-  height: fit-content;
+  display: block;
+  padding: 0px;
 }
 
 .cart-pane {
     background-color: $color;
-    width: 100%;
 
     input[type="submit"] {
       width: 80%;
-      height: 5vw;
+      position: relative;
+      height: 5vh;
       display: block;
-      bottom: 10%;
+      bottom: 0px;
       border: none;
       background-color: #3d2d27;
       color: #ffefca;
-      margin: 50px auto 0px auto;
+      margin: 20px auto 20px auto;
     
       font: {
-        size: 2vw;
+        size: 2vh;
         weight: bold;
       }
     }
 
 }
 
-.cart-item-list {
-  width: 100%;
-  height: 100%;
-  border-bottom: solid 1px #3d2d27;;
-}
-
 .cart-item {
-    display: inline-block;
-    //width: 100%;
-    //height: 100%;
+    display: flex;
+    width: 400px;
+    height: 230px;
+    border-bottom: solid 1px rgb(78, 78, 78);
 
     .cart-image {
         position: relative;
         float: left;
-        //width: auto;
-        //height: 165px;
-        margin-left: -30px;
+        width: 33%;
         
     }
 
     .cart-info {
         text-align: left;
         float: left;
-        padding-top: 10px;
-        padding-left: 50px;
-        margin: 0px 10px;
+        padding-left: 10px;
+        margin: 0px 0px;
         width: 67%;
-        height: 22vw;
+        height: 100%;
         font-size: 16px;
+
+        h2 {
+          white-space: nowrap;
+        }
     }
 
 
@@ -83,6 +85,7 @@
         -webkit-transition:1.5s;
         background: none;
         border: none;
+        margin-left: 50px;
     }
 
     .cart-remove:hover {  background-color: transparent;  border-bottom: none; color: #000000;} 
@@ -112,6 +115,9 @@
     }
 
 }
+
+//For quantity selectors--------------------------------------------
+//SOURCE: https://codepen.io/mystroken/pen/Moraab
 
 $block: '.quantity-input';
 $border: 0 solid #dbdbdb;
@@ -182,66 +188,15 @@ $modifier--text-color: #888;
   text-align: center;
 }
 
+//-------------------------------------------------------------------------------------------------------
+
 
 @media screen and (max-width: 799px) {
 
-  #{$block} {
-    width: 140px;
-    height: 40px;
-  }
-  
-.cart-item {
-  .cart-info {
-    font-size: 12px;
-  }
-}
-
+  //navbar cart wrapper
     .cart-wrapper {
-
-
         input[type='image'] {
             right: 80px;
         }
     }
-}
-
-@media screen and (max-width: 504px) {
-
-  #{$block} {
-    width: 115px;
-    height: 30px;
-  }
-
-  #{$block}__modifier {
-    font-size: 14px;
-  }
-
-  #{$block}__screen {
-    font-size: 14px;
-  }
-  
-  .cart-item {
-
-    .cart-info {
-      font-size: 10px;
-    }
-  }
-  
-}
-
-@media screen and (max-width: 306px) {
-
-  #{$block} {
-    width: 80px;
-    height: 25px;
-  }
-
-  #{$block}__modifier {
-    font-size: 12px;
-  }
-
-  #{$block}__screen {
-    font-size: 12px;
-  }
-
 }

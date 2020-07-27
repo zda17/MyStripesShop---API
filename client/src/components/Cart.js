@@ -42,8 +42,26 @@ const CartItem = (props) => {
 
   const remove = (e) => {
       const nameAttr = e.target.getAttribute("name")
-        setCart(cart.filter(lineItem => lineItem.name !== nameAttr));
+        setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
   };
+
+  const getSize = (size) => {
+      if(size === "XS") {
+        return "X-SMALL";
+      } else if (size === "S") {
+        return "SMALL";
+      } else if (size === "M") {
+        return "MEDIUM";
+      } else if (size === "L") {
+        return "LARGE";
+      } else if (size === "XL") {
+        return "X-LARGE";
+      } else if (size === "XXL") {
+        return "XX-Large";
+      } else if (size === "XXXL") {
+        return "XXX-LARGE";
+      }
+  }
 
 
     return(
@@ -51,16 +69,18 @@ const CartItem = (props) => {
                 {/*lists all items in cart*/}
                 {cart.map(product => (
                     <div className="cart-item">
+                        <div className="cart-image">
                             <Image
                                     to='/Product'
-                                    imgDivClass='img-div-product-page'
+                                    imgDivClass='img-div-cart-page'
                                     imgClass='product-img'
                                     product={product}
                             />
+                        </div>
                         <div className="cart-info">
                             <h2><strong>{product.name}</strong></h2>
-                                <span><p>{product.size} ~ {product.color}</p></span>
-                            <span>${product.price}</span>
+                                <span><p>{getSize(product.size)} ~ {product.color.toUpperCase()}</p></span>
+                            <span>${product.price}</span><span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
                             <div className="cart-options">
                                 <div className="quantity-input">
                                     <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
@@ -71,7 +91,7 @@ const CartItem = (props) => {
                                     &#xff0b;
                                     </button>  
                                 </div>  
-                                <span className="cart-remove" name={product.name} onClick={remove}>Remove</span>
+                                
                             </div>
                         </div>
                     </div>
@@ -97,16 +117,18 @@ const Cart = () => {
 
 
     return(
+        <>
             <div className="cart-wrapper">
                 {/*cart button*/}
                 <input type="image" onClick={() => setState({ isPaneOpen: true })} className='cart' src={cartImg} alt='cart' />
+            </div>
 
                 {/*pane and its contents*/}
                 <SlidingPane
                     className="cart-pane"
                     overlayClassName="cart-overlay"
                     isOpen={state.isPaneOpen}
-                    title="Cart"
+                    title="CART"
                     width="400px"
                     onRequestClose={() => {
                     // triggered on "<" on left top click or on outside click
@@ -114,12 +136,10 @@ const Cart = () => {
                     }}
                 >
                     {/*test data*/}
-                    <div className="cart-item-list">
                         <CartItem />
-                    </div>
                     <input type="submit" value={"CHECKOUT ~ "+totalPrice}/>
                 </SlidingPane>
-            </div>
+        </>
     );
 };
 
