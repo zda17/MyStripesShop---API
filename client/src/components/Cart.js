@@ -120,7 +120,7 @@ const Cart = () => {
         <>
             <div className="cart-wrapper">
                 {/*cart button*/}
-                <input type="image" onClick={() => setState({ isPaneOpen: true })} className='cart' src={cartImg} alt='cart' />
+                <i className="fa fa-shopping-cart cart" aria-hidden="true" onClick={() => setState({ isPaneOpen: true })}></i>
             </div>
 
                 {/*pane and its contents*/}
