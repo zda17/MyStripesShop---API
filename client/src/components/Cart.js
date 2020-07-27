@@ -3,7 +3,6 @@ import { render } from "react-dom";
 import SlidingPane from "react-sliding-pane";
 
 //assets
-import cartImg from '../utils/images/cart.png';
 import { CartContext } from '../utils/CartContext';
 
 //routes
