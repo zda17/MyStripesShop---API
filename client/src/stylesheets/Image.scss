@@ -22,6 +22,14 @@ $autoHeight: auto;
     display: inline-block;
 }
 
+.img-div-cart-page {
+    width: 100px;
+    height: $autoHeight;
+    padding: $padding;
+    margin: 20px 20px;
+    display: inline-block;
+}
+
 .product-img {
     width: 100%;
     height: $autoHeight;
