@@ -62,7 +62,7 @@ const CartItem = (props) => {
                         <div className="cart-info">
                             <h2><strong>{product.name}</strong></h2>
                                 <span><p>{product.size} ~ {product.color}</p></span>
-                            <span>${product.price}</span>
+                            <span>${product.price}</span><span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
                             <div className="cart-options">
                                 <div className="quantity-input">
                                     <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
@@ -73,7 +73,7 @@ const CartItem = (props) => {
                                     &#xff0b;
                                     </button>  
                                 </div>  
-                                <span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
+                                
                             </div>
                         </div>
                     </div>
