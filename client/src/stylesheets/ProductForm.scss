@@ -43,6 +43,7 @@ $primaryColor: #1f7bc5;
     li {
         float: left;
         width: 48px;
+        margin: 0px 20px;
     }
 
     input[type="radio"] {
@@ -83,8 +84,10 @@ label {
             width: 48px;
             height: 2px;
             display: none;
+            position: relative;
             border-bottom: 2px solid $value;
           }
+        
         }
       }
       
@@ -111,6 +114,7 @@ label {
         float: left;
         width: 48px;
         padding: 5px;
+        margin: 0px 20px;
     }
 
     input[type="radio"] {
@@ -127,7 +131,7 @@ label {
         width: 48px;
         height: 48px;
         cursor: pointer;
-        border: solid 1px black;
+        border: solid 1px gray;
         align-items: center;
         
         span {
@@ -163,6 +167,7 @@ input[type="submit"] {
   background-color: $primaryColor;
   color: white;
   margin: 5px auto;
+  cursor: pointer;
 
   font: {
     size: 18px;
