@@ -45,6 +45,24 @@ const CartItem = (props) => {
         setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
   };
 
+  const getSize = (size) => {
+      if(size === "XS") {
+        return "X-SMALL";
+      } else if (size === "S") {
+        return "SMALL";
+      } else if (size === "M") {
+        return "MEDIUM";
+      } else if (size === "L") {
+        return "LARGE";
+      } else if (size === "XL") {
+        return "X-LARGE";
+      } else if (size === "XXL") {
+        return "XX-Large";
+      } else if (size === "XXXL") {
+        return "XXX-LARGE";
+      }
+  }
+
 
     return(
               <>  
@@ -61,7 +79,7 @@ const CartItem = (props) => {
                         </div>
                         <div className="cart-info">
                             <h2><strong>{product.name}</strong></h2>
-                                <span><p>{product.size} ~ {product.color}</p></span>
+                                <span><p>{getSize(product.size)} ~ {product.color.toUpperCase()}</p></span>
                             <span>${product.price}</span><span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
                             <div className="cart-options">
                                 <div className="quantity-input">
