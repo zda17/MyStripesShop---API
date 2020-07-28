@@ -73,7 +73,7 @@ const CartItem = (props) => {
                             <Image
                                     to='/Product'
                                     imgDivClass='img-div-cart-page'
-                                    imgClass='product-img'
+                                    imgClass='product-img-cart'
                                     product={product}
                             />
                         </div>
@@ -137,7 +137,7 @@ const Cart = () => {
                 >
                     {/*test data*/}
                         <CartItem />
-                    <input type="submit" value={"CHECKOUT ~ "+totalPrice}/>
+                    <input type="submit" value={"CHECKOUT ~ $"+totalPrice}/>
                 </SlidingPane>
         </>
     );

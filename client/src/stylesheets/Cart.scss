@@ -51,8 +51,9 @@
 .cart-item {
     display: flex;
     width: 400px;
-    height: 230px;
+    height: 180px;
     border-bottom: solid 1px rgb(78, 78, 78);
+    line-height: 10px;
 
     .cart-image {
         position: relative;
@@ -65,10 +66,10 @@
         text-align: left;
         float: left;
         padding-left: 10px;
-        margin: 0px 0px;
+        margin: 10px 0px;
         width: 67%;
         height: 100%;
-        font-size: 16px;
+        font-size: 12px;
 
         h2 {
           white-space: nowrap;
