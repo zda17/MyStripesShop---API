@@ -6,7 +6,7 @@ import logo from '../utils/images/logo.png';
 import insta from '../utils/images/insta.png';
 import '../stylesheets/Burger.scss';
 import '../stylesheets/NavBar.scss';
-import Cart from '../components/Cart';
+import { Cart } from '../components/Cart';
 
 // Instagram icon for bottom of side menu
 const Icon = () => {
@@ -80,7 +80,7 @@ const NavBar = () => {
             <nav>
                 <Link to='/'><img className='logo' src={logo} alt='logo' /></Link>
                 {windowWidth >= 800 && <NoBurger />}
-                <Cart/>
+                <Cart />
                 <div className='tagline'>
                     <h4>COMMUNITY CONSCIOUS CLOTHING</h4>
                 </div>

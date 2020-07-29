@@ -8,6 +8,7 @@
   /* Positioning/Sizing of burger icon */
   .bm-burger-button {
     position: absolute;
+    z-index: 0 !important;
     width: 36px;
     height: 30px;
     right: 25px;
