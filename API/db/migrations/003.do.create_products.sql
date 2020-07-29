@@ -41,5 +41,9 @@ CREATE TABLE products (
 		TEXT,
 	color
 		TEXT
+		NOT NULL,
+	quantity_available
+		INTEGER
 		NOT NULL
+		DEFAULT 0
 );
