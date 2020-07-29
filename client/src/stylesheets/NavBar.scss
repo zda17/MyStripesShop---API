@@ -3,16 +3,22 @@ $hover-color: rgb(95, 171, 117);
 $dark-blue: rgb(0, 38, 72);
 $font: "ITC Avant Garde Gothic",sans-serif;
 
+
 nav {
     background-color: $color;
     margin-bottom: 0px;
 
     .cart {
         position: absolute;
-        top: 32px;
-        height: 40px;
-        width: 40px;
-        transform: rotateY(180deg);
+        top: 33px;
+        right: 25px;
+        font-size: 37px;
+        color: black;
+    }
+
+    .cart:hover {
+        color: $hover-color;
+        cursor: pointer;
     }
 }
 
@@ -32,7 +38,7 @@ nav {
 
 .nav-item-wrapper {
     position: absolute;
-    top: 5px;
+    top: 11px;
     left: 70px;
 
     .top-menu {
@@ -41,7 +47,7 @@ nav {
         li {
             list-style-type: none;
             padding: 15px;
-            font-size: 25px;
+            font-size: 16px;
             a {
                 text-decoration: none;
                 color: $dark-blue;
@@ -50,6 +56,15 @@ nav {
             a:hover {
                 color: $hover-color;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 799px) {
+    nav {
+        .cart {
+            position: absolute;
+            right: 80px;
         }
     }
 }
