@@ -2,14 +2,13 @@ import React, { useState, Profiler } from 'react';
 import '../stylesheets/Home.scss';
 import '../stylesheets/Image.scss';
 
+// Axios
+import axios from '../utils/axios';
 
 //components
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Image from '../components/Image';
-
-// importing product list from db
-// import products from '';
 
 // import dummy images
 import tshirt from '../utils/images/tshirt.png';
@@ -17,7 +16,7 @@ import pants from '../utils/images/pants.png';
 
 function Home() {
 
-    const [activeSection, setActiveSection] = useState('mens')
+    const [activeSection, setActiveSection] = useState('mens');
     const dummyShirts = [
         {
             name: 'T-shirt',
@@ -83,6 +82,9 @@ function Home() {
             price: 28.00
         }
     ]
+    let mensProduct = [];
+    axios.get('/products/mens').then(res => console.log(res.data));
+    // console.log(mensProduct);
 
     return (
         <div className="content-wrap" >
