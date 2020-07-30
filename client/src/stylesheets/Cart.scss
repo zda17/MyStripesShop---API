@@ -1,16 +1,5 @@
 @import './NavBar.scss';
 
-//for navbar cart icon
-.cart-wrapper {
-
-    input[type='image'] {
-        width: 40px;
-        height: 40px;
-        right: 20px;
-        color: rgb(95, 171, 117);
-    }
-}
-
 .slide-pane__header {
     background-color: $dark-blue;
     color: white;
@@ -190,14 +179,3 @@ $modifier--text-color: #888;
 }
 
 //-------------------------------------------------------------------------------------------------------
-
-
-@media screen and (max-width: 799px) {
-
-  //navbar cart wrapper
-    .cart-wrapper {
-        input[type='image'] {
-            right: 80px;
-        }
-    }
-}
