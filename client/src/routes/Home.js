@@ -40,9 +40,8 @@ function Home() {
                     {activeSection === 'mens' ?
                         <>
                             {mensProduct.map((product, index) => (
-                                <article>
+                                <article key={index}>
                                     <Image
-                                        key={index}
                                         to={`/Product/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
@@ -58,15 +57,14 @@ function Home() {
                         :
                         <>
                             {womensProduct.map((product, index) => (
-                                <article className='name-and-price'>
+                                <article key={index}>
                                     <Image
-                                        key={index}
                                         to='/Product'
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
                                     />
-                                    <section>
+                                    <section className='name-and-price'>
                                         <h3>{product.name}</h3>
                                         <h4>${(product.price_cents / 100).toFixed(2)}</h4>
                                     </section>
