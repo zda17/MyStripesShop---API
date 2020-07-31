@@ -82,9 +82,11 @@ function Home() {
             price: 28.00
         }
     ]
-    let mensProduct = [];
-    axios.get('/products/mens').then(res => console.log(res.data));
-    // console.log(mensProduct);
+    let mensProduct;
+    axios.get('/products/mens')
+        .then(res => res.data)
+        .then(data => mensProduct = data)
+        .then(() => console.log(mensProduct));
 
     return (
         <div className="content-wrap" >
