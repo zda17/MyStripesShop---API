@@ -10,10 +10,6 @@ import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Image from '../components/Image';
 
-// import dummy images
-import tshirt from '../utils/images/tshirt.png';
-import pants from '../utils/images/pants.png';
-
 function Home() {
 
     const [activeSection, setActiveSection] = useState('mens');
@@ -28,72 +24,6 @@ function Home() {
                 setWomensProduct(product.filter(item => item.gender === 'F' || item.gender === 'U'));
             });
     }, []);
-
-    const dummyShirts = [
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        }
-    ]
-
-    const dummyPants = [
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        }
-    ]
 
     return (
         <div className="content-wrap" >
