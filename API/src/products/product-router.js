@@ -28,13 +28,6 @@ productRouter
 	});
 
 productRouter
-.route('/mens-womens')
-.get(async (req, res, next) => {
-	const mensAndWomensProducts = await ProductService.getMensAndWomens(req.app.get('db'));
-	res.send(mensAndWomensProducts);
-});
-
-productRouter
 	.route('/unisex')
 	.get(async (req, res, next) => {
 		const unisexProducts = await ProductService.getAllUnisex(req.app.get('db'));

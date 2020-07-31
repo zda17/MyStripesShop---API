@@ -12,12 +12,6 @@ const ProductService = {
 		return db('products')
 			.where({gender: 'F'});
 	},
-	getMensAndWomens(db) {
-		return db('products')
-			.where(function() {
-				this.where({gender: 'F'}).orWhere({gender: 'M'})
-			});
-	},
 	getAllUnisex(db) {
 		return db('products')
 			.where({gender: 'U'});
