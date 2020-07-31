@@ -11,7 +11,7 @@ const Product = (props) => {
     const [product, setProduct] = useState([{price_cents: 0}]); // price_cents is there to avoid an error that occurs because rendering depends on this property being there
 
     useEffect(() => {
-        axios.get(`/products/${base_sku}`)
+        axios.get(`/products/sku/${base_sku}`)
             .then(res => {
                 const product = res.data;
                 setProduct(product);

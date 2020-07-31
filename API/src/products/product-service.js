@@ -9,8 +9,11 @@ const ProductService = {
 	},
 	// Gender based product queries
 	getAllMens(db) {
+		console.log('hello')
 		return db('products')
-			.where({gender: 'M'});
+			.where(function() {
+				this.where('id', 1).orWhere('id', '>', 10)
+			  });
 	},
 	getAllWomens(db) {
 		return db('products')

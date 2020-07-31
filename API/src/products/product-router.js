@@ -11,7 +11,7 @@ productRouter
 	});
 
 productRouter
-	.route('/:base_sku')
+	.route('/sku/:base_sku')
 	.get(async (req, res, next) => {
 		const product = await ProductService.getProductByBaseSku(req.app.get('db'), req.params.base_sku);
 		res.send(product);
