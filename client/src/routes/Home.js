@@ -1,4 +1,4 @@
-import React, { useState, Profiler } from 'react';
+import React, { useState, useEffect, Profiler } from 'react';
 import '../stylesheets/Home.scss';
 import '../stylesheets/Image.scss';
 
@@ -17,6 +17,18 @@ import pants from '../utils/images/pants.png';
 function Home() {
 
     const [activeSection, setActiveSection] = useState('mens');
+    const [mensProduct, setMensProduct] = useState([]);
+    const [womensProduct, setWomensProduct] = useState([]);
+
+    useEffect(() => {
+        axios.get('/products/all')
+            .then(res => {
+                const product = res.data;
+                setMensProduct(product.filter(item => item.gender === 'M' || item.gender === 'U'));
+                setWomensProduct(product.filter(item => item.gender === 'F' || item.gender === 'U'));
+            });
+    }, []);
+
     const dummyShirts = [
         {
             name: 'T-shirt',
@@ -82,11 +94,6 @@ function Home() {
             price: 28.00
         }
     ]
-    let mensProduct;
-    axios.get('/products/mens')
-        .then(res => res.data)
-        .then(data => mensProduct = data)
-        .then(() => console.log(mensProduct));
 
     return (
         <div className="content-wrap" >
@@ -102,7 +109,7 @@ function Home() {
                 <section className='products'>
                     {activeSection === 'mens' ?
                         <>
-                            {dummyShirts.map(product => (
+                            {mensProduct.map(product => (
                                 <Image
                                     to='/Product'
                                     imgDivClass='img-div-home'
@@ -113,7 +120,7 @@ function Home() {
                         </>
                         :
                         <>
-                            {dummyPants.map(product => (
+                            {womensProduct.map(product => (
                                 <Image
                                     to='/Product'
                                     imgDivClass='img-div-home'
