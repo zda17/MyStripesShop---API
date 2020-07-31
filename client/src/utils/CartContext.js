@@ -10,6 +10,12 @@ export const CartProvider = (props) => {
     // (make sure to remove before production)
     const [cart, setCart] = useState([]);
 
+    //states for cart pane
+    const [state, setState] = useState({
+        isPaneOpen: false,
+        isPaneOpenLeft: false,
+    });
+
 
     // !!!!!!!! added dummy product as default state for easier development of checkout page -Shannon
     // (make sure to remove before production)
@@ -45,7 +51,7 @@ export const CartProvider = (props) => {
     // }]);
 
     return(
-        <CartContext.Provider value={[cart, setCart]}>
+        <CartContext.Provider value={[cart, setCart, state, setState]}>
         {props.children}
         </CartContext.Provider>
     )

@@ -24,7 +24,7 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const {handleSubmit, register, errors } = useForm();
-    const [cart, setCart] = useContext(CartContext);
+    const [cart, setCart, state, setState] = useContext(CartContext);
 
     //converts cents to dollar amount
     const centsToUSD = (price) => {
@@ -40,6 +40,7 @@ const ProductForm = (props) => {
     const onSubmit = (values) =>  {
         const lineItem = {sku: product.sku, name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url, quantity: product.quantity};
         setCart(currentState => [...currentState, lineItem]);
+        console.log(state)
     };
 
     return(
@@ -85,7 +86,7 @@ const ProductForm = (props) => {
                        ))  }
                     </ul>
                  </div>
-                 <input type="submit" value="ADD TO CART"/>
+                 <input type="submit" value="ADD TO CART" onClick={() => setState({ isPaneOpen: true })}/>
                 </div>
             </div>
         </form>
