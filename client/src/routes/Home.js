@@ -109,8 +109,9 @@ function Home() {
                 <section className='products'>
                     {activeSection === 'mens' ?
                         <>
-                            {mensProduct.map(product => (
+                            {mensProduct.map((product, index) => (
                                 <Image
+                                    key={index}
                                     to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
@@ -120,8 +121,9 @@ function Home() {
                         </>
                         :
                         <>
-                            {womensProduct.map(product => (
+                            {womensProduct.map((product, index) => (
                                 <Image
+                                    key={index}
                                     to='/Product'
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
