@@ -11,9 +11,9 @@ productRouter
 	});
 
 productRouter
-	.route('/:id')
+	.route('/:base_sku')
 	.get(async (req, res, next) => {
-		const product = await ProductService.getProductById(req.app.get('db'), req.params.id);
+		const product = await ProductService.getProductByBaseSku(req.app.get('db'), req.params.base_sku);
 		res.send(product);
 	});
 

@@ -3,9 +3,9 @@ const ProductService = {
 		return db('products')
 			.select('*');
 	},
-	getProductById(db, id) {
+	getProductByBaseSku(db, base_sku) {
 		return db('products')
-			.where({id})
+			.where({base_sku})
 	},
 	// Gender based product queries
 	getAllMens(db) {
