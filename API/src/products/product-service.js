@@ -3,6 +3,10 @@ const ProductService = {
 		return db('products')
 			.select('*');
 	},
+	getProductById(db, id) {
+		return db('products')
+			.where({id})
+	},
 	// Gender based product queries
 	getAllMens(db) {
 		return db('products')

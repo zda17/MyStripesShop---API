@@ -10,6 +10,13 @@ productRouter
 		res.send(allProducts);
 	});
 
+productRouter
+	.route('/:id')
+	.get(async (req, res, next) => {
+		const product = await ProductService.getProductById(req.app.get('db'), req.params.id);
+		res.send(product);
+	});
+
 /*
  * Gender based routes
  */
