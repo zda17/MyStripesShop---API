@@ -40,11 +40,13 @@ export const CartItem = (props) => {
     }
   }
 
+  //removes cart item based on sku.
   const remove = (e) => {
     const nameAttr = e.target.getAttribute("name")
     setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
   };
 
+  //converts size abbr to word
   const getSize = (size) => {
     if (size === "XS") {
       return "X-SMALL";
@@ -124,28 +126,6 @@ export const Cart = () => {
     setState(false);
   }
 
-<<<<<<< HEAD
-                {/*pane and its contents*/}
-                <SlidingPane
-                    className="cart-pane"
-                    overlayClassName="cart-overlay"
-                    isOpen={state.isPaneOpen}
-                    title="CART"
-                    width="400px"
-                    onRequestClose={() => {
-                    // triggered on "<" on left top click or on outside click
-                        setState({ isPaneOpen: false });
-                    }}
-                >
-                    {/*test data*/}
-                        <CartItem />
-                    <input type="submit" value={"CHECKOUT ~ $"+totalPrice}/>
-                </SlidingPane>
-        </>
-    );
-};
-=======
->>>>>>> 06018e9413e74eccd43396ab8c03527f5d2f6967
 
   return (
     <>
@@ -160,7 +140,7 @@ export const Cart = () => {
         overlayClassName="cart-overlay"
         isOpen={state.isPaneOpen}
         title="CART"
-        width="400px"
+        width="360px"
         onRequestClose={() => {
           // triggered on "<" on left top click or on outside click
           setState({ isPaneOpen: false });
