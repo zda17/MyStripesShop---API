@@ -57,8 +57,8 @@ const ProductForm = (props) => {
                   <div className="Colors">
                     <ul>
                     {errors.color && (<p>COLOR IS REQUIRED.</p>)}{/*Need to make better with scss*/}
-                        {colors.map(color => (
-                        <li className={color}>{/*<-- prop used to display the colors or not*/}
+                        {colors.map((color, index) => (
+                        <li className={color} key={index}>{/*<-- prop used to display the colors or not*/}
                             <input type="radio" name="color" id={color} value={color} ref={register({ required: true })}/>
                             <label className={color} htmlFor={color}><span className={color}></span><span className={color+"__selector"}/></label>
                         </li>
@@ -77,8 +77,8 @@ const ProductForm = (props) => {
                  <div className="Sizes">
                     <ul>
                     {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
-                        {sizes.map(size => (
-                        <li className={size}> {/*<--prop used for showing out of order (not made yet)*/}
+                        {sizes.map((size, index) => (
+                        <li className={size} key={index}> {/*<--prop used for showing out of order (not made yet)*/}
                             <input type="radio" name="size" id={size} value={size} ref={register({ required: true })}/>
                             <label htmlFor={size}><span className={size}>{size}</span></label>
                         </li>

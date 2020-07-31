@@ -1,88 +1,29 @@
-import React, { useState, Profiler } from 'react';
+import React, { useState, useEffect, Profiler } from 'react';
 import '../stylesheets/Home.scss';
 import '../stylesheets/Image.scss';
 
+// Axios
+import axios from '../utils/axios';
 
 //components
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Image from '../components/Image';
 
-// importing product list from db
-// import products from '';
-
-// import dummy images
-import tshirt from '../utils/images/tshirt.png';
-import pants from '../utils/images/pants.png';
-
 function Home() {
 
-    const [activeSection, setActiveSection] = useState('mens')
-    const dummyShirts = [
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        },
-        {
-            name: 'T-shirt',
-            photo_url: tshirt,
-            price: 22.00
-        }
-    ]
+    const [activeSection, setActiveSection] = useState('mens');
+    const [mensProduct, setMensProduct] = useState([]);
+    const [womensProduct, setWomensProduct] = useState([]);
 
-    const dummyPants = [
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        },
-        {
-            name: 'Pants',
-            photo_url: pants,
-            price: 28.00
-        }
-    ]
+    useEffect(() => {
+        axios.get('/products/all')
+            .then(res => {
+                const product = res.data;
+                setMensProduct(product.filter(item => item.gender === 'M' || item.gender === 'U'));
+                setWomensProduct(product.filter(item => item.gender === 'F' || item.gender === 'U'));
+            });
+    }, []);
 
     return (
         <div className="content-wrap" >
@@ -98,24 +39,36 @@ function Home() {
                 <section className='products'>
                     {activeSection === 'mens' ?
                         <>
-                            {dummyShirts.map(product => (
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    product={product}
-                                />
+                            {mensProduct.map((product, index) => (
+                                <article key={index}>
+                                    <Image
+                                        to={`/Product/${product.base_sku}`}
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                    <section className='name-and-price'>
+                                        <h3>{product.name}</h3>
+                                        <h4>${(product.price_cents / 100).toFixed(2)}</h4>
+                                    </section>
+                                </article>
                             ))}
                         </>
                         :
                         <>
-                            {dummyPants.map(product => (
-                                <Image
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    product={product}
-                                />
+                            {womensProduct.map((product, index) => (
+                                <article key={index}>
+                                    <Image
+                                        to='/Product'
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                    <section className='name-and-price'>
+                                        <h3>{product.name}</h3>
+                                        <h4>${(product.price_cents / 100).toFixed(2)}</h4>
+                                    </section>
+                                </article>
                             ))}
                         </>
                     }
