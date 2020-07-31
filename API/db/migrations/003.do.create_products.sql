@@ -11,6 +11,9 @@ CREATE TABLE products (
 	sku
 		TEXT
 		NOT NULL,
+	base_sku
+		TEXT
+		NOT NULL,
 	name
 		TEXT
 		NOT NULL,
