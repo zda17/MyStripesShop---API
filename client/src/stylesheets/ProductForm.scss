@@ -156,72 +156,85 @@ label {
 .ProductSelect {
   align-items: center;
   text-align: center;
+
+  //add to cart button
+    input[type="submit"] {
+        width: fit-content;
+        height: 5vh;
+        min-height: 36px;
+        display: block;
+        border: none;
+        background-color: $primaryColor;
+        color: white;
+        margin: 5px auto;
+        cursor: pointer;
+        background-image: url('../utils/images/add\ 1.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        padding-right: 35px;
+        padding-left: 10px;
+        padding-top: 4px;
+  
+  
+        font: {
+            size: 18px;
+            weight: bold;
+        }
+    }
 }
 
-//add to cart button
-input[type="submit"] {
-  width: fit-content;
-  height: 5vh;
-  min-height: 36px;
-  display: block;
-  border: none;
-  background-color: $primaryColor;
-  color: white;
-  margin: 5px auto;
-  cursor: pointer;
-  background-image: url('../utils/images/add\ 1.png');
-  background-repeat: no-repeat;
-  background-position: right;
-  padding-right: 35px;
-  padding-left: 10px;
-  padding-top: 4px;
-
-
-  font: {
-    size: 18px;
-    weight: bold;
-  }
-}
 
   .none {
     display: none;
   }
 
   @media screen and (max-width: 600px) {
-    input[type="submit"] {
-      width: 100%;
-      margin: 5px auto 0;
-      background-position: 70%;
-      padding-right: 0px;
+    .ProductSelect {
+        input[type="submit"] {
+        width: 100%;
+        margin: 5px auto 0;
+        background-position: 70%;
+        padding-right: 0px;
+        }
     }
   }
 
   @media screen and (max-width: 480px) {
-    input[type="submit"] {
-      background-position: 75%;
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 75%;
+        }
     }
   }
 
   @media screen and (max-width: 390px) {
-    input[type="submit"] {
-      background-position: 80%;
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 80%;
+        }
     }
   }
 
   @media screen and (max-width: 320px) {
-    input[type="submit"] {
-      background-position: 85%;
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 85%;
+        }
     }
   }
 
   @media screen and (max-width: 280px) {
-    input[type="submit"] {
-      background-position: 90%;
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 90%;
+        }
     }
   }
 
   @media screen and (max-width: 250px) {
-    input[type="submit"] {
-      background-position: 95%;
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 95%;
+        }
     }
   }

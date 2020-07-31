@@ -117,6 +117,10 @@ export const Cart = () => {
     isPaneOpenLeft: false,
   });
 
+    const openPane = () => {
+      setState(true);
+  }
+
   // useHistory for changing routes
   const history = useHistory();
 
@@ -125,7 +129,6 @@ export const Cart = () => {
     history.push('/Checkout');
     setState(false);
   }
-
 
   return (
     <>
