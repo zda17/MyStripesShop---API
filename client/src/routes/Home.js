@@ -43,7 +43,7 @@ function Home() {
                                 <article>
                                     <Image
                                         key={index}
-                                        to='/Product'
+                                        to={`/Product/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}

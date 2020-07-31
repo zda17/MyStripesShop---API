@@ -38,7 +38,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/Product">
+          <Route exact path="/Product/:base_sku">
             <Product />
           </Route>
           <Route exact path="/Checkout">
