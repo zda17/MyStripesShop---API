@@ -110,25 +110,37 @@ function Home() {
                     {activeSection === 'mens' ?
                         <>
                             {mensProduct.map((product, index) => (
-                                <Image
-                                    key={index}
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    product={product}
-                                />
+                                <article>
+                                    <Image
+                                        key={index}
+                                        to='/Product'
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                    <section className='name-and-price'>
+                                        <h3>{product.name}</h3>
+                                        <h4>${(product.price_cents / 100).toFixed(2)}</h4>
+                                    </section>
+                                </article>
                             ))}
                         </>
                         :
                         <>
                             {womensProduct.map((product, index) => (
-                                <Image
-                                    key={index}
-                                    to='/Product'
-                                    imgDivClass='img-div-home'
-                                    imgClass='product-img-home'
-                                    product={product}
-                                />
+                                <article className='name-and-price'>
+                                    <Image
+                                        key={index}
+                                        to='/Product'
+                                        imgDivClass='img-div-home'
+                                        imgClass='product-img-home'
+                                        product={product}
+                                    />
+                                    <section>
+                                        <h3>{product.name}</h3>
+                                        <h4>${(product.price_cents / 100).toFixed(2)}</h4>
+                                    </section>
+                                </article>
                             ))}
                         </>
                     }
