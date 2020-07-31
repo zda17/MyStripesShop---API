@@ -8,7 +8,7 @@ import axios from '../utils/axios';
 
 const Product = (props) => {
     const {base_sku} = props.match.params;
-    const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState([{price_cents: 0}]); // price_cents is there to avoid an error that occurs because rendering depends on this property being there
 
     useEffect(() => {
         axios.get(`/products/${base_sku}`)
