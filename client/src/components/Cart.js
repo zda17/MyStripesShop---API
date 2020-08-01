@@ -104,16 +104,10 @@ export const CartItem = (props) => {
 export const Cart = () => {
 
   //used to pass cart array
-  const [cart, setCart] = useContext(CartContext);
+  const [cart, setCart, state, setState] = useContext(CartContext);
 
   //gets total price
   const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
-
-  //states for cart pane
-  const [state, setState] = useState({
-    isPaneOpen: false,
-    isPaneOpenLeft: false,
-  });
 
   // useHistory for changing routes
   const history = useHistory();

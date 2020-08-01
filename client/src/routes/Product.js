@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import Header from '../components/Header';
 import ProductDescription from '../components/ProductDescription';
+import {Cart} from '../components/Cart';
 
 // Axios
 import axios from '../utils/axios';

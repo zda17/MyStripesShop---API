@@ -24,7 +24,7 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const {handleSubmit, register, errors } = useForm();
-    const [cart, setCart] = useContext(CartContext);
+    const [cart, setCart, state, setState] = useContext(CartContext);
 
     //converts cents to dollar amount
     const centsToUSD = (price) => {
@@ -85,7 +85,7 @@ const ProductForm = (props) => {
                        ))  }
                     </ul>
                  </div>
-                 <input type="submit" value="ADD TO CART"/>
+                 <input type="submit" value="ADD TO CART" onClick={() => setState({ isPaneOpen: true })}/>
                 </div>
             </div>
         </form>
