@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 
 //style
@@ -10,6 +10,7 @@ import Image from '../components/Image';
 
 //context
 import { CartContext } from '../utils/CartContext';
+//import openPane from './Cart';
 
 const ProductForm = (props) => {
 
@@ -40,6 +41,7 @@ const ProductForm = (props) => {
     const onSubmit = (values) =>  {
         const lineItem = {sku: product.sku, name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url, quantity: product.quantity};
         setCart(currentState => [...currentState, lineItem]);
+        //openPane();
     };
 
     return(

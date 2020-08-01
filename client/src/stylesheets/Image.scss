@@ -38,6 +38,13 @@ $autoHeight: auto;
     height: $autoHeight;
 }
 
+.product-img-cart {
+    width: 100%;
+    height: $autoHeight;
+    //border: solid 1px black;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 .product-img-wrapper {
     display: flex;
     justify-content: center;

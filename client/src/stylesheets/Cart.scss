@@ -6,6 +6,16 @@
     
 }
 
+.slide-pane__close {
+    svg {
+        color: rgb(179, 179, 179);
+    }
+
+    svg:hover {
+        color: white;
+    }
+}
+
 .slide-pane__title {
   letter-spacing: 4px;
 }
@@ -28,6 +38,7 @@
       background-color: #3d2d27;
       color: #ffefca;
       margin: 20px auto 20px auto;
+      cursor: pointer;
     
       font: {
         size: 2vh;
@@ -40,8 +51,9 @@
 .cart-item {
     display: flex;
     width: 400px;
-    height: 230px;
+    height: 180px;
     border-bottom: solid 1px rgb(78, 78, 78);
+    line-height: 10px;
 
     .cart-image {
         position: relative;
@@ -54,10 +66,10 @@
         text-align: left;
         float: left;
         padding-left: 10px;
-        margin: 0px 0px;
+        margin: 10px 0px;
         width: 67%;
         height: 100%;
-        font-size: 16px;
+        font-size: 12px;
 
         h2 {
           white-space: nowrap;
