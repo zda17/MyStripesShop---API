@@ -9,15 +9,12 @@ const ProductService = {
 	},
 	// Gender based product queries
 	getAllMens(db) {
-		console.log('hello')
 		return db('products')
-			.where(function() {
-				this.where('id', 1).orWhere('id', '>', 10)
-			  });
+			.whereNot({gender: 'F'});
 	},
 	getAllWomens(db) {
 		return db('products')
-			.where({gender: 'F'});
+			.whereNot({gender: 'M'});
 	},
 	getAllUnisex(db) {
 		return db('products')
