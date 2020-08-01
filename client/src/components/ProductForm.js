@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
-import localStorage from '../utils/localStorage';
-
 //style
 import '../stylesheets/ProductForm.scss';
-
 //components
 import Header from '../components/Header';
 import Image from '../components/Image';
-
 //context
 import { CartContext } from '../utils/CartContext';
+// localStorage and UUID for identifying users
+import localStorage from '../utils/localStorage';
+import {v4 as uuid} from 'uuid';
 
 const ProductForm = (props) => {
 
@@ -43,7 +42,7 @@ const ProductForm = (props) => {
     const onSubmit = (values) =>  {
         // Check if user has UUID stored, if not: create one, store it in LocalStorage and cartContext
         if (!localStorage.hasUUID()) {
-            const UUID = '134dc0a4-d1e1-47e1-aefa-52a5d557031d';
+            const UUID = uuid();
             localStorage.setItem(UUID);
             setCartUUID(UUID);
         };
@@ -51,7 +50,7 @@ const ProductForm = (props) => {
         const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url};
         setCart(currentState => [...currentState, lineItem]);
     };
-
+    
     return(
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
