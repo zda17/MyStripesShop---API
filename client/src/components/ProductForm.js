@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 //style
 import '../stylesheets/ProductForm.scss';
@@ -49,8 +49,9 @@ const ProductForm = (props) => {
         // Create lineItem from form values and add it to cart
         const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url};
         setCart(currentState => [...currentState, lineItem]);
+        //openPane();
     };
-    
+
     return(
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
