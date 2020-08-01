@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import localStorage from '../utils/localStorage';
 
 //style
 import '../stylesheets/ProductForm.scss';
@@ -38,7 +39,9 @@ const ProductForm = (props) => {
 
     //add to cart button
     const onSubmit = (values) =>  {
-        const lineItem = {sku: product.sku, name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url, quantity: product.quantity};
+        localStorage.setItem();
+        console.log(localStorage.getItem());
+        const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url};
         setCart(currentState => [...currentState, lineItem]);
     };
 
