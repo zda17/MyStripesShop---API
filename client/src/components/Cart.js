@@ -1,5 +1,4 @@
-import React, { Component, useState, useContext } from 'react';
-import { render } from "react-dom";
+import React, { useState, useContext } from 'react';
 import SlidingPane from "react-sliding-pane";
 import { useHistory } from 'react-router-dom';
 

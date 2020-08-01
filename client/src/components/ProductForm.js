@@ -27,11 +27,6 @@ const ProductForm = (props) => {
     const {handleSubmit, register, errors } = useForm();
     const [cart, setCart, state, setState] = useContext(CartContext);
 
-    const [state, setState] = useState({
-        isPaneOpen: false,
-        isPaneOpenLeft: false,
-      });
-
     //converts cents to dollar amount
     const centsToUSD = (price) => {
         var dollars = price / 100;
