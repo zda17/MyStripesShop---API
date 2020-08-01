@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import SlidingPane from "react-sliding-pane";
 import { useHistory } from 'react-router-dom';
 
@@ -107,6 +107,18 @@ export const Cart = () => {
   //used to pass cart array
   const [cart, setCart, state, setState] = useContext(CartContext);
 
+  //set panes width
+  const [windowWidth, setWindowWidth] = useState(0);
+  let resizeWindow = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    resizeWindow();
+    window.addEventListener("resize", resizeWindow);
+    return () => window.removeEventListener("resize", resizeWindow);
+  }, []);
+
   //gets total price
   const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
 
@@ -127,21 +139,22 @@ export const Cart = () => {
       </div>
 
       {/*pane and its contents*/}
-      <SlidingPane
-        className="cart-pane"
-        overlayClassName="cart-overlay"
-        isOpen={state.isPaneOpen}
-        title="CART"
-        width="360px"
-        onRequestClose={() => {
-          // triggered on "<" on left top click or on outside click
-          setState({ isPaneOpen: false });
-        }}
-      >
-        {/*test data*/}
-        <CartItem />
-        <input type="submit" value={"CHECKOUT ~ " + totalPrice} onClick={goToCheckout} />
-      </SlidingPane>
+        <SlidingPane
+          className="cart-pane"
+          overlayClassName="cart-overlay"
+          isOpen={state.isPaneOpen}
+          title="CART"
+          width={windowWidth >= 441 && "360px" || "90%"}
+          onRequestClose={() => {
+            // triggered on "<" on left top click or on outside click
+            setState({ isPaneOpen: false });
+          }}
+        >
+          <CartItem />
+          <input type="submit" value={"CHECKOUT ~ " + totalPrice} onClick={goToCheckout} />
+        </SlidingPane>
+      {/*responsive pane*/}
+      
     </>
   );
 };
