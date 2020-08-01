@@ -36,6 +36,7 @@ const ProductDescription = (props) => {
             /> {/*header with custom title and sub header*/}
             <div className="product-img-wrapper">
                 <Image
+                    to='#'
                     product={product}
                     imgDivClass='img-div-product-page'
                     imgClass='product-img'

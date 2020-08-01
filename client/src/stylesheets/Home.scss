@@ -28,6 +28,12 @@ body {
 }
 
 .products {
-	display: inline-block;
-	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	> article {
+		// Image stylings in Image.scss
+		.name-and-price {
+			text-align: center;
+		}
+	}
 }

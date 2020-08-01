@@ -11,7 +11,10 @@ $autoHeight: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: inline-block;
+    .product-img-home {
+        max-height: 335px;
+        max-width: 294px;
+    }
 }
 
 .img-div-product-page {

@@ -11,6 +11,9 @@ CREATE TABLE products (
 	sku
 		TEXT
 		NOT NULL,
+	base_sku
+		TEXT
+		NOT NULL,
 	name
 		TEXT
 		NOT NULL,
@@ -41,5 +44,9 @@ CREATE TABLE products (
 		TEXT,
 	color
 		TEXT
+		NOT NULL,
+	quantity_available
+		INTEGER
 		NOT NULL
+		DEFAULT 0
 );
