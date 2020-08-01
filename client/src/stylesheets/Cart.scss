@@ -6,6 +6,16 @@
     
 }
 
+.slide-pane__close {
+    svg {
+        color: rgb(179, 179, 179);
+    }
+
+    svg:hover {
+        color: white;
+    }
+}
+
 .slide-pane__title {
   letter-spacing: 4px;
 }
@@ -180,8 +190,3 @@ $modifier--text-color: #888;
 }
 
 //-------------------------------------------------------------------------------------------------------
-
-@media screen and (max-width: 440px) {
-    
-
-}
