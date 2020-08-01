@@ -25,7 +25,9 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const {handleSubmit, register, errors } = useForm();
-    const [cart, setCart, state, setState] = useContext(CartContext);
+    const [ cart, setCart, 
+            state, setState,
+            cartUUID, setCartUUID ] = useContext(CartContext);
 
     //converts cents to dollar amount
     const centsToUSD = (price) => {
@@ -39,8 +41,13 @@ const ProductForm = (props) => {
 
     //add to cart button
     const onSubmit = (values) =>  {
-        localStorage.setItem();
-        console.log(localStorage.getItem());
+        // Check if user has UUID stored, if not: create one, store it in LocalStorage and cartContext
+        if (!localStorage.hasUUID()) {
+            const UUID = '134dc0a4-d1e1-47e1-aefa-52a5d557031d';
+            localStorage.setItem(UUID);
+            setCartUUID(UUID);
+        };
+        // Create lineItem from form values and add it to cart
         const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url};
         setCart(currentState => [...currentState, lineItem]);
     };

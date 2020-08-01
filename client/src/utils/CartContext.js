@@ -5,6 +5,7 @@ export const CartContext = createContext('');
 export const CartProvider = (props) => {
 
     const [cart, setCart] = useState([]);
+    const [cartUUID, setCartUUID] = useState('');
 
     //states for cart pane
     const [state, setState] = useState({
