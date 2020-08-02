@@ -30,8 +30,21 @@ const ProductForm = (props) => {
 
     //add to cart button
     const onSubmit = (values) =>  {
-        const lineItem = {sku: product.sku, name: product.name, price: (product.price_cents / 100), color: values.color, size: values.size, photo_url: product.photo_url, quantity: 1};
-        setCart(currentState => [...currentState, lineItem]);
+        let newCart = [...cart];
+        const itemInCart = newCart.find(
+            (item) => product.sku === item.sku
+        );
+        
+        if(itemInCart) {
+            let basePrice = itemInCart.price / itemInCart.quantity;
+            itemInCart.quantity++;
+            itemInCart.price = basePrice * itemInCart.quantity;
+        } else {
+            const lineItem = {base_sku: product.base_sku, sku: product.sku, name: product.name, price: (product.price_cents / 100), color: values.color, size: values.size, photo_url: product.photo_url, quantity: 1, quantity_available: product.quantity_available};
+            newCart.push(lineItem);
+        }
+        setCart(newCart);
+        
     };
 
     return(

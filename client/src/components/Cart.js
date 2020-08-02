@@ -76,11 +76,11 @@ export const CartItem = () => {
   return (
     <>
       {/*lists all items in cart*/}
-      {cart.map(product => (
-        <div className="cart-item">
+      {cart.map((product, index) => (
+        <div className="cart-item" key={index}>
           <div className="cart-image">
             <Image
-              to='/Product'
+              to={"/Product/" + product.base_sku}
               imgDivClass='img-div-cart-page'
               imgClass='product-img'
               product={product}
@@ -95,7 +95,7 @@ export const CartItem = () => {
                 <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
                   &mdash;
                 </button>
-                <input className="quantity-input__screen" type="text" value={product.quantity} readOnly />
+                <input className="quantity-input__screen" type="number" value={product.quantity} max={product.quantity_available} readOnly />
                 <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
                   &#xff0b;
                 </button>
@@ -128,7 +128,9 @@ export const Cart = () => {
   }, []);
 
   //gets total price
-  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+  const getTotalPrice = () => {
+    return cart.reduce((sum, { price }) => sum + price , 0);
+  };
 
   // useHistory for changing routes
   const history = useHistory();
@@ -159,7 +161,7 @@ export const Cart = () => {
           }}
         >
           <CartItem />
-          <input type="submit" value={"CHECKOUT ~ $" + totalPrice ?? 0} onClick={goToCheckout} />
+          <input type="submit" value={"CHECKOUT ~ $" + getTotalPrice()} onClick={goToCheckout} />
         </SlidingPane>
       {/*responsive pane*/}
       
