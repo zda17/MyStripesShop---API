@@ -28,8 +28,9 @@ export const CartItem = () => {
     
     setCart(cart.map(item => {
       if(item.sku === nameAttr) {
+        let basePrice = item.price / item.quantity;
         ++item.quantity;
-        item.price = item.price * item.quantity;}
+        item.price = basePrice * item.quantity;}
     }));
   }
 
@@ -40,8 +41,9 @@ export const CartItem = () => {
         setCart(cart.map(item => {
             if(item.sku === nameAttr) {
                 if(item.quantity > 1) {
+                    let basePrice = item.price / item.quantity;
                     --item.quantity;
-                    item.price = item.price * item.quantity;
+                    item.price = basePrice * item.quantity;
                 } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
             }
         }));
