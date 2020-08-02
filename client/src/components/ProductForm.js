@@ -26,22 +26,12 @@ const ProductForm = (props) => {
 
     const {handleSubmit, register, errors } = useForm();
     const [cart, setCart, state, setState] = useContext(CartContext);
-
-    //converts cents to dollar amount
-    const centsToUSD = (price) => {
-        var dollars = price / 100;
-        //var cents = price % 100;
-
-        return dollars;
-    } 
-    const price_USD = centsToUSD(product.price_cents);
-
+    
 
     //add to cart button
     const onSubmit = (values) =>  {
-        const lineItem = {sku: product.sku, name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url, quantity: product.quantity};
+        const lineItem = {sku: product.sku, name: product.name, price: (product.price_cents / 100), color: values.color, size: values.size, photo_url: product.photo_url, quantity: 1};
         setCart(currentState => [...currentState, lineItem]);
-        //openPane();
     };
 
     return(

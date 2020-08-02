@@ -16,28 +16,36 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import "../stylesheets/Cart.scss";
 
 //cart item component to insert into cart pane
-export const CartItem = (props) => {
+export const CartItem = () => {
 
   const [cart, setCart] = useContext(CartContext);
-  let [quantity, setQuantity] = useState(1);
-
-  const { product } = props;
+ 
 
   //adds 1 to quantity
-  const increment = () => {
-    console.log({ cart });
-    setQuantity(++quantity);
+  const increment = (e) => {
+    const nameAttr = e.target.getAttribute("name")
+    console.log( cart );
+    
+    setCart(cart.map(item => {
+      if(item.sku === nameAttr) {
+        ++item.quantity;
+        item.price = item.price * item.quantity;}
+    }));
   }
 
   //minus 1 from quanitity
-  const decrement = () => {
-    console.log("Minus 1");
-    if (quantity > 1) {
-      setQuantity(--quantity);
-    } else {
-      {/*remove cart item*/ }
+    const decrement = (e) => {
+        const nameAttr = e.target.getAttribute("name")
+        console.log(cart);
+        setCart(cart.map(item => {
+            if(item.sku === nameAttr) {
+                if(item.quantity > 1) {
+                    --item.quantity;
+                    item.price = item.price * item.quantity;
+                } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
+            }
+        }));
     }
-  }
 
   //removes cart item based on sku.
   const remove = (e) => {
@@ -84,11 +92,11 @@ export const CartItem = (props) => {
             <span>${product.price}</span><span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
             <div className="cart-options">
               <div className="quantity-input">
-                <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
+                <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
                   &mdash;
                 </button>
-                <input className="quantity-input__screen" type="text" value={quantity} readOnly />
-                <button className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
+                <input className="quantity-input__screen" type="text" value={product.quantity} readOnly />
+                <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
                   &#xff0b;
                 </button>
               </div>
@@ -151,7 +159,7 @@ export const Cart = () => {
           }}
         >
           <CartItem />
-          <input type="submit" value={"CHECKOUT ~ " + totalPrice} onClick={goToCheckout} />
+          <input type="submit" value={"CHECKOUT ~ $" + totalPrice ?? 0} onClick={goToCheckout} />
         </SlidingPane>
       {/*responsive pane*/}
       
