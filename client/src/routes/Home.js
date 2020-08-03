@@ -42,7 +42,7 @@ function Home() {
                             {mensProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
-                                        to={`/Product/${product.base_sku}`}
+                                        to={`/Products/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
@@ -59,7 +59,7 @@ function Home() {
                             {womensProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
-                                        to='/Product'
+                                        to={`/Products/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
