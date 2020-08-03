@@ -26,22 +26,25 @@ const ProductForm = (props) => {
 
     const {handleSubmit, register, errors } = useForm();
     const [cart, setCart, state, setState] = useContext(CartContext);
-
-    //converts cents to dollar amount
-    const centsToUSD = (price) => {
-        var dollars = price / 100;
-        //var cents = price % 100;
-
-        return dollars;
-    } 
-    const price_USD = centsToUSD(product.price_cents);
-
+    
 
     //add to cart button
     const onSubmit = (values) =>  {
-        const lineItem = {sku: product.sku, name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url, quantity: product.quantity};
-        setCart(currentState => [...currentState, lineItem]);
-        //openPane();
+        let newCart = [...cart];
+        const itemInCart = newCart.find(
+            (item) => product.sku === item.sku
+        );
+        
+        if(itemInCart) {
+            let basePrice = itemInCart.price / itemInCart.quantity;
+            itemInCart.quantity++;
+            itemInCart.price = basePrice * itemInCart.quantity;
+        } else {
+            const lineItem = {base_sku: product.base_sku, sku: product.sku, name: product.name, price: (product.price_cents / 100), color: values.color, size: values.size, photo_url: product.photo_url, quantity: 1, quantity_available: product.quantity_available};
+            newCart.push(lineItem);
+        }
+        setCart(newCart);
+        
     };
 
     return(
