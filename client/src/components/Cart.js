@@ -159,7 +159,7 @@ export const Cart = () => {
           overlayClassName="cart-overlay"
           isOpen={state.isPaneOpen}
           title="CART"
-          width={windowWidth >= 441 && "360px" || "90%"}
+          width={windowWidth >= 380 && "360px" || "90%"}
           onRequestClose={() => {
             // triggered on "<" on left top click or on outside click
             setState({ isPaneOpen: false });

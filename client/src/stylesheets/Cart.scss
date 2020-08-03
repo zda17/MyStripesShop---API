@@ -138,7 +138,8 @@ $modifier--text-color: #888;
   justify-content: center;
   align-items: center;
   height: 10vw;
-  width: 125px;
+  width: 33vw;
+  max-width: 125px;
   max-height: 40px;
   background-color: white;
   
@@ -159,7 +160,7 @@ $modifier--text-color: #888;
 #{$block}__modifier {
   width: 33.33%;
   height: 100%;
-  font-size: 20px;
+  font-size: 18px;
   
   background: $color--primary;
   color: $modifier--text-color;
@@ -186,7 +187,7 @@ $modifier--text-color: #888;
 #{$block}__screen {
   width: 33.33%;
   height: 100%;
-  font-size: 20px;
+  font-size: 18px;
   
   border: 0;
   border-top: $border;
@@ -212,5 +213,16 @@ $modifier--text-color: #888;
         width: 60%;
         }
     }
+
+    .cart-remove {
+      margin-left: 10vw;
+    }
+  }
+
+    #{$block}__screen {
+        font-size: 4vw;
+    }
+    #{$block}__modifier {
+      font-size: 4vw;
   }
 }
