@@ -1,16 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-
 //style
 import '../stylesheets/ProductForm.scss';
-
 //components
 import Header from '../components/Header';
 import Image from '../components/Image';
-
 //context
 import { CartContext } from '../utils/CartContext';
-//import openPane from './Cart';
+// localStorage and UUID for identifying users
+import localStorage from '../utils/localStorage';
+import {v4 as uuid} from 'uuid';
 
 const ProductForm = (props) => {
 
@@ -25,7 +24,9 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const {handleSubmit, register, errors } = useForm();
-    const [cart, setCart, state, setState] = useContext(CartContext);
+    const [ cart, setCart, 
+        state, setState,
+        cartUUID, setCartUUID ] = useContext(CartContext);
     
 
     //add to cart button
@@ -44,7 +45,7 @@ const ProductForm = (props) => {
             newCart.push(lineItem);
         }
         setCart(newCart);
-        
+        setState({ isPaneOpen: true });
     };
 
     return(
@@ -90,7 +91,7 @@ const ProductForm = (props) => {
                        ))  }
                     </ul>
                  </div>
-                 <input type="submit" value="ADD TO CART" onClick={() => setState({ isPaneOpen: true })}/>
+                 <input type="submit" value="ADD TO CART"/>
                 </div>
             </div>
         </form>
