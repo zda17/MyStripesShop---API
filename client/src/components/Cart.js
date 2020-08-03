@@ -23,31 +23,38 @@ export const CartItem = () => {
 
   //adds 1 to quantity
   const increment = (e) => {
-    const nameAttr = e.target.getAttribute("name")
-    console.log( cart );
-    
-    setCart(cart.map(item => {
-      if(item.sku === nameAttr) {
-        let basePrice = item.price / item.quantity;
-        ++item.quantity;
-        item.price = basePrice * item.quantity;
-      }
-    }));
+      const nameAttr = e.target.getAttribute("name")
+      console.log( cart );
+      let newCart = [...cart];
+      const itemInCart = newCart.find(
+          (item) => nameAttr === item.sku
+      );
+
+      if(itemInCart) {
+        let basePrice = itemInCart.price / itemInCart.quantity;
+        itemInCart.quantity++;
+        itemInCart.price = basePrice * itemInCart.quantity;
+      } 
+      setCart(newCart);
   }
 
   //minus 1 from quanitity
     const decrement = (e) => {
         const nameAttr = e.target.getAttribute("name")
         console.log(cart);
-        setCart(cart.map(item => {
-            if(item.sku === nameAttr) {
-                if(item.quantity > 1) {
-                    let basePrice = item.price / item.quantity;
-                    --item.quantity;
-                    item.price = basePrice * item.quantity;
-                } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
-            }
-        }));
+        let newCart = [...cart];
+        const itemInCart = newCart.find(
+            (item) => nameAttr === item.sku
+        );
+
+        if(itemInCart) {
+            if(itemInCart.quantity > 1) {
+                let basePrice = itemInCart.price / itemInCart.quantity;
+                --itemInCart.quantity;
+                itemInCart.price = basePrice * itemInCart.quantity;
+                setCart(newCart);
+            } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
+        } 
     }
 
   //removes cart item based on sku.
