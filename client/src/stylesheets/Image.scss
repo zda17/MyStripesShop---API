@@ -50,3 +50,10 @@ $autoHeight: auto;
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 374px) {
+    .img-div-cart-page {
+        width: 75px;
+    }
+
+}

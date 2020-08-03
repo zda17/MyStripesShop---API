@@ -30,7 +30,8 @@ export const CartItem = () => {
       if(item.sku === nameAttr) {
         let basePrice = item.price / item.quantity;
         ++item.quantity;
-        item.price = basePrice * item.quantity;}
+        item.price = basePrice * item.quantity;
+      }
     }));
   }
 
@@ -130,9 +131,11 @@ export const Cart = () => {
   }, []);
 
   //gets total price
-  const getTotalPrice = () => {
+  function getTotalPrice() {
     return cart.reduce((sum, { price }) => sum + price , 0);
   };
+
+  let totalPrice = getTotalPrice();
 
   // useHistory for changing routes
   const history = useHistory();
@@ -163,7 +166,7 @@ export const Cart = () => {
           }}
         >
           <CartItem />
-          <input type="submit" value={"CHECKOUT ~ $" + getTotalPrice()} onClick={goToCheckout} />
+          <input type="submit" value={"CHECKOUT ~ $" + totalPrice} onClick={goToCheckout} />
         </SlidingPane>
       {/*responsive pane*/}
       

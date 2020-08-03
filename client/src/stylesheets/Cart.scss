@@ -23,6 +23,7 @@
 .slide-pane__content {
   display: block;
   padding: 0px;
+  overflow-x: hidden;
 }
 
 .cart-pane {
@@ -41,7 +42,7 @@
       cursor: pointer;
     
       font: {
-        size: 2vh;
+        size: 14px;
         weight: bold;
       }
     }
@@ -51,7 +52,7 @@
 .cart-item {
     display: flex;
     width: 400px;
-    height: 180px;
+    height: fit-content;
     border-bottom: solid 1px rgb(78, 78, 78);
     line-height: 10px;
 
@@ -72,7 +73,11 @@
         font-size: 12px;
 
         h2 {
-          white-space: nowrap;
+          height: auto;
+          width: 90%;
+          word-spacing: normal;
+          word-break: break-word;
+          line-height: 16px;
         }
     }
 
@@ -128,13 +133,13 @@ $modifier--text-color: #888;
 
 
 #{$block} {
-    margin: 20px 0px;
+    margin: 20px 0px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 160px;
-  max-height: 50px;
+  height: 10vw;
+  width: 125px;
+  max-height: 40px;
   background-color: white;
   
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -190,3 +195,22 @@ $modifier--text-color: #888;
 }
 
 //-------------------------------------------------------------------------------------------------------
+
+@media screen and (max-width: 374px) {
+  .cart-item {
+    height: fit-content;
+
+    .cart-image {
+      width: 25%;
+    }
+
+    .cart-info {
+      width: 75%;
+      font-size: 3.2vw;
+  
+        h2 {
+        width: 60%;
+        }
+    }
+  }
+}
