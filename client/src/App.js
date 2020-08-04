@@ -38,15 +38,21 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/Product/:base_sku"
+          <Route exact path="/Products/All">
+            <ShowAll />
+          </Route>
+          <Route exact path="/Products/Mens">
+            <ShowAll />
+          </Route>
+          <Route exact path="/Products/Womens">
+            <ShowAll />
+          </Route>
+          <Route exact path="/Products/:base_sku"
             render={(props) => <Product {...props} />}
           >
           </Route>
           <Route exact path="/Checkout">
             <Checkout />
-          </Route>
-          <Route exact path="/ShowAll">
-            <ShowAll />
           </Route>
           <Route exact path="/About">
             <About />

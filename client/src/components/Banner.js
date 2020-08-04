@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Button from '../components/Button';
 import '../stylesheets/Banner.scss';
 
-const Banner = () => {
+export const Banner = () => {
     return(
         <section id="Banner">
             <div className="banner-content">
@@ -17,4 +17,15 @@ const Banner = () => {
     );
 };
 
-export default Banner;
+export const BannerSlim = () => {
+    return(
+        <section id="BannerSlim">
+            <div className="banner-content">
+                <div className="button-container">
+                    <Link to="/Products/mens" className="Button Button_Banner">SHOP MENS</Link>
+                    <Link to="/Products/womens" className="Button Button_Banner">SHOP WOMENS</Link>
+                </div>
+            </div>
+        </section>
+    );
+};
