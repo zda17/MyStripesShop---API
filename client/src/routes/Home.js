@@ -59,11 +59,7 @@ function Home() {
                             {womensProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
-<<<<<<< HEAD
-                                        to={`/Product/${product.base_sku}`}
-=======
                                         to={`/Products/${product.base_sku}`}
->>>>>>> c01eac5d175bca5f3f28c5a6d3299e7ca7a8eeac
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}

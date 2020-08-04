@@ -1,26 +1,14 @@
-<<<<<<< HEAD
-import React, { useState, useEffect, Profiler } from 'react';
-import '../stylesheets/Home.scss';
-import '../stylesheets/Image.scss';
-=======
 import React, { useState, useEffect } from 'react';
 import '../stylesheets/ShowAll.scss';
->>>>>>> c01eac5d175bca5f3f28c5a6d3299e7ca7a8eeac
 
 // Axios
 import axios from '../utils/axios';
 
-<<<<<<< HEAD
-//components
-import Image from '../components/Image';
-
-const ShowAllProducts = () => {
-=======
 import { BannerSlim } from '../components/Banner';
 import Image from '../components/Image';
+import ProductDescription from '../components/ProductDescription';
 
-function ShowAll() {
->>>>>>> c01eac5d175bca5f3f28c5a6d3299e7ca7a8eeac
+function ShowAll(props) {
 
     const [activeSection, setActiveSection] = useState('all');
     const [topsProduct, setTopsProduct] = useState([]);
@@ -32,26 +20,19 @@ function ShowAll() {
         axios.get('/products/all')
             .then(res => {
                 const product = res.data;
-                setAllProduct(product);
-                setTopsProduct(product.filter(item => item.category === 'tops'));
-                setBottomsProduct(product.filter(item => item.category === 'bottoms'));
-                setMiscProduct(product.filter(item => item.category === 'accessories'));
+                setAllProduct(product.filter(item => item.gender === props.gender || item.gender === props.gender2 || item.gender === 'U'));
+                setTopsProduct(product.filter(item => item.category === 'tops' && (item.gender === props.gender || item.gender === 'U')));
+                setBottomsProduct(product.filter(item => item.category === 'bottoms' && (item.gender === props.gender || item.gender === 'U')));
+                setMiscProduct(product.filter(item => item.category === 'accessories' && (item.gender === props.gender || item.gender === 'U')));
             });
     }, []);
 
     return (
-<<<<<<< HEAD
-        <div className="content-wrap" >
-            <section className="featured-collections">
-                <header>
-                    <h3 className="sub-heading">ALL CLOTHING ARTICLES</h3>
-=======
         <div className="ShowAll" >
             <BannerSlim />
             <section className="featured-collections">
                 <header>
                     <h3 className="sub-heading">ALL PRODUCTS</h3>
->>>>>>> c01eac5d175bca5f3f28c5a6d3299e7ca7a8eeac
                     <div className="tab-button-container">
                         <button className={activeSection === 'all' ? "tab-item is-active" : "tab-item"} onClick={() => setActiveSection("all")}>ALL</button>
                         <button className={activeSection === 'tops' ? "tab-item is-active" : "tab-item"} onClick={() => setActiveSection("tops")}>TOPS</button>
@@ -60,11 +41,7 @@ function ShowAll() {
                     </div>
                 </header>
                 <section className='products'>
-<<<<<<< HEAD
-                    {activeSection === 'tops' ?
-=======
                 {activeSection === 'tops' ?
->>>>>>> c01eac5d175bca5f3f28c5a6d3299e7ca7a8eeac
                         <>
                             {topsProduct.map((product, index) => (
                                 <article key={index}>
@@ -137,10 +114,6 @@ function ShowAll() {
             </section>
         </div>
     );
-<<<<<<< HEAD
-};
-=======
 }
->>>>>>> c01eac5d175bca5f3f28c5a6d3299e7ca7a8eeac
 
-export default ShowAllProducts;
+export default ShowAll;

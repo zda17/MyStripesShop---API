@@ -39,13 +39,17 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/Products/All">
-            <ShowAll />
+            <ShowAll 
+            gender='M'
+            gender2='F'/>
           </Route>
-          <Route exact path="/Products/Mens">
-            <ShowAll />
+          <Route exact path="/Products/mens">
+            <ShowAll 
+            gender='M'/>
           </Route>
-          <Route exact path="/Products/Womens">
-            <ShowAll />
+          <Route exact path="/Products/womens">
+            <ShowAll
+            gender='F'/>
           </Route>
           <Route exact path="/Products/:base_sku"
             render={(props) => <Product {...props} />}
