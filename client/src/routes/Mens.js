@@ -4,9 +4,7 @@ import ShopSection from '../components/ShopSection';
 
 function Mens() {
     return (
-        <div className="ShopSection" >
-            <ShopSection path='mens' />
-        </div>
+        <ShopSection path='mens' />
     );
 }
 
