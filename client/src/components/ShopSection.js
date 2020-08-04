@@ -28,7 +28,7 @@ function ShopSection(props) {
     return (
         <section className="featured-collections" id="ShopSection">
             <header>
-                <h3 className="sub-heading">ALL PRODUCTS</h3>
+                <h3 className="sub-heading">{props.path.toUpperCase()} PRODUCTS</h3>
                 <div className="tab-button-container">
                     <button className={activeSection === 'all' ? "tab-item is-active" : "tab-item"} onClick={() => setActiveSection("all")}>ALL</button>
                     <button className={activeSection === 'tops' ? "tab-item is-active" : "tab-item"} onClick={() => setActiveSection("tops")}>TOPS</button>
