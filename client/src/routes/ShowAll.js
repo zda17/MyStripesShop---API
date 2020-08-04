@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { BannerSlim } from '../components/Banner';
-import ShopPage from '../components/ShopPage';
+import ShopSection from '../components/ShopSection';
 
 function ShowAll() {
     return (
-        <div className="ShopPage" >
+        <div className="ShopSection" >
             <BannerSlim />
-            <ShopPage path='all' />
+            <ShopSection path='all' />
         </div>
     );
 }

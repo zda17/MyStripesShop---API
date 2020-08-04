@@ -1,11 +1,11 @@
 import React from 'react';
 
-import ShopPage from '../components/ShopPage';
+import ShopSection from '../components/ShopSection';
 
 function Womens() {
     return (
-        <div className="ShopPage" >
-            <ShopPage path='womens' />
+        <div className="ShopSection" >
+            <ShopSection path='womens' />
         </div>
     );
 }

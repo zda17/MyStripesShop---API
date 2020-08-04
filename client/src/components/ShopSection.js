@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import '../stylesheets/ShopPage.scss';
+import '../stylesheets/ShopSection.scss';
 
 // Axios
 import axios from '../utils/axios';
 
-import Image from '../components/Image';
+import Image from './Image';
 
-function ShopPage(props) {
+function ShopSection(props) {
 
     const [activeSection, setActiveSection] = useState('all');
     const [topsProduct, setTopsProduct] = useState([]);
@@ -26,7 +26,7 @@ function ShopPage(props) {
     }, []);
 
     return (
-        <section className="featured-collections" id="ShopPage">
+        <section className="featured-collections" id="ShopSection">
             <header>
                 <h3 className="sub-heading">ALL PRODUCTS</h3>
                 <div className="tab-button-container">
@@ -111,4 +111,4 @@ function ShopPage(props) {
     );
 }
 
-export default ShopPage;
+export default ShopSection;
