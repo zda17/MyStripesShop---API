@@ -62,7 +62,7 @@ const ShowAllProducts = () => {
                             {bottomsProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
-                                        to='/Product'
+                                        to={`/Product/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
@@ -79,7 +79,7 @@ const ShowAllProducts = () => {
                             {miscProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
-                                        to='/Product'
+                                        to={`/Product/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
@@ -96,7 +96,7 @@ const ShowAllProducts = () => {
                             {allProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
-                                        to='/Product'
+                                        to={`/Product/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
