@@ -34,7 +34,7 @@ const BurgerMenu = () => {
             onClose={() => setMenuOpenState(false)}
             onStateChange={(state) => stateChangeHandler(state)}
         >
-            <Link id='shop' to='/ShowAll'>SHOP</Link>
+            <Link id='shop' to='/Products/All'>SHOP</Link>
             <Link id='about' to='/About'>ABOUT</Link>
             <Link id='contact' to='/Contact'>CONTACT</Link>
             <Icon />
@@ -48,7 +48,7 @@ const NoBurger = () => {
         <>
             <div className='nav-item-wrapper'>
                 <ul className='top-menu'>
-                    <li><Link id='shop' to='/ShowAll'>SHOP</Link></li>
+                    <li><Link id='shop' to='/Products/All'>SHOP</Link></li>
                     <li><Link id='about' to='/About'>ABOUT</Link></li>
                     <li><Link id='contact' to='/Contact'>CONTACT</Link></li>
                 </ul>
