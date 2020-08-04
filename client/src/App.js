@@ -15,6 +15,8 @@ import About from "./routes/About";
 import Product from "./routes/Product";
 import Checkout from "./routes/Checkout";
 import ShowAll from "./routes/ShowAll";
+import Mens from "./routes/Mens";
+import Womens from "./routes/Womens";
 import Contact from "./routes/Contact";
 import Home from "./routes/Home";
 
@@ -43,13 +45,11 @@ function App() {
             gender='M'
             gender2='F'/>
           </Route>
-          <Route exact path="/Products/mens">
-            <ShowAll 
-            gender='M'/>
+          <Route exact path="/Products/Mens">
+            <Mens />
           </Route>
-          <Route exact path="/Products/womens">
-            <ShowAll
-            gender='F'/>
+          <Route exact path="/Products/Womens">
+            <Womens />
           </Route>
           <Route exact path="/Products/:base_sku"
             render={(props) => <Product {...props} />}
