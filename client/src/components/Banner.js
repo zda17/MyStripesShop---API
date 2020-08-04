@@ -22,7 +22,7 @@ export const BannerSlim = () => {
         <section id="BannerSlim">
             <div className="banner-content">
                 <div className="button-container">
-                    <Link to="/Products/All" className="Button Button_Banner">SHOP All</Link>
+                    <Link to="/Products/All" className="Button Button_Banner">SHOP ALL</Link>
                     <Link to="/Products/Mens" className="Button Button_Banner">SHOP MENS</Link>
                     <Link to="/Products/Womens" className="Button Button_Banner">SHOP WOMENS</Link>
                 </div>

@@ -31,6 +31,13 @@ const ProductForm = (props) => {
 
     //add to cart button
     const onSubmit = (values) =>  {
+        // Check if user has UUID stored, if not: create one, store it in LocalStorage and cartContext
+        if (!localStorage.hasUUID()) {
+            const UUID = uuid();
+            localStorage.setItem(UUID);
+            setCartUUID(UUID);
+        };
+
         let newCart = [...cart];
         const itemInCart = newCart.find(
             (item) => product.sku === item.sku
