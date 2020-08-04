@@ -1,10 +1,14 @@
 import React from 'react';
 
+import { BannerSlim } from '../components/Banner';
 import ShopSection from '../components/ShopSection';
 
 function Womens() {
     return (
-        <ShopSection path='womens' />
+        <div className="content-wrap" >
+            <BannerSlim />
+            <ShopSection path='womens' />
+        </div>
     );
 }
 
