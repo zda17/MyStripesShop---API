@@ -7,7 +7,7 @@ import axios from '../utils/axios';
 
 //components
 import Header from '../components/Header';
-import Banner from '../components/Banner';
+import { Banner } from '../components/Banner';
 import Image from '../components/Image';
 
 function Home() {
@@ -42,7 +42,7 @@ function Home() {
                             {mensProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
-                                        to={`/Product/${product.base_sku}`}
+                                        to={`/Products/${product.base_sku}`}
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
@@ -59,7 +59,11 @@ function Home() {
                             {womensProduct.map((product, index) => (
                                 <article key={index}>
                                     <Image
+<<<<<<< HEAD
                                         to={`/Product/${product.base_sku}`}
+=======
+                                        to={`/Products/${product.base_sku}`}
+>>>>>>> c01eac5d175bca5f3f28c5a6d3299e7ca7a8eeac
                                         imgDivClass='img-div-home'
                                         imgClass='product-img-home'
                                         product={product}
