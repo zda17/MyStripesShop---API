@@ -1,7 +1,7 @@
 const cartService = {
   createCart(db, UUID) {
     return db
-      .insert(UUID)
+      .insert({id: UUID})
       .into('carts')
       .returning('*');
   },

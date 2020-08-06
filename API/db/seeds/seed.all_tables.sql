@@ -6,11 +6,11 @@ TRUNCATE TABLE
 	categories,
 	carts RESTART IDENTITY;
 
-INSERT INTO carts (created_at, updated_at)
+INSERT INTO carts (UUID, created_at, updated_at)
 VALUES
-	(now(), now()),
-	(now(), now()),
-	(now(), now());
+	('a6b14dc5-8102-4d14-8d43-73bf16118eec', now(), now()),
+	('8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8', now(), now()),
+	('f0629416-fa41-4850-b598-db7b1908a483', now(), now());
 
 INSERT INTO categories (name, created_at, updated_at)
 VALUES
@@ -52,6 +52,6 @@ VALUES
 
 INSERT INTO line_items (quantity, product_id, cart_id, order_id)
 VALUES
-	(2, 2, 1, 1),
-	(2, 4, 1, 1),
-	(1, 3, 2, 2);
+	(2, 2, 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
+	(2, 4, 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
+	(1, 3, '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8', 2);

@@ -9,8 +9,8 @@ cartRouter
   .get()
   .post(bodyParser, async (req, res, next) => {
     const {UUID} = req.body;
-    console.log(UUID);
-    res.send(UUID);
+    const newCart = await CartService.createCart(req.app.get('db'), UUID);
+    res.send(newCart);
   });
 
 module.exports = cartRouter;
