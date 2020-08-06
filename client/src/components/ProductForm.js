@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 
 //style
@@ -10,6 +10,7 @@ import Image from '../components/Image';
 
 //context
 import { CartContext } from '../utils/CartContext';
+//import openPane from './Cart';
 
 const ProductForm = (props) => {
 
@@ -24,7 +25,7 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const {handleSubmit, register, errors } = useForm();
-    const [cart, setCart] = useContext(CartContext);
+    const [cart, setCart, state, setState] = useContext(CartContext);
 
     //converts cents to dollar amount
     const centsToUSD = (price) => {
@@ -38,8 +39,9 @@ const ProductForm = (props) => {
 
     //add to cart button
     const onSubmit = (values) =>  {
-        const lineItem = {name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url};
+        const lineItem = {sku: product.sku, name: product.name, price: price_USD, color: values.color, size: values.size, photo_url: product.photo_url, quantity: product.quantity};
         setCart(currentState => [...currentState, lineItem]);
+        //openPane();
     };
 
     return(
@@ -57,8 +59,8 @@ const ProductForm = (props) => {
                   <div className="Colors">
                     <ul>
                     {errors.color && (<p>COLOR IS REQUIRED.</p>)}{/*Need to make better with scss*/}
-                        {colors.map(color => (
-                        <li className={color}>{/*<-- prop used to display the colors or not*/}
+                        {colors.map((color, index) => (
+                        <li className={color} key={index}>{/*<-- prop used to display the colors or not*/}
                             <input type="radio" name="color" id={color} value={color} ref={register({ required: true })}/>
                             <label className={color} htmlFor={color}><span className={color}></span><span className={color+"__selector"}/></label>
                         </li>
@@ -77,15 +79,15 @@ const ProductForm = (props) => {
                  <div className="Sizes">
                     <ul>
                     {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
-                        {sizes.map(size => (
-                        <li className={size}> {/*<--prop used for showing out of order (not made yet)*/}
+                        {sizes.map((size, index) => (
+                        <li className={size} key={index}> {/*<--prop used for showing out of order (not made yet)*/}
                             <input type="radio" name="size" id={size} value={size} ref={register({ required: true })}/>
                             <label htmlFor={size}><span className={size}>{size}</span></label>
                         </li>
                        ))  }
                     </ul>
                  </div>
-                 <input type="submit" value="ADD TO CART"/>
+                 <input type="submit" value="ADD TO CART" onClick={() => setState({ isPaneOpen: true })}/>
                 </div>
             </div>
         </form>

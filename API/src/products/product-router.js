@@ -7,7 +7,14 @@ productRouter
 	.route('/all')
 	.get(async (req, res, next) => {
 		const allProducts = await ProductService.getAllProducts(req.app.get('db'))
-		res.send({allProducts});
+		res.send(allProducts);
+	});
+
+productRouter
+	.route('/sku/:base_sku')
+	.get(async (req, res, next) => {
+		const product = await ProductService.getProductByBaseSku(req.app.get('db'), req.params.base_sku);
+		res.send(product);
 	});
 
 /*
@@ -17,21 +24,21 @@ productRouter
 	.route('/mens')
 	.get(async (req, res, next) => {
 		const mensProducts = await ProductService.getAllMens(req.app.get('db'));
-		res.send({mensProducts});
+		res.send(mensProducts);
 	});
 
 productRouter
 	.route('/womens')
 	.get(async (req, res, next) => {
 		const womensProducts = await ProductService.getAllWomens(req.app.get('db'));
-		res.send({womensProducts});
+		res.send(womensProducts);
 	});
 
 productRouter
 	.route('/unisex')
 	.get(async (req, res, next) => {
 		const unisexProducts = await ProductService.getAllUnisex(req.app.get('db'));
-		res.send({unisexProducts});
+		res.send(unisexProducts);
 	});
 
 /*
@@ -41,21 +48,21 @@ productRouter
 	.route('/tops')
 	.get(async (req, res, next) => {
 		const allTops = await ProductService.getAllTops(req.app.get('db'));
-		res.send({allTops});
+		res.send(allTops);
 	});
 
 productRouter
 	.route('/bottoms')
 	.get(async (req, res, next) => {
 		const allBottoms = await ProductService.getAllBottoms(req.app.get('db'));
-		res.send({allBottoms});
+		res.send(allBottoms);
 	});
 
 productRouter
 	.route('/accessories')
 	.get(async (req, res, next) => {
 		const allAccessories = await ProductService.getAllAccessories(req.app.get('db'));
-		res.send({allAccessories});
+		res.send(allAccessories);
 	});
 
 module.exports = productRouter

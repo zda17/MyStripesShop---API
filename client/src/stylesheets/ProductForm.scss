@@ -28,37 +28,39 @@ $primaryColor: #1f7bc5;
 }
 
 .Colors {
-    width: 100%;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
 
-    ul {
-      margin: 0 auto;
-      list-style: none;
-      width: fit-content;
-      width: -moz-fit-content;
-      width: -webkit-fit-content;
-      height: auto;
-    }
-    li {
-        float: left;
-        width: 48px;
-    }
+  ul {
+    margin: 0 auto;
+    padding: 0px;
+    list-style: none;
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    height: auto;
+  }
+  li {
+      float: left;
+      width: 48px;
+      margin: 0px 20px;
+  }
 
-    input[type="radio"] {
-        display: none;
-        &:checked + label > span {
+  input[type="radio"] {
+    display: none;
+    &:checked + label > span {
           
-                display: block;
+      display: block;
               
-           // !@each
-        } // !&:checked + label
-      }
+      // !@each
+    } // !&:checked + label
+  }
 
-      p {
-        color: red;
-        margin: 0px 20px 20px 0px;
-      }
+  p {
+    color: red;
+    margin: 0px 20px 20px 0px;
+  }
 
 
 }
@@ -83,8 +85,10 @@ label {
             width: 48px;
             height: 2px;
             display: none;
+            position: relative;
             border-bottom: 2px solid $value;
           }
+        
         }
       }
       
@@ -93,14 +97,14 @@ label {
   } 
 
 .Sizes {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    padding: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px 0px 5px;
 
     ul {
-      margin: 0 auto;
+      margin: 0 auto 5px;
+      padding: 0px;
       list-style: none;
       width: fit-content;
       width: -moz-fit-content;
@@ -110,7 +114,7 @@ label {
     li {
         float: left;
         width: 48px;
-        padding: 5px;
+        margin: 0px 20px;
     }
 
     input[type="radio"] {
@@ -127,12 +131,11 @@ label {
         width: 48px;
         height: 48px;
         cursor: pointer;
-        border: solid 1px black;
+        border: solid 1px gray;
         align-items: center;
         
         span {
           padding-top: 10px;
-          padding-right: 2px;
           display: inline-block;
           width: 48px;
           height: 48px;
@@ -153,30 +156,85 @@ label {
 .ProductSelect {
   align-items: center;
   text-align: center;
+
+  //add to cart button
+    input[type="submit"] {
+        width: fit-content;
+        height: 5vh;
+        min-height: 36px;
+        display: block;
+        border: none;
+        background-color: $primaryColor;
+        color: white;
+        margin: 5px auto;
+        cursor: pointer;
+        background-image: url('../utils/images/add\ 1.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        padding-right: 35px;
+        padding-left: 10px;
+        padding-top: 4px;
+  
+  
+        font: {
+            size: 18px;
+            weight: bold;
+        }
+    }
 }
 
-input[type="submit"] {
-  width: 150px;
-  height: 5vh;
-  display: block;
-  border: none;
-  background-color: $primaryColor;
-  color: white;
-  margin: 5px auto;
-
-  font: {
-    size: 18px;
-    weight: bold;
-  }
-}
 
   .none {
     display: none;
   }
 
   @media screen and (max-width: 600px) {
-    input[type="submit"] {
-      width: 100%;
-      margin: 5px auto 0;
+    .ProductSelect {
+        input[type="submit"] {
+        width: 100%;
+        margin: 5px auto 0;
+        background-position: 70%;
+        padding-right: 0px;
+        }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 75%;
+        }
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 80%;
+        }
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 85%;
+        }
+    }
+  }
+
+  @media screen and (max-width: 280px) {
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 90%;
+        }
+    }
+  }
+
+  @media screen and (max-width: 250px) {
+    .ProductSelect {
+        input[type="submit"] {
+        background-position: 95%;
+        }
     }
   }
