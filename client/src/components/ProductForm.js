@@ -10,6 +10,8 @@ import { CartContext } from '../utils/CartContext';
 // localStorage and UUID for identifying users
 import localStorage from '../utils/localStorage';
 import {v4 as uuid} from 'uuid';
+// api to create cart if needed
+import axios from '../utils/axios';
 
 const ProductForm = (props) => {
 
@@ -31,6 +33,15 @@ const ProductForm = (props) => {
 
     //add to cart button
     const onSubmit = (values) =>  {
+        // Check if user has UUID stored, if not: create one, store it in LocalStorage and cartContext
+        if (!localStorage.hasUUID()) {
+            const UUID = uuid();
+            localStorage.setItem(UUID);
+            setCartUUID(UUID);
+            // Create new Cart in Database
+            axios.post('/carts', {UUID});
+        };
+
         let newCart = [...cart];
         const itemInCart = newCart.find(
             (item) => product.sku === item.sku

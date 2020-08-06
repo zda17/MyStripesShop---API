@@ -1,6 +1,7 @@
 CREATE TABLE carts (
- 	id 
-		SERIAL
+ 	UUID 
+		TEXT
+		NOT NULL
 		PRIMARY KEY,
 	created_at
 		TIMESTAMPTZ

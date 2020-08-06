@@ -10,7 +10,8 @@
     "migrate:test": "env NODE_ENV=test npm run migrate",
     "start": "node src/server.js",
     "predeploy": "npm audit",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "seed": "psql -U postgres -d mystripes -f ./db/seeds/seed.all_tables.sql"
   },
   "keywords": [],
   "author": "",

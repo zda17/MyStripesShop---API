@@ -42,7 +42,7 @@ function ShopSection(props) {
                         {topsProduct.map((product, index) => (
                             <article key={index}>
                                 <Image
-                                    to={`/Product/${product.base_sku}`}
+                                    to={`/Products/${product.base_sku}`}
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     product={product}
@@ -59,7 +59,7 @@ function ShopSection(props) {
                         {bottomsProduct.map((product, index) => (
                             <article key={index}>
                                 <Image
-                                    to={`/Product/${product.base_sku}`}
+                                    to={`/Products/${product.base_sku}`}
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     product={product}
@@ -76,7 +76,7 @@ function ShopSection(props) {
                         {miscProduct.map((product, index) => (
                             <article key={index}>
                                 <Image
-                                    to={`/Product/${product.base_sku}`}
+                                    to={`/Products/${product.base_sku}`}
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     product={product}
@@ -93,7 +93,7 @@ function ShopSection(props) {
                         {allProduct.map((product, index) => (
                             <article key={index}>
                                 <Image
-                                    to={`/Product/${product.base_sku}`}
+                                    to={`/Products/${product.base_sku}`}
                                     imgDivClass='img-div-home'
                                     imgClass='product-img-home'
                                     product={product}
