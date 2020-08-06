@@ -90,7 +90,7 @@ export const CartItem = () => {
         <div className="cart-item" key={index}>
           <div className="cart-image">
             <Image
-              to={"/Product/" + product.base_sku}
+              to={"/Products/" + product.base_sku}
               imgDivClass='img-div-cart-page'
               imgClass='product-img'
               product={product}
