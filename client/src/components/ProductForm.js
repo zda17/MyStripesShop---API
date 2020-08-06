@@ -10,6 +10,8 @@ import { CartContext } from '../utils/CartContext';
 // localStorage and UUID for identifying users
 import localStorage from '../utils/localStorage';
 import {v4 as uuid} from 'uuid';
+// api to create cart if needed
+import axios from '../utils/axios';
 
 const ProductForm = (props) => {
 
@@ -36,6 +38,8 @@ const ProductForm = (props) => {
             const UUID = uuid();
             localStorage.setItem(UUID);
             setCartUUID(UUID);
+            // Create new Cart in Database
+            axios.post('/carts', {UUID});
         };
 
         let newCart = [...cart];
