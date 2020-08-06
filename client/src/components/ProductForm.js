@@ -17,8 +17,6 @@ const ProductForm = (props) => {
 
     const { products } = props;
 
-    const product = products[0];
-
     const colors = [];
     products.map(product => colors.includes(product.color) ? null : colors.push(product.color));
 
@@ -43,9 +41,17 @@ const ProductForm = (props) => {
         };
 
         let newCart = [...cart];
+
+
+        const product = products.find(
+            (item) => (values.color === item.color) && (values.size === item.size)
+        );
+
         const itemInCart = newCart.find(
             (item) => product.sku === item.sku
         );
+
+
         
         if(itemInCart) {
             let basePrice = itemInCart.price / itemInCart.quantity;
@@ -58,6 +64,10 @@ const ProductForm = (props) => {
         setCart(newCart);
         setState({ isPaneOpen: true });
     };
+
+    function handleChange(e) {
+        console.log(e.target.value);
+    }
 
     return(
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
@@ -73,10 +83,10 @@ const ProductForm = (props) => {
                  {/*Colors*/}
                   <div className="Colors">
                     <ul>
-                    {errors.color && (<p>COLOR IS REQUIRED.</p>)}{/*Need to make better with scss*/}
+                    {errors.color && (<p>COLOR IS REQUIRED.</p>)}
                         {colors.map((color, index) => (
-                        <li className={color} key={index}>{/*<-- prop used to display the colors or not*/}
-                            <input type="radio" name="color" id={color} value={color} ref={register({ required: true })}/>
+                        <li className={color} key={index}>
+                            <input type="radio" name="color" id={color} value={color} onChange={handleChange} ref={register({ required: true })}/>
                             <label className={color} htmlFor={color}><span className={color}></span><span className={color+"__selector"}/></label>
                         </li>
                       )) }
@@ -96,7 +106,7 @@ const ProductForm = (props) => {
                     {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
                         {sizes.map((size, index) => (
                         <li className={size} key={index}> {/*<--prop used for showing out of order (not made yet)*/}
-                            <input type="radio" name="size" id={size} value={size} ref={register({ required: true })}/>
+                            <input type="radio" name="size" id={size} value={size} onChange={handleChange} ref={register({ required: true })}/>
                             <label htmlFor={size}><span className={size}>{size}</span></label>
                         </li>
                        ))  }
