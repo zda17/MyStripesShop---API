@@ -1,13 +1,13 @@
 const cartService = {
-  createCart(db, UUID) {
+  createCart(db, uuid) {
     return db
-      .insert({id: UUID})
+      .insert({uuid})
       .into('carts')
       .returning('*');
   },
-  getCart(db, UUID) {
+  getCart(db, uuid) {
     return db('carts')
-      .where({id: UUID});
+      .where({uuid});
   }
 };
 

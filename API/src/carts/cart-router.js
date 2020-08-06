@@ -6,11 +6,17 @@ const bodyParser = express.json();
 
 cartRouter
   .route('/')
-  .get()
+  // Get Cart from DB
+  .get(bodyParser, async (req, res, next) => {
+    const {UUID} = req.body;
+    const cartFromDB = await CartService.getCart(req.app.get('db'), UUID);
+    res.send(cartFromDB);
+  })
+  // Insert Cart into DB
   .post(bodyParser, async (req, res, next) => {
     const {UUID} = req.body;
-    const newCart = await CartService.createCart(req.app.get('db'), UUID);
-    res.send(newCart);
+    const newCartFromDB = await CartService.createCart(req.app.get('db'), UUID);
+    res.send(newCartFromDB);
   });
 
 module.exports = cartRouter;
