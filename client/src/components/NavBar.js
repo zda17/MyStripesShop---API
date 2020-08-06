@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MyContext } from '../utils/Context';
 import { stack as Menu } from 'react-burger-menu';
-import logo from '../utils/images/logo.png';
+import logoDesktop from '../utils/images/logo2.png';
+import logoMobile from '../utils/images/logo.png';
 import insta from '../utils/images/insta.png';
 import '../stylesheets/Burger.scss';
 import '../stylesheets/NavBar.scss';
@@ -46,13 +47,11 @@ const BurgerMenu = () => {
 const NoBurger = () => {
     return (
         <>
-            <div className='nav-item-wrapper'>
-                <ul className='top-menu'>
-                    <li><Link id='shop' to='/Products/All'>SHOP</Link></li>
-                    <li><Link id='about' to='/About'>ABOUT</Link></li>
-                    <li><Link id='contact' to='/Contact'>CONTACT</Link></li>
-                </ul>
-            </div>
+            <ul className='top-menu'>
+                <li><Link id='shop' to='/Products/All'>SHOP</Link></li>
+                <li><Link id='about' to='/About'>ABOUT</Link></li>
+                <li><Link id='contact' to='/Contact'>CONTACT</Link></li>
+            </ul>
         </>
     )
 }
@@ -60,10 +59,8 @@ const NoBurger = () => {
 // Navbar
 const NavBar = () => {
     const [windowWidth, setWindowWidth] = useState(0);
-    const [windowHeight, setWindowHeight] = useState(0);
     let resizeWindow = () => {
         setWindowWidth(window.innerWidth);
-        setWindowHeight(window.innerHeight);
     };
 
     useEffect(() => {
@@ -74,17 +71,27 @@ const NavBar = () => {
 
     return (
         <>
-            {windowWidth <= 799 &&
-                <BurgerMenu />
-            }
             <nav>
-                <Link to='/'><img className='logo' src={logo} alt='logo' /></Link>
-                {windowWidth >= 800 && <NoBurger />}
-                <Cart />
-                <div className='tagline'>
-                    <h4>COMMUNITY CONSCIOUS CLOTHING</h4>
+                {windowWidth <= 1199 ?
+                    <BurgerMenu />
+                    :
+                    <div className='nav-item-wrapper'>
+                        <NoBurger />
+                    </div>
+                }
+                <div className={windowWidth <= 1199 ? "logo-wrapper-mobile" : "logo-wrapper-desktop"}>
+                    <Link to='/'><img className='logo' src={windowWidth <= 799 ? logoMobile : logoDesktop} alt='logo' /></Link>
+                </div>
+                <div className='nav-cart-container'>
+                    <div className="nav-cart-wrapper">
+                        <i class="fa fa-search search"></i>
+                        <Cart />
+                    </div>
                 </div>
             </nav>
+            <div className='tagline'>
+                <h4>COMMUNITY CONSCIOUS CLOTHING</h4>
+            </div>
         </>
     )
 }
