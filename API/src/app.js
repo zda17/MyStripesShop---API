@@ -8,6 +8,7 @@ const { NODE_ENV } = require('./config');
 // Route imports
 const authRouter = require('./auth/auth-router');
 const productRouter = require('./products/product-router');
+const contactFormRouter = require('./contact-form/contact-form');
 const cartRouter = require('./carts/cart-router');
 
 // Create express app
@@ -30,7 +31,13 @@ app.use(helmet());
   // User Authorization
 app.use('/api/auth', authRouter);
 app.use('/api/products', productRouter);
+
+app.use('/api/forma', contactFormRouter);
 app.use('/api/carts', cartRouter);
+app.get('/', (req, res) => {
+  res.send('Hello, boilerplate!');
+});
+
 
 // Error handler
 app.use(function errorHandler(error, req, res, next) {
