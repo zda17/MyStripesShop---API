@@ -3,7 +3,7 @@ CREATE TABLE line_items (
 		INTEGER
 		DEFAULT 0,
 	product_sku 
-		INTEGER
+		TEXT
 		REFERENCES products(sku) ON DELETE CASCADE
 		NOT NULL,
 	cart_id
@@ -12,8 +12,7 @@ CREATE TABLE line_items (
 		NOT NULL,
 	order_id
 		INTEGER
-		REFERENCES orders(id) ON DELETE CASCADE
-		NOT NULL,
+		REFERENCES orders(UUID) ON DELETE CASCADE,
 	created_at
 		TIMESTAMP(6) NOT NULL DEFAULT now(),
 	updated_at
