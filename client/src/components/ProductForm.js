@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 //style
 import '../stylesheets/ProductForm.scss';
 //components
 import Header from '../components/Header';
-import Image from '../components/Image';
 //context
 import { CartContext } from '../utils/CartContext';
 // localStorage and UUID for identifying users
@@ -27,8 +26,8 @@ const ProductForm = (props) => {
 
     const {handleSubmit, register, errors } = useForm();
     const [ cart, setCart, 
-        state, setState,
-        cartUUID, setCartUUID ] = useContext(CartContext);
+        ,/* Extra comma skips state */ setState,
+        ,/* Extra comma skips cartUUID */ setCartUUID ] = useContext(CartContext);
     
 
     //add to cart button
