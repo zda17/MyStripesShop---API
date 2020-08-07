@@ -9,6 +9,7 @@ const { NODE_ENV } = require('./config');
 const authRouter = require('./auth/auth-router');
 const productRouter = require('./products/product-router');
 const contactFormRouter = require('./contact-form/contact-form');
+const cartRouter = require('./carts/cart-router');
 
 // Create express app
 const app = express();
@@ -31,6 +32,7 @@ app.use(helmet());
 app.use('/api/auth', authRouter);
 app.use('/api/products', productRouter);
 app.use('/api/forma', contactFormRouter);
+app.use('/api/carts', cartRouter);
 app.get('/', (req, res) => {
   res.send('Hello, boilerplate!');
 });

@@ -16,28 +16,46 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import "../stylesheets/Cart.scss";
 
 //cart item component to insert into cart pane
-export const CartItem = (props) => {
+export const CartItem = () => {
 
   const [cart, setCart] = useContext(CartContext);
-  let [quantity, setQuantity] = useState(1);
-
-  const { product } = props;
+ 
 
   //adds 1 to quantity
-  const increment = () => {
-    console.log({ cart });
-    setQuantity(++quantity);
+  const increment = (e) => {
+      const nameAttr = e.target.getAttribute("name")
+      console.log( cart );
+      let newCart = [...cart];
+      const itemInCart = newCart.find(
+          (item) => nameAttr === item.sku
+      );
+
+      if(itemInCart) {
+        let basePrice = itemInCart.price / itemInCart.quantity;
+        itemInCart.quantity++;
+        itemInCart.price = basePrice * itemInCart.quantity;
+      } 
+      setCart(newCart);
   }
 
   //minus 1 from quanitity
-  const decrement = () => {
-    console.log("Minus 1");
-    if (quantity > 1) {
-      setQuantity(--quantity);
-    } else {
-      {/*remove cart item*/ }
+    const decrement = (e) => {
+        const nameAttr = e.target.getAttribute("name")
+        console.log(cart);
+        let newCart = [...cart];
+        const itemInCart = newCart.find(
+            (item) => nameAttr === item.sku
+        );
+
+        if(itemInCart) {
+            if(itemInCart.quantity > 1) {
+                let basePrice = itemInCart.price / itemInCart.quantity;
+                --itemInCart.quantity;
+                itemInCart.price = basePrice * itemInCart.quantity;
+                setCart(newCart);
+            } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
+        } 
     }
-  }
 
   //removes cart item based on sku.
   const remove = (e) => {
@@ -68,11 +86,11 @@ export const CartItem = (props) => {
   return (
     <>
       {/*lists all items in cart*/}
-      {cart.map(product => (
-        <div className="cart-item">
+      {cart.map((product, index) => (
+        <div className="cart-item" key={index}>
           <div className="cart-image">
             <Image
-              to='/Product'
+              to={"/Products/" + product.base_sku}
               imgDivClass='img-div-cart-page'
               imgClass='product-img'
               product={product}
@@ -84,11 +102,11 @@ export const CartItem = (props) => {
             <span>${product.price}</span><span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
             <div className="cart-options">
               <div className="quantity-input">
-                <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
+                <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
                   &mdash;
                 </button>
-                <input className="quantity-input__screen" type="text" value={quantity} readOnly />
-                <button className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
+                <input className="quantity-input__screen" type="number" value={product.quantity} max={product.quantity_available} readOnly />
+                <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
                   &#xff0b;
                 </button>
               </div>
@@ -120,7 +138,11 @@ export const Cart = () => {
   }, []);
 
   //gets total price
-  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+  function getTotalPrice() {
+    return cart.reduce((sum, { price }) => sum + price , 0);
+  };
+
+  let totalPrice = getTotalPrice();
 
   // useHistory for changing routes
   const history = useHistory();
@@ -144,14 +166,14 @@ export const Cart = () => {
           overlayClassName="cart-overlay"
           isOpen={state.isPaneOpen}
           title="CART"
-          width={windowWidth >= 441 && "360px" || "90%"}
+          width={windowWidth >= 380 && "360px" || "90%"}
           onRequestClose={() => {
             // triggered on "<" on left top click or on outside click
             setState({ isPaneOpen: false });
           }}
         >
           <CartItem />
-          <input type="submit" value={"CHECKOUT ~ " + totalPrice} onClick={goToCheckout} />
+          <input type="submit" value={"CHECKOUT ~ $" + totalPrice} onClick={goToCheckout} />
         </SlidingPane>
       {/*responsive pane*/}
       

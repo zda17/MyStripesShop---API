@@ -3,13 +3,13 @@ import React from 'react';
 import { BannerSlim } from '../components/Banner';
 import ShopSection from '../components/ShopSection';
 
-function ShowAll() {
+function Mens() {
     return (
-        <div className="ShopSection" >
+        <div className="content-wrap" >
             <BannerSlim />
-            <ShopSection path='all' />
+            <ShopSection path='mens' />
         </div>
     );
 }
 
-export default ShowAll;
+export default Mens;

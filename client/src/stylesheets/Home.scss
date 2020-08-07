@@ -30,6 +30,7 @@ body {
 .products {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-evenly;
 	> article {
 		// Image stylings in Image.scss
 		.name-and-price {
