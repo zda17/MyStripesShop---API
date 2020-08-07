@@ -6,14 +6,7 @@ import axios from '../utils/axios';
 
 
 const Contact = () => {
-    // export default class Contact extends Component{
 
-    // state={
-    //     name:'',
-    //     email:'',
-    //     message:'',
-    //     sent:false
-    // }
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [message, setMessage] = useState("");
@@ -101,7 +94,6 @@ return(
                     onChange={handleMessage}
                     />
                 </div>
-                {/* <div className={state.sent?'msg  msgAppear':'msg'}>Message has been sent</div> */}
                 <div className="btn">
                     <button type="submit">Submit</button>
                 </div>
