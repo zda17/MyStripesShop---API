@@ -1,51 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import '../stylesheets/Contact.scss';
-import axios from 'axios';
+import axios from '../utils/axios';
 
 
-// const Contact = () => {
-    export default class Contact extends Component{
+const Contact = () => {
+    // export default class Contact extends Component{
 
-    state={
-        name:'',
-        email:'',
-        message:'',
-        sent:false
-    }
+    // state={
+    //     name:'',
+    //     email:'',
+    //     message:'',
+    //     sent:false
+    // }
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [message, setMessage] = useState("");
+const [sent, setSent] = useState(false);
+
 
 //handling inputs
-handleName=(e)=>{
-    this.setState({
-        name:e.target.value
-    })
+const handleName=(e)=>{
+    setName(e.target.value)
 }
-handleEmail=(e)=>{
-    this.setState({
-        email:e.target.value
-    })
+const handleEmail=(e)=>{
+    setEmail(e.target.value)
 }
-handleMessage=(e)=>{
-    this.setState({
-        message:e.target.value
-    })
+const handleMessage=(e)=>{
+    setMessage(e.target.value)
 }
 //end of handling inputs
 
 //submitting the form
-formSubmit=(e)=>{
+const formSubmit=(e)=>{
     e.preventDefault();
     let data = {
-        name:this.state.name,
-        email:this.state.email,
-        message:this.state.message
+        name,
+        email,
+        message,
     }
-    axios.post('/api/forma',data)
+
+    axios.post('/forma',data)
     .then(res=>{
-        this.setState({
-            sent:true,
-        },this.resetForm())
+        setSent(true);
+        console.log('Message was sent!')
+        resetForm()
     })
     .catch(()=>{
         console.log('message not sent');
@@ -53,67 +53,62 @@ formSubmit=(e)=>{
     })
 }
 // reseting data
-resetForm=()=>{
-    this.setState({
-        name:'',
-        email:'',
-        message:''
-    })
+const resetForm=()=>{
+    setName("");
+    setEmail("");
+    setMessage("");
     setTimeout(()=>{
-        this.setState({
-            sent:false,
-
-        })
+        setSent(false);
     },3000)
 }
 
 
 
 
-render(){
-    return(
-        <div className="mainContact">
-            <h1>Contact Us</h1>
-            <div className="contactInfo">
-                <form onSubmit={this.formSubmit}>
-                    <div className="contactForm">
-                        <label htmlFor="name">Name</label>
-                        <input type="text"
-                        name="name"
-                        className="info"
-                        placeholder="Your Name"
-                        value={this.state.name}
-                        onChange={this.handleName}
-                        />
-                    </div>
-                    <div className="contactForm">
-                        <label htmlFor="email">Email</label>
-                        <input type="text"
-                        name="email"
-                        className="info" 
-                        placeholder="Your Email"
-                        value={this.state.email}
-                        onChange={this.handleEmail}
-                        />
-                    </div>
-                    <div className="contactForm">
-                        <label htmlFor="message">Message</label>
-                        <input type="text" 
-                        name="message" 
-                        className="info" 
-                        placeholder="Your Message"
-                        value={this.state.message}
-                        onChange={this.handleMessage}
-                        />
-                    </div>
-                    {/* <div className={this.state.sent?'msg  msgAppear':'msg'}>Message has been sent</div> */}
-                    <div className="btn">
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
+
+return(
+    <div className="mainContact">
+        <h1>Contact Us</h1>
+        <div className="contactInfo">
+            <form onSubmit={formSubmit}>
+                <div className="contactForm">
+                    <label htmlFor="name">Name</label>
+                    <input type="text"
+                    name="name"
+                    className="info"
+                    placeholder="Your Name"
+                    value={name}
+                    onChange={handleName}
+                    />
+                </div>
+                <div className="contactForm">
+                    <label htmlFor="email">Email</label>
+                    <input type="text"
+                    name="email"
+                    className="info" 
+                    placeholder="Your Email"
+                    value={email}
+                    onChange={handleEmail}
+                    />
+                </div>
+                <div className="contactForm">
+                    <label htmlFor="message">Message</label>
+                    <input type="text" 
+                    name="message" 
+                    className="info" 
+                    placeholder="Your Message"
+                    value={message}
+                    onChange={handleMessage}
+                    />
+                </div>
+                {/* <div className={state.sent?'msg  msgAppear':'msg'}>Message has been sent</div> */}
+                <div className="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
         </div>
-        );
-    };
+    </div>
+    );
 };
 
+export default Contact;
