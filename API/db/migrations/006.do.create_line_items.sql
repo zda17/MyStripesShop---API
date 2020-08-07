@@ -12,7 +12,7 @@ CREATE TABLE line_items (
 		NOT NULL,
 	order_id
 		INTEGER
-		REFERENCES orders(UUID) ON DELETE CASCADE,
+		REFERENCES orders(id) ON DELETE CASCADE,
 	created_at
 		TIMESTAMP(6) NOT NULL DEFAULT now(),
 	updated_at
