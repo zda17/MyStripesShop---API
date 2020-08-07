@@ -50,8 +50,8 @@ VALUES
 	('user@test.com', '123 Address Lane', 'OK', '{1, 3, 5}', 7900, 1, 2),
 	('demo@email.com', '123 Address Lane', 'MN', '{3, 4, 5}', 8200, 2, 3);
 
-INSERT INTO line_items (quantity, product_id, cart_id, order_id)
+INSERT INTO line_items (quantity, product_sku, cart_id, order_id)
 VALUES
-	(2, 2, 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
-	(2, 4, 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
-	(1, 3, '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8', 2);
+	(2, 'ATC-OK-Beanie-S-GREEN', 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
+	(2, 'ATC-OK-DadHat-XS', 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
+	(1, 'MSCM-Hoodie-XS', '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8', 2);
