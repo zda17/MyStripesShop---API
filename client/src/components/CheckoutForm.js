@@ -56,7 +56,7 @@ const CheckoutForm = () => {
                 </div>
                 <input type='text' placeholder='Phone' className='name' name='Phone' ref={register} />
                 <div className='button-div'>
-                    <button type='button' className='ship-btn'>Continue to shipping</button>
+                    <button type='submit' className='ship-btn'>Continue to shipping</button>
                 </div>
             </form>
         </>
