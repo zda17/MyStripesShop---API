@@ -13,12 +13,13 @@ const CheckoutForm = () => {
     const Inputs = () => {
         return (
             <>
-                {formInputs.map(inputStr => (
+                {formInputs.map((inputStr, index) => (
                     <input
                         type='text'
                         placeholder={inputStr}
                         name={inputStr}
                         ref={register}
+                        key={index}
                     />
                 ))}
             </>
@@ -41,14 +42,14 @@ const CheckoutForm = () => {
                 </div>
                 <Inputs />
                 <div className='name-div'>
-                    <select name='country' className='country-select' required>
-                        <option value="" disabled selected hidden>Country/Region</option>
+                    <select name='country' defaultValue='' className='country-select' required>
+                        <option value="" disabled hidden>Country/Region</option>
                         <option value="United States">United States</option>
                     </select>
-                    <select name='state' className='state-select' required>
-                        <option value="" disabled selected hidden>State</option>
-                        {states.map(state => (
-                            <option value={state}>{state}</option>
+                    <select name='state' defaultValue='' className='state-select' required>
+                        <option value="" disabled hidden>State</option>
+                        {states.map((state, index) => (
+                            <option value={state} key={index}>{state}</option>
                         ))}
                     </select>
                     <input type='text' placeholder='ZIP code' className='zip' name='ZIP code' ref={register} />

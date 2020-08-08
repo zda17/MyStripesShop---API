@@ -60,7 +60,7 @@ const NoBurger = () => {
 // Navbar
 const NavBar = () => {
     const [windowWidth, setWindowWidth] = useState(0);
-    const [windowHeight, setWindowHeight] = useState(0);
+    const [,/* Extra comma skips windowHeight */  setWindowHeight] = useState(0);
     let resizeWindow = () => {
         setWindowWidth(window.innerWidth);
         setWindowHeight(window.innerHeight);

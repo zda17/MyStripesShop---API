@@ -20,7 +20,7 @@ const Checkout = () => {
             <section className='cart-display'>
                 <h1>Order Summary</h1>
                 <CartItem />
-                <form className='discount-form' onsubmit={handleSubmit(applyCoupon)}>
+                <form className='discount-form' onSubmit={handleSubmit(applyCoupon)}>
                     <input type='text' name='Discount' className='discount-input'ref={register} placeholder='Discount code' />
                     <button type='button' className='apply-btn'>Apply</button>
                 </form>
