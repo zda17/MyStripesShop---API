@@ -193,6 +193,30 @@ label {
             weight: bold;
         }
     }
+
+    input[type="reset"] {
+      width: fit-content;
+      height: 5vh;
+      min-height: 36px;
+      display: none;
+      border: none;
+      background-color: $primaryColor;
+      color: white;
+      margin: 5px auto;
+      cursor: pointer;
+      padding: 10px 15px;
+
+
+      font: {
+          size: 18px;
+          weight: bold;
+      }
+  }
+
+  input.selected {
+    display: block;
+  } 
+
 }
 
 

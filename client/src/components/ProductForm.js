@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 //style
 import '../stylesheets/ProductForm.scss';
@@ -27,7 +27,11 @@ const ProductForm = (props) => {
         ,/* Extra comma skips state */ setState,
         ,/* Extra comma skips cartUUID */ setCartUUID] = useContext(CartContext);
 
+    const [resetButton, setResetButton] = useState(false);
+
     const resetOptions = () => {
+        //resets button
+        setResetButton(!resetButton);
         //re-maps all colors and sizes to base_sku product
         products.map(product => colors.includes(product.color) ? null : colors.push(product.color));
         products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
@@ -86,6 +90,11 @@ const ProductForm = (props) => {
         //prints value selected
         console.log(e.target.value);
 
+        //shows reset button
+        if(e.target.value && !resetButton) {
+            setResetButton(!resetButton);
+        }
+
         //filters to all sizes of value selected
         const productsSelected = products.filter(product => (e.target.value === product.color) || (e.target.value === product.size));
 
@@ -103,6 +112,14 @@ const ProductForm = (props) => {
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
                 <div className="ProductSelect">
+                    {/*RESET BUTTON*/}
+                    <input 
+                        className={resetButton ? "selected" : null}
+                        type="reset"
+                        onClick={() => resetOptions()} 
+                        value="RESET"
+                    />
+
                     <Header
                         title="COLOR"
                         headerClass="Other-Header"
@@ -122,6 +139,7 @@ const ProductForm = (props) => {
                             ))}
                         </ul>
                     </div>
+
                     {/*Header for sizes*/}
                     <Header
                         title="SIZES"
@@ -142,13 +160,7 @@ const ProductForm = (props) => {
                             ))}
                         </ul>
                     </div>
-                    {/*RESET BUTTON*/}
-                    <input 
 
-                        type="reset"
-                        onClick={() => resetOptions()} 
-                        value="RESET"
-                    />
                     {/*ADDS TO CART*/}
                     <input
                         type="submit"
