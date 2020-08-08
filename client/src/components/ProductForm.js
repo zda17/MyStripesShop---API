@@ -16,18 +16,25 @@ const ProductForm = (props) => {
 
     const { products } = props;
 
-
     const colors = [];
     products.map(product => colors.includes(product.color) ? null : colors.push(product.color));
 
     const sizes = [];
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
-    const {handleSubmit, register, errors } = useForm();
-    const [ cart, setCart, 
+    const { handleSubmit, register, errors, reset } = useForm();
+    const [cart, setCart,
         ,/* Extra comma skips state */ setState,
-        ,/* Extra comma skips cartUUID */ setCartUUID ] = useContext(CartContext);
-    
+        ,/* Extra comma skips cartUUID */ setCartUUID] = useContext(CartContext);
+
+    const resetOptions = () => {
+        //re-maps all colors and sizes to base_sku product
+        products.map(product => colors.includes(product.color) ? null : colors.push(product.color));
+        products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
+        console.log(colors);
+        console.log(sizes);
+    }
+
 
     //add to cart button
     const onSubmit = (values) => {
@@ -58,6 +65,7 @@ const ProductForm = (props) => {
                 (item) => product.sku === item.sku
             );
 
+            //if exists increment quantity and set new price. else push new line item
             if (itemInCart) {
                 let basePrice = itemInCart.price / itemInCart.quantity;
                 itemInCart.quantity++;
@@ -66,6 +74,7 @@ const ProductForm = (props) => {
                 const lineItem = { base_sku: product.base_sku, sku: product.sku, name: product.name, price: (product.price_cents / 100), color: values.color, size: values.size, photo_url: product.photo_url, quantity: 1, quantity_available: product.quantity_available };
                 newCart.push(lineItem);
             }
+            //sets cart and opens pane
             setCart(newCart);
             setState({ isPaneOpen: true });
         }
@@ -79,7 +88,7 @@ const ProductForm = (props) => {
 
         //filters to all sizes of value selected
         const productsSelected = products.filter(product => (e.target.value === product.color) || (e.target.value === product.size));
-        
+
         //deletes all elements and maps new ones??
         colors.splice(0, colors.length);
         productsSelected.map(item => colors.includes(item.color) ? null : colors.push(item.color));
@@ -87,7 +96,7 @@ const ProductForm = (props) => {
         productsSelected.map(item => sizes.includes(item.size) ? null : sizes.push(item.size));
         console.log(colors);
         console.log(sizes);
-        
+
     }
 
     return (
@@ -133,7 +142,18 @@ const ProductForm = (props) => {
                             ))}
                         </ul>
                     </div>
-                    <input type="submit" value="ADD TO CART" />
+                    {/*RESET BUTTON*/}
+                    <input 
+
+                        type="reset"
+                        onClick={() => resetOptions()} 
+                        value="RESET"
+                    />
+                    {/*ADDS TO CART*/}
+                    <input
+                        type="submit"
+                        value="ADD TO CART" 
+                    />
                 </div>
             </div>
         </form>
