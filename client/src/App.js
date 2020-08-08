@@ -29,7 +29,7 @@ function App() {
     document.body.onclick = function () {
       menuOpenState && setMenuOpenState(!menuOpenState);
     }
-  }, [menuOpenState]);
+  }, [menuOpenState, setMenuOpenState]);
 
 
   return (
