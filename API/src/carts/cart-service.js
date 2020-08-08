@@ -8,6 +8,11 @@ const cartService = {
   getCart(db, uuid) {
     return db('carts')
       .where({uuid});
+  },
+  getProduct(db, uuid) {
+    return db('line_items')
+      .column('quantity', 'product_sku')
+      .where({cart_id: uuid})
   }
 };
 

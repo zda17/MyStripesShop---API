@@ -9,7 +9,10 @@ cartRouter
   // Get Cart from DB
   .get(bodyParser, async (req, res, next) => {
     const {UUID} = req.body;
-    const cartFromDB = await CartService.getCart(req.app.get('db'), UUID);
+    const cartArrayFromDB = await CartService.getCart(req.app.get('db'), UUID);
+    const cartFromDB = cartArrayFromDB[0];
+    cartFromDB.product = await CartService.getProduct(req.app.get('db'), UUID);
+
     res.send(cartFromDB);
   })
   // Insert Cart into DB
