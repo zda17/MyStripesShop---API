@@ -11,8 +11,10 @@ CREATE TABLE orders (
     state
         TEXT
         NOT NULL,   
-    product_ids
-        INTEGER[]
+    product_skus_and_quantity
+        -- this column stores skus and quantity a 2-dimensional array of text
+        -- since the array is text, the quantity must be a string, not an integer
+        TEXT[][]
         NOT NULL,
     amount_cents
         INTEGER
