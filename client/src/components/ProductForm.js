@@ -23,19 +23,11 @@ const ProductForm = (props) => {
     const sizes = [];
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
-<<<<<<< HEAD
-    const { handleSubmit, register, errors } = useForm();
-    const [cart, setCart,
-        state, setState,
-        cartUUID, setCartUUID] = useContext(CartContext);
-
-=======
     const {handleSubmit, register, errors } = useForm();
     const [ cart, setCart, 
         ,/* Extra comma skips state */ setState,
         ,/* Extra comma skips cartUUID */ setCartUUID ] = useContext(CartContext);
     
->>>>>>> 0d6a7844329141db5bce3fcb17b4da3dd3496803
 
     //add to cart button
     const onSubmit = (values) => {

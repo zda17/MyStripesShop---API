@@ -56,12 +56,6 @@ VALUES
 
 INSERT INTO line_items (quantity, product_sku, cart_id)
 VALUES
-<<<<<<< HEAD
-	(2, 'ATC-OK-Beanie-S-WHITE', 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
-	(2, 'ATC-OK-DadHat-XS', 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
-	(1, 'MSCM-Hoodie-XS', '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8', 2);
-=======
-	(2, 'ATC-OK-Beanie-S-GREEN', 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
+	(2, 'ATC-OK-Beanie-S-WHITE', 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
 	(2, 'ATC-OK-DadHat-XS', 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
 	(1, 'MSCM-Hoodie-XS', '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8');
->>>>>>> 0d6a7844329141db5bce3fcb17b4da3dd3496803
