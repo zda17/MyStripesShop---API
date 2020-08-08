@@ -150,7 +150,7 @@ export const Cart = () => {
   // onClick function that goes to checkout and closes cart pane
   const goToCheckout = () => {
     history.push('/Checkout');
-    setState(false);
+    setState({ isPaneOpen: false });
   }
 
   return (
