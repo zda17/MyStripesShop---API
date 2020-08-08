@@ -61,7 +61,7 @@ const ProductForm = (props) => {
 
         //if no product exists
         if (!product) {
-            console.log("OUT OF STOCK!")
+            console.log("OUT OF STOCK!");
         } else {
 
             //looks to see if item exists in cart
@@ -112,6 +112,7 @@ const ProductForm = (props) => {
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
                 <div className="ProductSelect">
+                    
                     {/*RESET BUTTON*/}
                     <input 
                         className={resetButton ? "selected" : null}
@@ -166,6 +167,7 @@ const ProductForm = (props) => {
                         type="submit"
                         value="ADD TO CART" 
                     />
+
                 </div>
             </div>
         </form>
