@@ -5,13 +5,10 @@ const cartService = {
       .into('carts')
       .returning('*');
   },
-  getCart(db, uuid) {
-    return db('carts')
-      .where({uuid});
-  },
-  getProduct(db, uuid) {
+  getCartProduct(db, uuid) {
     return db('line_items')
-      .column('quantity', 'product_sku')
+      .join('products', 'line_items.product_sku', '=', 'products.sku')
+      .select('*')
       .where({cart_id: uuid})
   }
 };

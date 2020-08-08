@@ -6,19 +6,23 @@ const bodyParser = express.json();
 
 cartRouter
   .route('/')
-  // Get Cart from DB
+  // Get Cart and it's line_items from DB
   .get(bodyParser, async (req, res, next) => {
     const {UUID} = req.body;
-    const cartArrayFromDB = await CartService.getCart(req.app.get('db'), UUID);
-    const cartFromDB = cartArrayFromDB[0];
-    cartFromDB.product = await CartService.getProduct(req.app.get('db'), UUID);
+    // Get line_items that make up users cart using UUID
+    const cartFromDB = await CartService.getCartProduct(req.app.get('db'), UUID);
 
+    // Send cart with product
     res.send(cartFromDB);
   })
   // Insert Cart into DB
   .post(bodyParser, async (req, res, next) => {
     const {UUID} = req.body;
+
+    // Make new cart in DB using UUID as identifier
     const newCartFromDB = await CartService.createCart(req.app.get('db'), UUID);
+    
+    // Return newly created cart
     res.send(newCartFromDB);
   });
 
