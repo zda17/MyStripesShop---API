@@ -10,6 +10,7 @@ CREATE TABLE products (
 		PRIMARY KEY,
 	sku
 		TEXT
+		UNIQUE
 		NOT NULL,
 	base_sku
 		TEXT
