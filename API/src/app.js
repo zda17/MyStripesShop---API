@@ -10,6 +10,7 @@ const authRouter = require('./auth/auth-router');
 const productRouter = require('./products/product-router');
 const contactFormRouter = require('./contact-form/contact-form');
 const cartRouter = require('./carts/cart-router');
+const orderRouter = require('./orders/orders-router');
 
 // Create express app
 const app = express();
@@ -34,6 +35,7 @@ app.use('/api/products', productRouter);
 
 app.use('/api/forma', contactFormRouter);
 app.use('/api/carts', cartRouter);
+app.use('/api/orders', orderRouter);
 app.get('/', (req, res) => {
   res.send('Hello, boilerplate!');
 });

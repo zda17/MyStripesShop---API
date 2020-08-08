@@ -10,6 +10,8 @@ const Checkout = () => {
     const applyCoupon = () => {
         console.log('Apply discount code')
         // function to apply discount coupon to total
+            // - Will need discount_codes table in DB
+            // - Check provided discount code against discount_codes in DB
     }
 
     return (

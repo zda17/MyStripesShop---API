@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useForm } from "react-hook-form";
 import '../stylesheets/CheckoutForm.scss';
+import axios from '../utils/axios';
+import { CartContext } from '../utils/CartContext';
 
 
 const CheckoutForm = () => {
 
     const { register, handleSubmit } = useForm();
+    const [cart] = useContext(CartContext);
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log('cart', cart);
+        console.log('data', data);
+
+    };
     const formInputs = ['Address', 'Apartment, suite, etc. (optional)', 'City']
 
     const Inputs = () => {
@@ -56,7 +63,7 @@ const CheckoutForm = () => {
                 </div>
                 <input type='text' placeholder='Phone' className='name' name='Phone' ref={register} />
                 <div className='button-div'>
-                    <button type='button' className='ship-btn'>Continue to shipping</button>
+                    <button type='submit' className='ship-btn'>Continue to shipping</button>
                 </div>
             </form>
         </>
