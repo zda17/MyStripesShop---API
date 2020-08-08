@@ -78,7 +78,7 @@ const ProductForm = (props) => {
         console.log(e.target.value);
 
         //filters to all sizes of value selected
-        const productsSelected = products.filter(product => (e.target.value == product.color) || (e.target.value === product.size));
+        const productsSelected = products.filter(product => (e.target.value === product.color) || (e.target.value === product.size));
         
         //deletes all elements and maps new ones??
         colors.splice(0, colors.length);
