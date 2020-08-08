@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import Header from '../components/Header';
 import ProductDescription from '../components/ProductDescription';
-import {Cart} from '../components/Cart';
 
 // Axios
 import axios from '../utils/axios';
@@ -17,7 +15,7 @@ const Product = (props) => {
                 const product = res.data;
                 setProduct(product);
             });
-    }, [])
+    }, [base_sku])
 
     return(
         <div className="content-wrap">

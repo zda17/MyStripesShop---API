@@ -49,13 +49,19 @@ VALUES
 	('user@test.com', '$2a$10$hU98gp5TgV65aHgylvurcOZwMjsZspfhCsZdNYEWKXN6kF0bCSdfC', FALSE),
 	('demo@email.com', '$2a$10$3TFONhx44jc5xeEb23PmVOuq7LtQsNsLy1Rthjomspza02eJr94SS', FALSE);
 
-INSERT INTO orders (email, address, state, product_ids, amount_cents, checkout_session_id, UUID)
+INSERT INTO orders (email, address, state, product_skus_and_quantity, amount_cents, UUID)
 VALUES
-	('user@test.com', '123 Address Lane', 'OK', '{1, 3, 5}', 7900, 1, 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
-	('demo@email.com', '123 Address Lane', 'MN', '{3, 4, 5}', 8200, 2, '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8');
+	('user@test.com', '123 Address Lane', 'OK', '{{ATC-OK-Beanie-S-GREEN, 1}, {ATC-OK-Beanie-M-DKBL, 3}, {ATC-OK-DadHat-XS, 5}}', 7900, 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
+	('demo@email.com', '123 Address Lane', 'MN', '{{ATC-OK-DadHat-XS, 3}, {MSCM-Hoodie-XS, 4}, {ATC-OK-Tee-XS, 5}}', 8200, '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8');
 
-INSERT INTO line_items (quantity, product_sku, cart_id, order_id)
+INSERT INTO line_items (quantity, product_sku, cart_id)
 VALUES
+<<<<<<< HEAD
 	(2, 'ATC-OK-Beanie-S-WHITE', 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
 	(2, 'ATC-OK-DadHat-XS', 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 1),
 	(1, 'MSCM-Hoodie-XS', '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8', 2);
+=======
+	(2, 'ATC-OK-Beanie-S-GREEN', 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
+	(2, 'ATC-OK-DadHat-XS', 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
+	(1, 'MSCM-Hoodie-XS', '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8');
+>>>>>>> 0d6a7844329141db5bce3fcb17b4da3dd3496803
