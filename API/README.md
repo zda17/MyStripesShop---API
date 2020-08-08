@@ -5,9 +5,12 @@ A Node, Express API built to connect the MyStripes React client to a Postgres da
 
 
 ## Endpoints
-### This is a JSON API server, it both expects JSON and returns JSON.
-/auth/token
+### This is a JSON API server, it both expects JSON in the request body and returns JSON in the response.
+### /api is the root path for all of these routes (i.e.: localhost:8000/api/auth)
+/auth
 * POST Creates an auth token. Requires valid ```email``` and ```password``` (created when you make a user account). Returns a JWT token named ```authToken```.
+
+
 
 ## Scripts
 
