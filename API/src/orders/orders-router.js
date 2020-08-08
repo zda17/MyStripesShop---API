@@ -1,5 +1,6 @@
 const express = require('express');
 const ordersService = require('./orders-service');
+const { response } = require('express');
 
 const ordersRouter = express.Router();
 const bodyParser = express.json();
@@ -22,6 +23,11 @@ ordersRouter
 		const orders = await ordersService.getAllOrders(req.app.get('db'));
 		// Change product quantity from string to integer and send it
 		res.send(quantityStrToInt(orders));
+	})
+	.post(bodyParser, async (req, res, next) => {
+		const orderData = req.body;
+		const dbResponse = await ordersService.insertOrder(req.app.get('db'), orderData);
+		res.send(dbResponse);
 	})
 
 module.exports = ordersRouter;

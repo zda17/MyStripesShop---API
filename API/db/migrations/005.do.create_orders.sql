@@ -20,13 +20,9 @@ CREATE TABLE orders (
         INTEGER
         NOT NULL
         DEFAULT 0,
-    checkout_session_id
-        TEXT
-        NOT NULL,
     UUID 
         TEXT
-        NOT NULL
-        REFERENCES carts(UUID) ON DELETE CASCADE,
+        NOT NULL,
     created_at
         TIMESTAMPTZ
         NOT NULL
