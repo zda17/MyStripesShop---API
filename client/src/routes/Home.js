@@ -1,12 +1,8 @@
-import React, { useState, useEffect, Profiler } from 'react';
+import React from 'react';
 import '../stylesheets/Home.scss';
 import '../stylesheets/Image.scss';
 
-// Axios
-import axios from '../utils/axios';
-
 //components
-import Header from '../components/Header';
 import { Banner } from '../components/Banner';
 import ShopSection from '../components/ShopSection';
 

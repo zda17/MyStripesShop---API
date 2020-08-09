@@ -1,13 +1,14 @@
 const cartService = {
   createCart(db, uuid) {
     return db
-      .insert({uuid})
-      .into('carts')
-      .returning('*');
+      .insert({uuid}, ['*']) // Second argument implies to return all values inserted
+      .into('carts');
   },
-  getCart(db, uuid) {
-    return db('carts')
-      .where({uuid});
+  getCartProduct(db, uuid) {
+    return db('line_items')
+      .join('products', 'line_items.product_sku', '=', 'products.sku')
+      .select('*')
+      .where({cart_id: uuid})
   }
 };
 

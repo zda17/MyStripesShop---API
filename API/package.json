@@ -2,7 +2,7 @@
   "name": "express-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
     "dev": "nodemon src/server.js",
@@ -25,6 +25,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.2",
     "morgan": "^1.9.1",
+    "nodemailer": "^6.4.11",
     "pg": "^8.3.0"
   },
   "devDependencies": {

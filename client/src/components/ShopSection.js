@@ -23,7 +23,7 @@ function ShopSection(props) {
                 setBottomsProduct(product.filter(item => item.category === 'bottoms'));
                 setMiscProduct(product.filter(item => item.category === 'accessories'));
             });
-    }, []);
+    }, [props.path]);
 
     return (
         <section className="featured-collections" id="ShopSection">

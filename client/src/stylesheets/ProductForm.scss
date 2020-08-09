@@ -8,7 +8,8 @@ $colors: (
   orange: #F2711C,
   yellow: #FBBD08,
   purple: #A333C8,
-  pink: #E03997
+  pink: #E03997,
+  white: whitesmoke
 );
 
 $sizes: (
@@ -53,6 +54,9 @@ $primaryColor: #1f7bc5;
           
       display: block;
               
+      &.white {
+            border: solid 1px black;
+      }
       // !@each
     } // !&:checked + label
   }
@@ -73,6 +77,10 @@ label {
     
     
     span {
+        &.white {
+            border: solid 1px gray;
+        }
+
       @each $name, $value in $colors {
         &.#{$name} {
           display: block;
@@ -90,6 +98,10 @@ label {
           }
         
         }
+      }
+
+      &.white__selector {
+          border-bottom: solid 2px black;
       }
       
     }
@@ -181,6 +193,30 @@ label {
             weight: bold;
         }
     }
+
+    input[type="reset"] {
+      width: fit-content;
+      height: 5vh;
+      min-height: 36px;
+      display: none;
+      border: none;
+      background-color: $primaryColor;
+      color: white;
+      margin: 5px auto;
+      cursor: pointer;
+      padding: 10px 15px;
+
+
+      font: {
+          size: 18px;
+          weight: bold;
+      }
+  }
+
+  input.selected {
+    display: block;
+  } 
+
 }
 
 
