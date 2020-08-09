@@ -12,9 +12,13 @@ nav {
     align-items: center;
 
     .cart, .search {
-        font-size: 37px;
+        font-size: 45px;
         color: black;
         padding: 10px;
+    }
+
+    .search {
+        font-size: 43px;
     }
 
     .cart:hover, .search:hover {
@@ -23,29 +27,30 @@ nav {
     }
 
     .nav-cart-wrapper {
-        width: 200px;
+        width: 185px;
         display: flex;
         justify-content: flex-end;
         padding-right: 30px;
     }
 
     .logo-wrapper-desktop {
-        width: 200px;
-        height: auto;
+        width: 185px;
+        padding: 8px;
+        text-align: center;
     }
 
     .logo-wrapper-mobile {
         width: 125px;
         height: auto;
+        padding: 8px;
     }
 
     .logo {
-        width: 100%;
-        height: auto;
+        width: 150px;
     }
 
     .nav-item-wrapper {
-        width: 200px;
+        width: 185px;
         display: flex;
         justify-content: flex-start;
 
@@ -55,7 +60,8 @@ nav {
             li {
                 list-style-type: none;
                 padding: 15px;
-                font-size: 24px;
+                font-size: 26px;
+                // font-weight: bold;
                 a {
                     text-decoration: none;
                     color: $dark-blue;
@@ -87,15 +93,18 @@ nav {
 @media screen and (max-width: 1199px) {
     nav {
         display: block;
+        .logo {
+            width: 100px;
+        }
         .cart {
             position: absolute;
-            right: 76px;
-            top: 33px;
+            right: 73px;
+            top: 29px;
         }
         .search {
             position: absolute;
             right: 129px;
-            top: 33px;
+            top: 29px;
         }
         .nav-cart-wrapper {
             width: 192px;

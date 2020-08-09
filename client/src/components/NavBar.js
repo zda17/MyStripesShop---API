@@ -2,8 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MyContext } from '../utils/Context';
 import { stack as Menu } from 'react-burger-menu';
-import logoDesktop from '../utils/images/logo2.png';
-import logoMobile from '../utils/images/logo.png';
+import logo from '../utils/images/logo.png';
 import insta from '../utils/images/insta.png';
 import '../stylesheets/Burger.scss';
 import '../stylesheets/NavBar.scss';
@@ -80,7 +79,7 @@ const NavBar = () => {
                     </div>
                 }
                 <div className={windowWidth <= 1199 ? "logo-wrapper-mobile" : "logo-wrapper-desktop"}>
-                    <Link to='/'><img className='logo' src={windowWidth <= 799 ? logoMobile : logoDesktop} alt='logo' /></Link>
+                    <Link to='/'><img className='logo' src={logo} alt='logo' /></Link>
                 </div>
                 <div className='nav-cart-container'>
                     <div className="nav-cart-wrapper">
