@@ -23,7 +23,7 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const { handleSubmit, register, errors, reset } = useForm();
-    const { cart, setCart, setIsPaneOpen, setCartUUID, setQuantity } = useContext(CartContext);
+    const { cart, setCart, setIsPaneOpen, setCartUUID } = useContext(CartContext);
 
     const [resetButton, setResetButton] = useState(false);
 
