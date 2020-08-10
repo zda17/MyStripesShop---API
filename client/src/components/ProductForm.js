@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
+import ReactDOM from 'react-dom';
 //style
 import '../stylesheets/ProductForm.scss';
 //components
@@ -16,17 +17,23 @@ const ProductForm = (props) => {
 
     const { products } = props;
 
-    const colors = [];
+    //creates states for colors and sizes and clears null amount
+    const [colors, setColors] = useState([]);
+    colors.splice(0, colors.length);
     products.map(product => colors.includes(product.color) ? null : colors.push(product.color));
 
-    const sizes = [];
+    const [sizes, setSizes] = useState([]);
+    sizes.splice(0, sizes.length);
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
+    //creates react-hook-form and components
     const { handleSubmit, register, errors, reset } = useForm();
+
     const [cart, setCart,
         ,/* Extra comma skips state */ setState,
         ,/* Extra comma skips cartUUID */ setCartUUID] = useContext(CartContext);
 
+    //used to reset colors and sizes
     const [resetButton, setResetButton] = useState(false);
 
     const resetOptions = () => {
@@ -91,7 +98,7 @@ const ProductForm = (props) => {
         console.log(e.target.value);
 
         //shows reset button
-        if(e.target.value && !resetButton) {
+        if (e.target.value && !resetButton) {
             setResetButton(!resetButton);
         }
 
@@ -103,21 +110,56 @@ const ProductForm = (props) => {
         productsSelected.map(item => colors.includes(item.color) ? null : colors.push(item.color));
         sizes.splice(0, sizes.length);
         productsSelected.map(item => sizes.includes(item.size) ? null : sizes.push(item.size));
+
+        //re-maps them into Colors and Sizes
+        render();
         console.log(colors);
         console.log(sizes);
+    }
+
+    //renders colors and sizes
+    function render() {
+        const listColors = (
+            <ul>
+                {errors.color && (<p>COLOR IS REQUIRED.</p>)}
+                {colors.map((color, index) => (
+                    <li className={color} key={index}>
+                        <input type="radio" name="color" id={color} value={color} onChange={handleChange} ref={register({ required: true })} />
+                        <label className={color} htmlFor={color}><span className={color}></span><span className={color + "__selector"} /></label>
+                    </li>
+                ))}
+            </ul>
+        );
+        ReactDOM.render(listColors, document.getElementById('Colors'));
+
+        const listSizes = (
+            <ul>
+                {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
+                {sizes.map((size, index) => (
+                    <li className={size} key={index}> {/*<--prop used for showing out of order (not made yet)*/}
+                        <input type="radio" name="size" id={size} value={size} onChange={handleChange} ref={register({ required: true })} />
+                        <label htmlFor={size}><span className={size}>{size}</span></label>
+                    </li>
+                ))}
+            </ul>
+        );
+        ReactDOM.render(listSizes, document.getElementById('Sizes'));
 
     }
+
+    //renders all colors and sizes first. ***there might be a better way to do this******
+    setTimeout(render, 1);
 
     return (
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
                 <div className="ProductSelect">
-                    
+
                     {/*RESET BUTTON*/}
-                    <input 
+                    <input
                         className={resetButton ? "selected" : null}
                         type="reset"
-                        onClick={() => resetOptions()} 
+                        onClick={() => resetOptions()}
                         value="RESET"
                     />
 
@@ -128,17 +170,10 @@ const ProductForm = (props) => {
                         hClass="Product-Header Padding"
                         subHClass="No-Sub"
                     />
+
                     {/*Colors*/}
-                    <div className="Colors">
-                        <ul>
-                            {errors.color && (<p>COLOR IS REQUIRED.</p>)}
-                            {colors.map((color, index) => (
-                                <li className={color} key={index}>
-                                    <input type="radio" name="color" id={color} value={color} onChange={handleChange} ref={register({ required: true })} />
-                                    <label className={color} htmlFor={color}><span className={color}></span><span className={color + "__selector"} /></label>
-                                </li>
-                            ))}
-                        </ul>
+                    <div id="Colors" className="Colors">
+
                     </div>
 
                     {/*Header for sizes*/}
@@ -149,23 +184,16 @@ const ProductForm = (props) => {
                         hClass="Product-Header Padding"
                         subHClass="No-Sub"
                     />
+
                     {/*sizes you can pick*/}
-                    <div className="Sizes">
-                        <ul>
-                            {errors.size && (<p>SIZE IS REQUIRED.</p>)}{/*Need to make better with scss*/}
-                            {sizes.map((size, index) => (
-                                <li className={size} key={index}> {/*<--prop used for showing out of order (not made yet)*/}
-                                    <input type="radio" name="size" id={size} value={size} onChange={handleChange} ref={register({ required: true })} />
-                                    <label htmlFor={size}><span className={size}>{size}</span></label>
-                                </li>
-                            ))}
-                        </ul>
+                    <div id="Sizes" className="Sizes">
+                    
                     </div>
 
                     {/*ADDS TO CART*/}
                     <input
                         type="submit"
-                        value="ADD TO CART" 
+                        value="ADD TO CART"
                     />
 
                 </div>
@@ -173,5 +201,6 @@ const ProductForm = (props) => {
         </form>
     );
 };
+
 
 export default ProductForm;
