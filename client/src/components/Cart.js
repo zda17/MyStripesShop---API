@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import SlidingPane from "react-sliding-pane";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 //assets
 import { CartContext } from '../utils/CartContext';
@@ -15,8 +15,8 @@ import Image from "../components/Image";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import "../stylesheets/Cart.scss";
 
-//cart item component to insert into cart pane
-export const CartItem = () => {
+
+export const HandleQuantity = ({ product }) => {
 
   const { cart, setCart } = useContext(CartContext);
   //adds 1 to quantity
@@ -54,6 +54,31 @@ export const CartItem = () => {
       } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
     }
   }
+
+  return (
+    <>
+      <div className="cart-options">
+        <div className="quantity-input">
+          <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
+            &mdash;
+                </button>
+          <input className="quantity-input__screen" type="number" value={product.quantity} max={product.quantity_available} readOnly />
+          <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
+            &#xff0b;
+                </button>
+        </div>
+      </div>
+    </>
+  )
+
+}
+
+//cart item component to insert into cart pane
+export const CartItem = ({ displayQuantity }) => {
+
+  const { cart, setCart } = useContext(CartContext);
+
+  const location = useLocation();
 
   //removes cart item based on sku.
   const remove = (e) => {
@@ -98,18 +123,10 @@ export const CartItem = () => {
             <h2><strong>{product.name}</strong></h2>
             <span><p>{getSize(product.size)} ~ {product.color.toUpperCase()}</p></span>
             <span>${product.price}</span><span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
-            <div className="cart-options">
-              <div className="quantity-input">
-                <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
-                  &mdash;
-                </button>
-                <input className="quantity-input__screen" type="number" value={product.quantity} max={product.quantity_available} readOnly />
-                <button name={product.sku} className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
-                  &#xff0b;
-                </button>
-              </div>
-
-            </div>
+            {displayQuantity &&
+              <HandleQuantity
+                product={product}
+              />}
           </div>
         </div>
       ))}
@@ -121,7 +138,7 @@ export const CartItem = () => {
 export const Cart = () => {
 
   //used to pass cart array
-  const { cart, isPaneOpen, setIsPaneOpen,} = useContext(CartContext);
+  const { cart, isPaneOpen, setIsPaneOpen } = useContext(CartContext);
 
   //set panes width
   const [windowWidth, setWindowWidth] = useState(0);
@@ -151,11 +168,15 @@ export const Cart = () => {
     setIsPaneOpen(false);
   }
 
+  const openCart = () => {
+    setIsPaneOpen(true);
+  }
+
   return (
     <>
       <div className="cart-wrapper">
         {/*cart button*/}
-        <i className="fa fa-shopping-cart cart" aria-hidden="true" onClick={() => setIsPaneOpen(true)}></i>
+        <i className="fa fa-shopping-cart cart" aria-hidden="true" onClick={openCart}></i>
       </div>
 
       {/*pane and its contents*/}
@@ -168,9 +189,12 @@ export const Cart = () => {
         onRequestClose={() => {
           // triggered on "<" on left top click or on outside click
           setIsPaneOpen(false);
+          window.scrollTo(0, 0);
         }}
       >
-        <CartItem />
+        <CartItem
+          displayQuantity={true}
+        />
         <input type="submit" value={"CHECKOUT ~ $" + totalPrice} onClick={goToCheckout} />
       </SlidingPane>
       {/*responsive pane*/}
