@@ -17,6 +17,10 @@ const Product = (props) => {
             });
     }, [base_sku])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return(
         <div className="content-wrap">
                 <ProductDescription products={product}/>
