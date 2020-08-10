@@ -18,44 +18,42 @@ import "../stylesheets/Cart.scss";
 //cart item component to insert into cart pane
 export const CartItem = () => {
 
-  const [cart, setCart] = useContext(CartContext);
- 
-
+  const { cart, setCart } = useContext(CartContext);
   //adds 1 to quantity
   const increment = (e) => {
-      const nameAttr = e.target.getAttribute("name")
-      console.log( cart );
-      let newCart = [...cart];
-      const itemInCart = newCart.find(
-          (item) => nameAttr === item.sku
-      );
+    const nameAttr = e.target.getAttribute("name")
+    console.log(cart);
+    let newCart = [...cart];
+    const itemInCart = newCart.find(
+      (item) => nameAttr === item.sku
+    );
 
-      if(itemInCart) {
-        let basePrice = itemInCart.price / itemInCart.quantity;
-        itemInCart.quantity++;
-        itemInCart.price = basePrice * itemInCart.quantity;
-      } 
-      setCart(newCart);
+    if (itemInCart) {
+      let basePrice = itemInCart.price / itemInCart.quantity;
+      itemInCart.quantity++;
+      itemInCart.price = basePrice * itemInCart.quantity;
+    }
+    setCart(newCart);
   }
 
   //minus 1 from quanitity
-    const decrement = (e) => {
-        const nameAttr = e.target.getAttribute("name")
-        console.log(cart);
-        let newCart = [...cart];
-        const itemInCart = newCart.find(
-            (item) => nameAttr === item.sku
-        );
+  const decrement = (e) => {
+    const nameAttr = e.target.getAttribute("name")
+    console.log(cart);
+    let newCart = [...cart];
+    const itemInCart = newCart.find(
+      (item) => nameAttr === item.sku
+    );
 
-        if(itemInCart) {
-            if(itemInCart.quantity > 1) {
-                let basePrice = itemInCart.price / itemInCart.quantity;
-                --itemInCart.quantity;
-                itemInCart.price = basePrice * itemInCart.quantity;
-                setCart(newCart);
-            } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
-        } 
+    if (itemInCart) {
+      if (itemInCart.quantity > 1) {
+        let basePrice = itemInCart.price / itemInCart.quantity;
+        --itemInCart.quantity;
+        itemInCart.price = basePrice * itemInCart.quantity;
+        setCart(newCart);
+      } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
     }
+  }
 
   //removes cart item based on sku.
   const remove = (e) => {
@@ -123,7 +121,7 @@ export const CartItem = () => {
 export const Cart = () => {
 
   //used to pass cart array
-  const [cart, ,/* Extra comma skips setCart */ state, setState] = useContext(CartContext);
+  const { cart, isPaneOpen, setIsPaneOpen,} = useContext(CartContext);
 
   //set panes width
   const [windowWidth, setWindowWidth] = useState(0);
@@ -139,7 +137,7 @@ export const Cart = () => {
 
   //gets total price
   function getTotalPrice() {
-    return cart.reduce((sum, { price }) => sum + price , 0);
+    return cart.reduce((sum, { price }) => sum + price, 0);
   };
 
   let totalPrice = getTotalPrice();
@@ -150,33 +148,33 @@ export const Cart = () => {
   // onClick function that goes to checkout and closes cart pane
   const goToCheckout = () => {
     history.push('/Checkout');
-    setState({ isPaneOpen: false });
+    setIsPaneOpen(false);
   }
 
   return (
     <>
       <div className="cart-wrapper">
         {/*cart button*/}
-        <i className="fa fa-shopping-cart cart" aria-hidden="true" onClick={() => setState({ isPaneOpen: true })}></i>
+        <i className="fa fa-shopping-cart cart" aria-hidden="true" onClick={() => setIsPaneOpen(true)}></i>
       </div>
 
       {/*pane and its contents*/}
-        <SlidingPane
-          className="cart-pane"
-          overlayClassName="cart-overlay"
-          isOpen={state.isPaneOpen}
-          title="CART"
-          width={windowWidth >= 380 ? "360px" : "90%"}
-          onRequestClose={() => {
-            // triggered on "<" on left top click or on outside click
-            setState({ isPaneOpen: false });
-          }}
-        >
-          <CartItem />
-          <input type="submit" value={"CHECKOUT ~ $" + totalPrice} onClick={goToCheckout} />
-        </SlidingPane>
+      <SlidingPane
+        className="cart-pane"
+        overlayClassName="cart-overlay"
+        isOpen={isPaneOpen}
+        title="CART"
+        width={windowWidth >= 380 ? "360px" : "90%"}
+        onRequestClose={() => {
+          // triggered on "<" on left top click or on outside click
+          setIsPaneOpen(false);
+        }}
+      >
+        <CartItem />
+        <input type="submit" value={"CHECKOUT ~ $" + totalPrice} onClick={goToCheckout} />
+      </SlidingPane>
       {/*responsive pane*/}
-      
+
     </>
   );
 };

@@ -41,9 +41,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/Products/All">
-            <ShowAll 
-            gender='M'
-            gender2='F'/>
+            <ShowAll />
           </Route>
           <Route exact path="/Products/Mens">
             <Mens />
