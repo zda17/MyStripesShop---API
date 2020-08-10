@@ -52,6 +52,49 @@ form {
     }
 }
 
+.user-info-filled-container {
+    width: 800px;
+    .user-contact-ship-info {
+        background: white;
+        border: 1px solid $dark-blue;
+        border-radius: 5px;
+        padding: 15px;
+        .contact-div, .ship-div {
+            display: flex;
+            justify-content: space-between;
+            .back-to-form:hover {
+                cursor: pointer;
+            }
+        }
+        .contact-div {
+            .user-email {
+                width: 51%;
+                text-align: left;
+            }
+        }
+        .ship-div {
+            .user-ship-info {
+                width: 50%;
+                word-wrap: normal;
+            }
+        }
+    }
+    .shipping-methods {
+        background: white;
+        border: 1px solid $dark-blue;
+        border-radius: 5px;
+        padding: 15px;
+        display: inline-block;
+        form {
+            input {
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+}
+
+
 @media screen and (min-width: 800px) {
     form {
         .name-div {
