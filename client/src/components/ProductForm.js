@@ -23,9 +23,7 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const { handleSubmit, register, errors, reset } = useForm();
-    const [cart, setCart,
-        ,/* Extra comma skips state */ setState,
-        ,/* Extra comma skips cartUUID */ setCartUUID] = useContext(CartContext);
+    const { cart, setCart, setIsPaneOpen, setCartUUID } = useContext(CartContext);
 
     const [resetButton, setResetButton] = useState(false);
 
@@ -80,7 +78,7 @@ const ProductForm = (props) => {
             }
             //sets cart and opens pane
             setCart(newCart);
-            setState({ isPaneOpen: true });
+            setIsPaneOpen(true);
         }
     };
 
