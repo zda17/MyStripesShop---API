@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 //style
 import '../stylesheets/ProductForm.scss';
@@ -23,7 +23,7 @@ const ProductForm = (props) => {
     products.map(product => sizes.includes(product.size) ? null : sizes.push(product.size));
 
     const { handleSubmit, register, errors, reset } = useForm();
-    const { cart, setCart, setIsPaneOpen, setCartUUID } = useContext(CartContext);
+    const { cart, setCart, setIsPaneOpen, setCartUUID, setQuantity } = useContext(CartContext);
 
     const [resetButton, setResetButton] = useState(false);
 
@@ -89,7 +89,7 @@ const ProductForm = (props) => {
         console.log(e.target.value);
 
         //shows reset button
-        if(e.target.value && !resetButton) {
+        if (e.target.value && !resetButton) {
             setResetButton(!resetButton);
         }
 
@@ -110,12 +110,12 @@ const ProductForm = (props) => {
         <form method="post" className="ProductForm" onSubmit={handleSubmit(onSubmit)}>
             <div className="ProductOptions">
                 <div className="ProductSelect">
-                    
+
                     {/*RESET BUTTON*/}
-                    <input 
+                    <input
                         className={resetButton ? "selected" : null}
                         type="reset"
-                        onClick={() => resetOptions()} 
+                        onClick={() => resetOptions()}
                         value="RESET"
                     />
 
@@ -163,7 +163,7 @@ const ProductForm = (props) => {
                     {/*ADDS TO CART*/}
                     <input
                         type="submit"
-                        value="ADD TO CART" 
+                        value="ADD TO CART"
                     />
 
                 </div>

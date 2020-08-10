@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 //stylesheets
 import '../stylesheets/ProductDescription.scss';
@@ -10,6 +10,10 @@ import ProductForm from '../components/ProductForm';
 import Image from '../components/Image';
 
 const ProductDescription = (props) => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     const { products } = props;
 
