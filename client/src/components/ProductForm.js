@@ -28,10 +28,7 @@ const ProductForm = (props) => {
 
     //creates react-hook-form and components
     const { handleSubmit, register, errors, reset } = useForm();
-
-    const [cart, setCart,
-        ,/* Extra comma skips state */ setState,
-        ,/* Extra comma skips cartUUID */ setCartUUID] = useContext(CartContext);
+    const { cart, setCart, setIsPaneOpen, setCartUUID } = useContext(CartContext);
 
     //used to reset colors and sizes
     const [resetButton, setResetButton] = useState(false);
@@ -87,7 +84,7 @@ const ProductForm = (props) => {
             }
             //sets cart and opens pane
             setCart(newCart);
-            setState({ isPaneOpen: true });
+            setIsPaneOpen(true);
         }
     };
 
