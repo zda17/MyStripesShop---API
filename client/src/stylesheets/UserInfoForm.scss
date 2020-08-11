@@ -92,6 +92,31 @@ form {
             }
         }
     }
+
+    .button-div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .back-btn {
+            margin: 20px;
+        }
+        .fa-angle-double-left {
+            padding: 10px;
+        }
+        .back-btn:hover, .pay-btn:hover {
+            cursor: pointer;
+        }
+        .pay-btn {
+            margin: 20px;
+            background: $dark-blue;
+            color: white;
+            padding: 10px;
+            font-family: $font;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+    }
+
 }
 
 
