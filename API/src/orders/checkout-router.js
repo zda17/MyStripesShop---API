@@ -7,13 +7,13 @@ checkoutRouter
     .route('/')
     .post(bodyParser, async (req, res, next) => {
         console.log(req.body);
-        const { id, amount } = req.body;
+        const { id, amount, uuid } = req.body;
 
         try {
             const payment = await stripe.paymentIntents.create({
                 amount,
                 currency: 'USD',
-                description: '',
+                description: uuid,
                 payment_method: id,
                 confirm: true
             })
