@@ -4,7 +4,6 @@ import UserInfoForm from '../components/Checkout/UserInfoForm';
 import '../stylesheets/Checkout.scss';
 import { CartItem } from '../components/Cart';
 import { CartContext } from '../utils/CartContext';
-import CheckoutForm from '../components/Checkout/CheckoutForm';
 
 // Calculate costs and manage state for subtotal, shipping, taxes, coupon, and total
 const Costs = () => {
