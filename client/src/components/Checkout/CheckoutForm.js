@@ -1,7 +1,7 @@
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import axios from 'axios';
+import axios from '../../utils/axios';
 import '../../stylesheets/CheckoutForm.scss'
 
 
@@ -20,7 +20,7 @@ const CheckoutForm = () => {
         if (!error) {
             const { id } = paymentMethod;
             try {
-                const { data } = await axios.post('/api/checkout', { id, amount: 1099 });
+                const { data } = await axios.post('/checkout', { id, amount: 1099 });
                 console.log(data);
             } catch (error) {
                 console.log(error);
