@@ -11,6 +11,7 @@ const UserInfoForm = () => {
     const { cart } = useContext(CartContext);
     const [userInfo, setUserInfo] = useState();
     const [filledOut, setFilledOut] = useState(false);
+    const [showCheckoutForm, setShowCheckoutForm] = useState(false);
 
     const onSubmit = data => {
         console.log('cart', cart);
@@ -48,9 +49,13 @@ const UserInfoForm = () => {
         setFilledOut(false);
     }
 
+    const displayCheckoutForm = () => {
+        setShowCheckoutForm(true);
+    }
+
     return (
         <>
-            {!filledOut ?
+            {!filledOut &&
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3>Contact Information</h3>
                     <input type='text' placeholder='Email' name='email' ref={register} />
@@ -77,49 +82,56 @@ const UserInfoForm = () => {
                     <div className='button-div'>
                         <Link to='/Cart' className='back-btn'>
                             <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                            Back to cart
+                            Return to cart
                     </Link>
                         <button type='submit' className='ship-btn'>Continue to shipping</button>
                     </div>
                 </form>
-                :
-                <>
-                    <section className='user-info-filled-container'>
-                        <section className='user-contact-ship-info'>
-                            <section className='contact-div'>
-                                <p>Contact: </p>
-                                <p className='user-email'>{userInfo.email}</p>
-                                <p className='back-to-form' onClick={goBackToForm}>Change</p>
-                            </section>
-                            {/* destructure userInfo somehow... */}
-                            <section className='ship-div'>
-                                <p>Ship to: </p>
-                                <p className='user-ship-info'>{userInfo.address}, {userInfo.apartmentsuiteetc.optional && '#' + userInfo.apartmentsuiteetc.optional + ', '}{userInfo.city}, {userInfo.state}, {userInfo.zipCode}, {userInfo.country}</p>
-                                <p className='back-to-form' onClick={goBackToForm}>Change</p>
-                            </section>
+            }
+            {filledOut && !showCheckoutForm &&
+                <section className='user-info-filled-container'>
+                    <section className='user-contact-ship-info'>
+                        <section className='contact-div'>
+                            <p>Contact: </p>
+                            <p className='user-email'>{userInfo.email}</p>
+                            <p className='back-to-form' onClick={goBackToForm}>Change</p>
                         </section>
-                        <section>
-                            <h2>Shipping Method</h2>
-                            <form className='shipping-methods'>
-                                <input type="radio" className="standard" name="standard" value="standard" style={{ position: 'relative', top: '-9px', right: '8px' }} />
-                                <label for="standard" className="standard" style={{ width: '90%' }}>Standard Shipping (Arrives 7-10 business days after it has shipped - allow 1-2 business days to ship)</label>
-                                <label for="standard" className="standard-price">$3.95</label>
-                                <br></br>
-                                <input type="radio" className="two-day" name="two-day" value="two-day" style={{ position: 'relative', top: '-9px', right: '8px' }} />
-                                <label for="two-day" className="two-day" style={{ width: '90%' }}>2-Day Shipping (Arrives 2 business days after it has shipped - allow 1-2 business days to ship) Not Available for PO BOX/APO/FPO</label>
-                                <label for="two-day" className="two-day-price">$8.00</label>
-                                <br></br>
-                                <input type="radio" className="next-day" name="next-day" value="next-day" style={{ position: 'relative', top: '-9px', right: '8px' }} />
-                                <label for="next-day" className="next-day" style={{ width: '90%' }}>UPS Next Day Air (Arrives 1 business day after it has shipped - allow 1-2 business days to ship) Not Available for PO BOX/APO/FPO</label>
-                                <label for="next-day" className="next-day-price">$19.99</label>
-                            </form>
+                        {/* destructure userInfo somehow... */}
+                        <section className='ship-div'>
+                            <p>Ship to: </p>
+                            <p className='user-ship-info'>{userInfo.address}, {userInfo.apartmentsuiteetc.optional && '#' + userInfo.apartmentsuiteetc.optional + ', '}{userInfo.city}, {userInfo.state}, {userInfo.zipCode}, {userInfo.country}</p>
+                            <p className='back-to-form' onClick={goBackToForm}>Change</p>
                         </section>
-                        <Payment />
                     </section>
-                </>
+                    <section>
+                        <h2>Shipping Method</h2>
+                        <form className='shipping-methods'>
+                            <input type="radio" className="standard" name="standard" value="standard" style={{ position: 'relative', top: '-9px', right: '8px' }} />
+                            <label for="standard" className="standard" style={{ width: '90%' }}>Standard Shipping (Arrives 7-10 business days after it has shipped - allow 1-2 business days to ship)</label>
+                            <label for="standard" className="standard-price">$3.95</label>
+                            <br></br>
+                            <input type="radio" className="two-day" name="two-day" value="two-day" style={{ position: 'relative', top: '-9px', right: '8px' }} />
+                            <label for="two-day" className="two-day" style={{ width: '90%' }}>2-Day Shipping (Arrives 2 business days after it has shipped - allow 1-2 business days to ship) Not Available for PO BOX/APO/FPO</label>
+                            <label for="two-day" className="two-day-price">$8.00</label>
+                            <br></br>
+                            <input type="radio" className="next-day" name="next-day" value="next-day" style={{ position: 'relative', top: '-9px', right: '8px' }} />
+                            <label for="next-day" className="next-day" style={{ width: '90%' }}>UPS Next Day Air (Arrives 1 business day after it has shipped - allow 1-2 business days to ship) Not Available for PO BOX/APO/FPO</label>
+                            <label for="next-day" className="next-day-price">$19.99</label>
+                        </form>
+                    </section>
+                    <div className='button-div'>
+                        <p onClick={goBackToForm} className='back-btn'>
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                            Return to Information
+                            </p>
+                        <button type='button' onClick={displayCheckoutForm} className='pay-btn'>Continue to payment</button>
+                    </div>
+                </section>
+            }
+            {showCheckoutForm &&
+                <Payment />
             }
         </>
-
     )
 }
 

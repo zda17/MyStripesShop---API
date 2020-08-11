@@ -7,8 +7,32 @@ import '../../stylesheets/CheckoutForm.scss'
 
 const CheckoutForm = () => {
     const stripe = useStripe();
+    const elements = useElements();
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card: elements.getElement(CardElement)
+        });
+
+        if (!error) {
+            const { id } = paymentMethod;
+            try {
+                const { data } = await axios.post('/api/checkout', { id, amount: 1099 });
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
     return (
-        <form className='checkout-form'>
+        <form
+            onSubmit={handleSubmit}
+            className='checkout-form'
+        >
             <CardElement />
             <button type='submit' className='pay-btn' disabled={!stripe}>
                 Pay
@@ -21,9 +45,13 @@ const stripePromise = loadStripe("pk_test_51HELKHG3yT4fkVPvmTSvWinnxraM8XWMvM34G
 
 const Payment = () => {
     return (
-        <Elements stripe={stripePromise}>
-            <CheckoutForm />
-        </Elements>
+        <>
+            <h1>Payment</h1>
+            <h4>All transactions are secure and encrypted.</h4>
+            <Elements stripe={stripePromise}>
+                <CheckoutForm />
+            </Elements>
+        </>
     );
 }
 
