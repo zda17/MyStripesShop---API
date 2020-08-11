@@ -32,7 +32,7 @@ A Node, Express API built to connect the MyStripes React client to a Postgres da
           "email" : "user@test.com",\
           "address" : "123 Address Lane",\
           "state" : "OK",\
-          "product_skus_and_quantity" : "{{ATC-OK-Beanie-S-GREEN,1},{ATC-OK-Beanie-M-DKBL,3},{ATC-OK-DadHat-XS,5}}",\
+          "product_skus_and_quantity" : [ ["ATC-OK-Beanie-S-GREEN", 1], ["ATC-OK-Beanie-M-DKBL", 3], ["ATC-OK-DadHat-XS", 5] ],\
           "amount_cents" : 7900,\
           "uuid" : "a6b14dc5-8102-4d14-8d43-73bfdvasd8eec"\
       }
