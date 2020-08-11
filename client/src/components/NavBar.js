@@ -83,7 +83,7 @@ const NavBar = () => {
                 </div>
                 <div className='nav-cart-container'>
                     <div className="nav-cart-wrapper">
-                        <i class="fa fa-search search"></i>
+                        <i className="fa fa-search search"></i>
                         <Cart />
                     </div>
                 </div>
