@@ -7,8 +7,12 @@ import { CartContext } from '../../utils/CartContext';
 
 
 const CheckoutForm = ({ success, fail }) => {
-    const { cart } = useContext(CartContext);
-    console.log(cart);
+    const { cart, cartUUID, setCartUUID, total } = useContext(CartContext);
+    if (!cartUUID) {
+        setCartUUID(localStorage.getItem('UUID'))
+    };
+    console.log(cart, cartUUID, total);
+    const centsTotal = total * 100;
     const stripe = useStripe();
     const elements = useElements();
 
@@ -23,7 +27,7 @@ const CheckoutForm = ({ success, fail }) => {
         if (!error) {
             const { id } = paymentMethod;
             try {
-                const { data } = await axios.post('/checkout', { id, amount: 1099 });
+                const { data } = await axios.post('/checkout', { id, amount: centsTotal, uuid: cartUUID });
                 console.log(data);
                 success();
             } catch (error) {
@@ -53,10 +57,12 @@ const stripePromise = loadStripe("pk_test_51HELKHG3yT4fkVPvmTSvWinnxraM8XWMvM34G
 
 const Payment = () => {
 
+    const { total } = useContext(CartContext);
+
     const [status, setStatus] = useState();
 
     if (status === "success") {
-        return <div>Payment successful!</div>
+        return <div>Payment of ${total} successful!</div>
     }
 
     return (

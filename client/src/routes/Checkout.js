@@ -7,7 +7,7 @@ import { CartContext } from '../utils/CartContext';
 
 // Calculate costs and manage state for subtotal, shipping, taxes, coupon, and total
 const Costs = () => {
-    const { cart, isPaneOpen } = useContext(CartContext);
+    const { cart, total, setTotal, isPaneOpen } = useContext(CartContext);
 
     useEffect(() => {
         !isPaneOpen && window.scrollTo(0, 0);
@@ -18,7 +18,6 @@ const Costs = () => {
     const [shipping, setShipping] = useState(0);
     const [taxes, setTaxes] = useState(0);
     const [coupon, setCoupon] = useState(0);
-    const [total, setTotal] = useState(0);
 
     const calculateSubtotal = () => {
         if (cart[0]) {
@@ -108,8 +107,9 @@ const Checkout = () => {
             <section className='cart-display'>
                 <h1>Order Summary</h1>
                 <CartItem
-                // make displayQuantity false and add a number icon to show quantity (user shouldn't be able to change quantity here)
-                    displayQuantity={true}
+                // remove 'remove button' from here
+                // made displayQuantity false; will add a number icon to show quantity (user shouldn't be able to change quantity here)
+                    displayQuantity={false}
                 />
                 <Costs />
                 {/* {userShipInfo && <Index />} */}
