@@ -12,8 +12,13 @@ const cartService = {
   },
   addLineItem(db, item) {
     return db
-      .insert({item}, ['*'])
+      .insert(item, ['*'])
       .into('line_items');
+  },
+  deleteLineItem(db, cart_id, product_sku) {
+    return db('line_items')
+      .where({ cart_id, product_sku })
+      .del();
   },
   incrementQuantity(db, cart_id, product_sku, amount) {
     return db('line_items')

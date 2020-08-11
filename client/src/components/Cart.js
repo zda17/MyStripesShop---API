@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 //assets
 import { CartContext } from '../utils/CartContext';
+import localStorage from '../utils/localStorage';
 
 //routes
 
@@ -14,6 +15,7 @@ import Image from "../components/Image";
 //stlye
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import "../stylesheets/Cart.scss";
+import axios from '../utils/axios';
 
 //cart item component to insert into cart pane
 export const CartItem = () => {
@@ -32,6 +34,11 @@ export const CartItem = () => {
       let basePrice = itemInCart.price / itemInCart.quantity;
       itemInCart.quantity++;
       itemInCart.price = basePrice * itemInCart.quantity;
+      axios.patch('/carts/lineitem', {
+        UUID: localStorage.getItem(),
+        product_sku: itemInCart.sku,
+        quantity: itemInCart.quantity
+      });
     }
     setCart(newCart);
   }
@@ -51,7 +58,18 @@ export const CartItem = () => {
         --itemInCart.quantity;
         itemInCart.price = basePrice * itemInCart.quantity;
         setCart(newCart);
-      } else setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
+        axios.patch('/carts/lineitem', {
+          UUID: localStorage.getItem(),
+          product_sku: itemInCart.sku,
+          quantity: itemInCart.quantity
+        });
+      } else {
+        axios.delete('/carts/lineitem', {
+          UUID: localStorage.getItem(),
+          product_sku: itemInCart.sku
+        });
+        setCart(cart.filter(lineItem => lineItem.sku !== nameAttr));
+      }
     }
   }
 
