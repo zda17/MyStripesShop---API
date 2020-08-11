@@ -51,9 +51,9 @@ A Node, Express API built to connect the MyStripes React client to a Postgres da
 - **/tops**
   - GET Retrieves all entries whose category column equals "tops" from the ```products``` table. Returns an array of product objects.
 - **/bottoms**
- - GET Retrieves all entries whose category column equals "bottoms" from the ```products``` table. Returns an array of product objects.
+  - GET Retrieves all entries whose category column equals "bottoms" from the ```products``` table. Returns an array of product objects.
 - **/accessories**
- - GET Retrieves all entries whose category column equals "accessories" from the ```products``` table. Returns an array of product objects.
+  - GET Retrieves all entries whose category column equals "accessories" from the ```products``` table. Returns an array of product objects.
 
 
 ## Scripts
