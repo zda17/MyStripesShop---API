@@ -109,6 +109,7 @@ const Checkout = () => {
             <section className='cart-display'>
                 <h1>Order Summary</h1>
                 <CartItem
+                // make displayQuantity false and add a number icon to show quantity (user shouldn't be able to change quantity here)
                     displayQuantity={true}
                 />
                 <Costs />
