@@ -8,7 +8,18 @@ const cartService = {
     return db('line_items')
       .join('products', 'line_items.product_sku', '=', 'products.sku')
       .select('*')
-      .where({cart_id: uuid})
+      .where({cart_id: uuid});
+  },
+  addLineItem(db, item) {
+    return db
+      .insert({item}, ['*'])
+      .into('line_items');
+  },
+  incrementQuantity(db, cart_id, product_sku, amount) {
+    return db('line_items')
+      .where({ cart_id, product_sku })
+      .update({ quantity: amount })
+      .returning('*');
   }
 };
 

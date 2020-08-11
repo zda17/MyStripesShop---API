@@ -29,7 +29,7 @@ app.use(helmet());
 
 
 // Routes
-  // User Authorization
+// User Authorization
 app.use('/api/auth', authRouter);
 app.use('/api/products', productRouter);
 
