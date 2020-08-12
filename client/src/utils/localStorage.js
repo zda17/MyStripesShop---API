@@ -11,6 +11,9 @@ const localStorage = {
 	hasUUID() {
 	  return !!localStorage.getItem();
 	},
+	setJWT(JWT) {
+		window.localStorage.setItem('JWT', JWT);
+	}
 };
 
 export default localStorage;
