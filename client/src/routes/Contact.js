@@ -48,21 +48,21 @@ const Contact = () => {
     };
 
     return(
-        <div className="mainContact">
-            <h1>Contact Us</h1>
+        <div className="main-container">
             <div className="contactInfo">
+                <h1>Contact Us</h1>
                 <form onSubmit={formSubmit}>
                     <div className="name-email">
                         <input type="text"
                         name="name"
-                        className="info"
+                        className="name-info"
                         placeholder="Your Name"
                         value={name}
                         onChange={handleName}
                         />
                         <input type="text"
                         name="email"
-                        className="info" 
+                        className="email-info" 
                         placeholder="Your Email"
                         value={email}
                         onChange={handleEmail}
@@ -71,7 +71,7 @@ const Contact = () => {
                     <div className="contactForm">
                         <textarea type="text" 
                         name="message" 
-                        className="info" 
+                        className="message-info" 
                         placeholder="Your Message"
                         value={message}
                         onChange={handleMessage}
