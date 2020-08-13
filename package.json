@@ -1,0 +1,28 @@
+{
+  "name": "MyStripesShop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client-start": "cd client && npm start",
+    "client-install"  : "cd client && npm install",
+    "API-start": "cd API && npm start",
+    "API-install"  : "cd API && npm install",
+    "install-all-deps": "concurrently \"npm run API-install\" \"npm run client-install\"",
+    "start": "concurrently \"npm run API-start\" \"npm run client-start\""
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zda17/MyStripesShop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zda17/MyStripesShop/issues"
+  },
+  "homepage": "https://github.com/zda17/MyStripesShop#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
