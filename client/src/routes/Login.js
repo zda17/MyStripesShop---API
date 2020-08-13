@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { withRouter } from "react-router-dom";
 
 //style
 import '../stylesheets/Login.scss';
@@ -9,14 +10,14 @@ import axios from '../utils/axios';
 import localStorage from '../utils/localStorage';
 import Header from '../components/Header';
 
-
-const Login = () => {
+const Login = (props) => {
 
     //creates react-hook-form and components
     const { handleSubmit, register, errors } = useForm();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
 
 
     //handling inputs
@@ -30,17 +31,17 @@ const Login = () => {
 
     //submitting the form
     const formSubmit=(e)=>{
-        e.preventDefault();
         let data = {
             email,
-            password,
+            password
         };
 
         axios.post('/auth',data)
         .then(res=>{
-            localStorage.setJWT(res);
+            localStorage.setJWT(res.data.authToken);
+            props.history.push('/Admin');
             //go to admin control panel
-
+            console.log({props});
             console.log('Logged in!');
         })
         .catch(()=>{
@@ -95,4 +96,10 @@ const Login = () => {
     );
 };
 
-export default Login;
+Login.defaultProps = {
+    history:{
+        push: () => {}
+    }
+}
+
+export default withRouter(Login);
