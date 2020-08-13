@@ -18,6 +18,7 @@ import ShowAll from "./routes/ShowAll";
 import Mens from "./routes/Mens";
 import Womens from "./routes/Womens";
 import Contact from "./routes/Contact";
+import Login from "./routes/Login";
 import Home from "./routes/Home";
 import CartPage from "./routes/CartPage";
 
@@ -65,6 +66,9 @@ function App() {
           </Route>
           <Route exact path="/Contact">
             <Contact />
+          </Route>
+          <Route exact path="/Login">
+            <Login />
           </Route>
           <Route>
             {/* Error page? */}
