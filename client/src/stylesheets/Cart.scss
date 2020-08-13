@@ -53,7 +53,7 @@
     display: flex;
     width: 400px;
     height: fit-content;
-    border-bottom: solid 1px rgb(78, 78, 78);
+    border-bottom: 0.5px solid rgba(0, 38, 72, 0.5);
     line-height: 10px;
 
     .cart-image {
