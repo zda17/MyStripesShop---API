@@ -36,6 +36,11 @@ const Footer = (props) => {
                                 Shipping & Returns
                             </Link>
                         </li>
+                        <li>
+                            <Link to={'/Login'}>
+                                Admin Login
+                            </Link>
+                        </li>
                     </ul>
                 </div>
         </footer>
