@@ -20,6 +20,7 @@ import Womens from "./routes/Womens";
 import Contact from "./routes/Contact";
 import Login from "./routes/Login";
 import Home from "./routes/Home";
+import CartPage from "./routes/CartPage";
 
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
           <Route exact path="/Products/:base_sku"
             render={(props) => <Product {...props} />}
           >
+          </Route>
+          <Route exact path="/Cart">
+            <CartPage />
           </Route>
           <Route exact path="/Checkout">
             <Checkout />
