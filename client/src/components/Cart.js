@@ -14,6 +14,7 @@ import Image from "../components/Image";
 //stlye
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import "../stylesheets/Cart.scss";
+import NumberBubble from './NumberBubble';
 
 
 export const HandleQuantity = ({ product }) => {
@@ -74,7 +75,7 @@ export const HandleQuantity = ({ product }) => {
 }
 
 //cart item component to insert into cart pane
-export const CartItem = ({ displayQuantity }) => {
+export const CartItem = ({ displayQuantity, numBub }) => {
 
   const { cart, setCart } = useContext(CartContext);
 
@@ -117,6 +118,7 @@ export const CartItem = ({ displayQuantity }) => {
               imgDivClass='img-div-cart-page'
               imgClass='product-img'
               product={product}
+              numBub={numBub && product.quantity}
             />
           </div>
           <div className="cart-info">

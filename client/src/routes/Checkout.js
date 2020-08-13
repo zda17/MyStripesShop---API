@@ -108,8 +108,8 @@ const Checkout = () => {
                 <h1>Order Summary</h1>
                 <CartItem
                 // remove 'remove button' from here
-                // made displayQuantity false; will add a number icon to show quantity (user shouldn't be able to change quantity here)
                     displayQuantity={false}
+                    numBub={true}
                 />
                 <Costs />
                 {/* {userShipInfo && <Index />} */}
