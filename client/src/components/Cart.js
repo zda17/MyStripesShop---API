@@ -75,7 +75,7 @@ export const HandleQuantity = ({ product }) => {
 }
 
 //cart item component to insert into cart pane
-export const CartItem = ({ displayQuantity, numBub }) => {
+export const CartItem = ({ displayQuantity, displayRemove, numBub }) => {
 
   const { cart, setCart } = useContext(CartContext);
 
@@ -124,7 +124,7 @@ export const CartItem = ({ displayQuantity, numBub }) => {
           <div className="cart-info">
             <h2><strong>{product.name}</strong></h2>
             <span><p>{getSize(product.size)} ~ {product.color.toUpperCase()}</p></span>
-            <span>${product.price}</span><span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>
+            <span>${product.price}</span>{displayRemove && <span className="cart-remove" name={product.sku} onClick={remove}>Remove</span>}
             {displayQuantity &&
               <HandleQuantity
                 product={product}
@@ -196,6 +196,7 @@ export const Cart = () => {
       >
         <CartItem
           displayQuantity={true}
+          displayRemove={true}
         />
         <input type="submit" value={"CHECKOUT ~ $" + totalPrice} onClick={goToCheckout} />
       </SlidingPane>

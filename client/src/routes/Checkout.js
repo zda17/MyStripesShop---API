@@ -107,7 +107,7 @@ const Checkout = () => {
             <section className='cart-display'>
                 <h1>Order Summary</h1>
                 <CartItem
-                // remove 'remove button' from here
+                    displayRemove={false}
                     displayQuantity={false}
                     numBub={true}
                 />

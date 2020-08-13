@@ -31,6 +31,7 @@ export default function CartPage() {
                         <li>PRODUCT</li>
                         <CartItem
                             displayQuantity={false}
+                            displayRemove={true}
                         />
                     </ul>
                     <ul className='quantity-list'>
