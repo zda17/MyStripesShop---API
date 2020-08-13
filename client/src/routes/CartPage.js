@@ -29,28 +29,33 @@ export default function CartPage() {
                 <section className='cart-info-wrapper'>
                     <ul className='cart-items-list'>
                         <li>PRODUCT</li>
-                        <CartItem
-                            displayQuantity={false}
-                            displayRemove={true}
-                            displayTotalProdPrice={false}
-                        />
+                        <article className='cart-page-article-item'>
+                            <CartItem
+                                displayQuantity={false}
+                                displayRemove={true}
+                                displayTotalProdPrice={false}
+                            />
+                        </article>
                     </ul>
                     <ul className='quantity-list'>
                         <li>QUANTITY</li>
                         {cart.map(product =>
                             <li>
-                                <HandleQuantity
-                                    product={product}
-                                />
+                                <article className='cart-page-article quantity-box'>
+                                    <HandleQuantity
+                                        product={product}
+                                    />
+                                </article>
                             </li>
                         )}
                     </ul>
                     <ul className='item-price-times-quantity'>
                         <li>TOTAL</li>
                         {cart.map(product =>
-                            <p className='total-prod-price'>{product.totalProductPrice}</p>
+                            <article className='cart-page-article'>
+                                <p className='total-prod-price'>${product.totalProductPrice}</p>
+                            </article>
                         )}
-                        {/* show total for each item (based on quantity) HERE */}
                     </ul>
                 </section>
                 <section className='checkout-total-wrapper'>
