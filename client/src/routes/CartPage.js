@@ -11,7 +11,7 @@ export default function CartPage() {
     const { cart } = useContext(CartContext);
 
     function getTotalPrice() {
-        return cart.reduce((sum, { price }) => sum + price, 0);
+        return cart.reduce((sum, { totalProductPrice }) => sum + totalProductPrice, 0);
     };
 
     let totalPrice = getTotalPrice();
@@ -32,6 +32,7 @@ export default function CartPage() {
                         <CartItem
                             displayQuantity={false}
                             displayRemove={true}
+                            displayTotalProdPrice={false}
                         />
                     </ul>
                     <ul className='quantity-list'>
@@ -46,6 +47,9 @@ export default function CartPage() {
                     </ul>
                     <ul className='item-price-times-quantity'>
                         <li>TOTAL</li>
+                        {cart.map(product =>
+                            <p className='total-prod-price'>{product.totalProductPrice}</p>
+                        )}
                         {/* show total for each item (based on quantity) HERE */}
                     </ul>
                 </section>

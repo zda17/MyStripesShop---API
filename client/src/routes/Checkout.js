@@ -21,7 +21,7 @@ const Costs = () => {
 
     const calculateSubtotal = () => {
         if (cart[0]) {
-            setSubtotal(cart.map(product => product.price).reduce((prev, next) => prev + next));
+            setSubtotal(cart.map(product => product.totalProductPrice).reduce((prev, next) => prev + next));
             console.log(subtotal);
         }
     };
@@ -109,6 +109,7 @@ const Checkout = () => {
                 <CartItem
                     displayRemove={false}
                     displayQuantity={false}
+                    displayTotalProdPrice={true}
                     numBub={true}
                 />
                 <Costs />
