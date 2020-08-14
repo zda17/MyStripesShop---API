@@ -7,16 +7,14 @@ export const CartProvider = (props) => {
     const [cart, setCart] = useState([]);
     // Cart uses UUID to pull correct Cart from database
     const [cartUUID, setCartUUID] = useState('');
+    const [total, setTotal] = useState(0);
 
     //states for cart pane
-    const [state, setState] = useState({
-        isPaneOpen: false,
-        isPaneOpenLeft: false,
-    });
+    const [isPaneOpen, setIsPaneOpen] = useState(false);
 
-    return(
-        <CartContext.Provider value={[cart, setCart, state, setState, cartUUID, setCartUUID]}>
-        {props.children}
+    return (
+        <CartContext.Provider value={{ cart, setCart, cartUUID, setCartUUID, total, setTotal, isPaneOpen, setIsPaneOpen }}>
+            {props.children}
         </CartContext.Provider>
     )
 }
