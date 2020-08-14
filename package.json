@@ -7,13 +7,19 @@
     "node": "12.x"
   },
   "scripts": {
-    "client-start": "cd client && npm start",
-    "client-install"  : "cd client && npm install",
-    "API-start": "cd API && npm start",
-    "API-install"  : "cd API && npm install",
-    "install-all-deps": "concurrently \"npm run API-install\" \"npm run client-install\"",
-    "start": "concurrently \"npm run API-start\" \"npm run client-start\""
-},
+    "client-start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "nodemon API/src/server.js",
+    "migrate": "postgrator --config postgrator-config.js",
+    "migrate:test": "env NODE_ENV=test npm run migrate",
+    "api-start": "node API/src/server.js",
+    "predeploy": "npm audit",
+    "deploy": "git push heroku master",
+    "seed": "psql -U postgres -d mystripes -f ./db/seeds/seed.all_tables.sql",
+    "start": "concurrently \"npm run api-start\" \"npm run client-start\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zda17/MyStripesShop.git"
@@ -26,6 +32,53 @@
   },
   "homepage": "https://github.com/zda17/MyStripesShop#readme",
   "dependencies": {
-    "concurrently": "^5.3.0"
+    "react": "^16.13.1",
+    "react-burger-menu": "^2.7.0",
+    "react-dom": "^16.13.1",
+    "react-hook-form": "^6.0.7",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3",
+    "react-sliding-pane": "^6.1.0",
+    "react-animated-text": "^0.1.4",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.8.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.2",
+    "morgan": "^1.9.1",
+    "node-sass": "^4.14.1",
+    "nodemailer": "^6.4.11",
+    "nodemon": "^2.0.4",
+    "pg": "^8.3.0",
+    "stripe": "^8.84.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0",
+    "nodemon": "^2.0.4",
+    "postgrator-cli": "^4.0.0",
+    "supertest": "^4.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
