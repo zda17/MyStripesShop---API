@@ -48,42 +48,37 @@ const Contact = () => {
     };
 
     return(
-        <div className="mainContact">
-            <h1>Contact Us</h1>
+        <div className="main-container">
             <div className="contactInfo">
+                <h1>Contact Us</h1>
                 <form onSubmit={formSubmit}>
-                    <div className="contactForm">
-                        <label htmlFor="name">Name</label>
+                    <div className="name-email">
                         <input type="text"
                         name="name"
-                        className="info"
+                        className="name-info"
                         placeholder="Your Name"
                         value={name}
                         onChange={handleName}
                         />
-                    </div>
-                    <div className="contactForm">
-                        <label htmlFor="email">Email</label>
                         <input type="text"
                         name="email"
-                        className="info" 
+                        className="email-info" 
                         placeholder="Your Email"
                         value={email}
                         onChange={handleEmail}
                         />
                     </div>
                     <div className="contactForm">
-                        <label htmlFor="message">Message</label>
-                        <input type="text" 
+                        <textarea type="text" 
                         name="message" 
-                        className="info" 
+                        className="message-info" 
                         placeholder="Your Message"
                         value={message}
                         onChange={handleMessage}
-                        />
+                        ></textarea>
                     </div>
                     <div className="btn">
-                        <button type="submit">Submit</button>
+                        <button className="apply-btn" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
