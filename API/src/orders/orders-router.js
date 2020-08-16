@@ -30,8 +30,8 @@ ordersRouter
 		 * {
 				"email" : "user@test.com",
 				"address" : "123 Address Lane",
-				"state" : "OK",
-				"product_skus_and_quantity" : "{{ATC-OK-Beanie-S-GREEN,1},{ATC-OK-Beanie-M-DKBL,3},{ATC-OK-DadHat-XS,5}}",
+				"state" : "OK",                 [product_sku string, qty integer]
+				"product_skus_and_quantity" : [ ["ATC-OK-Beanie-S-GREEN", 1], ["ATC-OK-Beanie-M-DKBL", 3], ["ATC-OK-DadHat-XS", 5] ],
 				"amount_cents" : 7900,
 				"uuid" : "a6b14dc5-8102-4d14-8d43-73bf16asd8eec"
 			} */
