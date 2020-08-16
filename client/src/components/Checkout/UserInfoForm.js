@@ -129,7 +129,7 @@ const UserInfoForm = () => {
                 </section>
             }
             {showCheckoutForm &&
-                <Payment />
+                <Payment userInfo={userInfo} />
             }
         </>
     )
