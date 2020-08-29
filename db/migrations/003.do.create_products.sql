@@ -43,7 +43,10 @@ CREATE TABLE products (
 		DEFAULT 0,
 	size
 		TEXT,
-	color
+	color_name
+		TEXT
+		NOT NULL,
+	color_hex
 		TEXT
 		NOT NULL,
 	quantity_available

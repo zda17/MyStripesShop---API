@@ -1,7 +1,7 @@
 const ProductService = {
 	getAllProducts(db) {
 		return db('products')
-			.distinct();
+			.distinctOn('base_sku');
 	},
 	getProductByBaseSku(db, base_sku) {
 		return db('products')
