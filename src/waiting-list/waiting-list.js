@@ -7,7 +7,6 @@ const bodyParser = express.json();
 waitingListRouter
 	.route('/')
 	.post(bodyParser, ({ body }, res) => {
-		console.log(body);
 		const { name, email, product, size, color } = body;
 		const smtpTransport = nodemailer.createTransport({
 			service: 'Gmail',
@@ -39,11 +38,9 @@ waitingListRouter
 		smtpTransport.sendMail(mailOptions, (error, response) => {
 			if (error) {
 				res.send(error)
-				console.log('nope');
 			}
 			else {
 				res.send('Success')
-				console.log('yup');
 			}
 		});
 		smtpTransport.close();
