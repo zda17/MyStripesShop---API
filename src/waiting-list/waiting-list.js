@@ -20,7 +20,7 @@ waitingListRouter
 		const mailOptions = {
 			from: email,
 			to: 'mystripesapp@gmail.com',
-			subject: `Waiting List Request from MyStripes User ${name}`,
+			subject: `Waiting List Request from My Stripes User ${name}`,
 			html: `
 			<p>This is an auto-generated email from mystripes.com's out-of-stock message! Below you will find the user's provided email, name, and product they are waiting for.</p>
 			<h3 style="margin-bottom: 0px;" >Information</h3>
