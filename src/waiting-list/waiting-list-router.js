@@ -1,13 +1,13 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-
+const waitingListService = './waiting-list-service';
 const waitingListRouter = express.Router();
 const bodyParser = express.json();
 
 waitingListRouter
 	.route('/')
-	.post(bodyParser, ({ body }, res) => {
-		const { name, email, product, size, color } = body;
+	.post(bodyParser, (req, res) => {
+		const { name, email, product} = req.body;
 		const smtpTransport = nodemailer.createTransport({
 			service: 'Gmail',
 			port: 465,
@@ -28,9 +28,9 @@ waitingListRouter
 			<ul style="padding: 0; margin: 0;">
 				<li style="font-size: 16px;" >Name: ${name}</li>
 				<li style="font-size: 16px;" >Email: ${email}</li>
-				<li style="font-size: 16px;" >Product: ${product}</li>
-				<li style="font-size: 16px;" >Size: ${size}</li>
-				<li style="font-size: 16px;" >Color: ${color}</li>
+				<li style="font-size: 16px;" >Product: ${product.name}</li>
+				<li style="font-size: 16px;" >Size: ${product.size}</li>
+				<li style="font-size: 16px;" >Color: ${product.color_name}</li>
 			</ul>
 			`
 		};
@@ -41,6 +41,12 @@ waitingListRouter
 			}
 			else {
 				res.send('Success')
+				const data = {
+					name,
+					email,
+					product_sku: product.product_sku
+				}
+				waitingListService.insertToWaitingList(req.app.get('db'), data)
 			}
 		});
 		smtpTransport.close();
