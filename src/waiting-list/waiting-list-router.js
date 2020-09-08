@@ -13,7 +13,6 @@ waitingListRouter
 	})
 	.post(bodyParser, (req, res) => {
 		const { name, email, product} = req.body;
-		console.log(product)
 		const smtpTransport = nodemailer.createTransport({
 			service: 'Gmail',
 			port: 465,
