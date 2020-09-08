@@ -41,7 +41,7 @@ app.use('/api/carts', cartRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/checkout', checkoutRouter);
 app.use('/api/confirm', confirmationRouter);
-app.use('/api/wait-list', waitingListRouter);
+app.use('/api/waiting-list', waitingListRouter);
 app.get('/', (req, res) => {
   res.send('Hello, boilerplate!');
 });
