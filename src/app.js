@@ -12,6 +12,7 @@ const contactFormRouter = require('./contact-form/contact-form');
 const cartRouter = require('./carts/cart-router');
 const orderRouter = require('./orders/orders-router');
 const checkoutRouter = require('./orders/checkout-router');
+const confirmationRouter = require('./orders/confirmation-router');
 const waitingListRouter = require('./waiting-list/waiting-list');
 
 // Create express app
@@ -39,6 +40,7 @@ app.use('/api/forma', contactFormRouter);
 app.use('/api/carts', cartRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/checkout', checkoutRouter);
+app.use('/api/confirm', confirmationRouter);
 app.use('/api/wait-list', waitingListRouter);
 app.get('/', (req, res) => {
   res.send('Hello, boilerplate!');
