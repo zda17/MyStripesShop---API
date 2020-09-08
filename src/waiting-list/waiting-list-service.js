@@ -1,4 +1,8 @@
 const waitingListService = {
+    getAllFromWaitingList(db) {
+        return db('waiting_list')
+            .select('*');
+    },
     getFromWaitingListBySku(db, product_sku) {
         return db('waiting_list')
             .where({product_sku});
@@ -10,4 +14,4 @@ const waitingListService = {
     }
 };
 
-modole.exports = waitingListService;
+module.exports = waitingListService;

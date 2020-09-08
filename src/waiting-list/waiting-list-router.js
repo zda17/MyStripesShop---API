@@ -1,13 +1,19 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const waitingListService = './waiting-list-service';
+const waitingListService = require('./waiting-list-service');
 const waitingListRouter = express.Router();
 const bodyParser = express.json();
 
 waitingListRouter
 	.route('/')
+	.get(bodyParser, async (req, res) => {
+		const {product_sku} = req.body;
+		const dbResponse = await waitingListService.getFromWaitingListBySku(req.app.get('db'), product_sku);
+		res.send(dbResponse);
+	})
 	.post(bodyParser, (req, res) => {
 		const { name, email, product} = req.body;
+		console.log(product)
 		const smtpTransport = nodemailer.createTransport({
 			service: 'Gmail',
 			port: 465,
@@ -35,21 +41,28 @@ waitingListRouter
 			`
 		};
 
-		smtpTransport.sendMail(mailOptions, (error, response) => {
+		smtpTransport.sendMail(mailOptions, async (error, response) => {
 			if (error) {
 				res.send(error)
 			}
 			else {
-				res.send('Success')
 				const data = {
 					name,
 					email,
-					product_sku: product.product_sku
+					product_sku: product.sku
 				}
-				waitingListService.insertToWaitingList(req.app.get('db'), data)
+				const dbResponse = await waitingListService.insertToWaitingList(req.app.get('db'), data)
+				res.send(dbResponse)
 			}
 		});
 		smtpTransport.close();
 	});
+
+waitingListRouter
+	.route('/all')
+	.get(async (req, res) => {
+		const dbResponse = await waitingListService.getAllFromWaitingList(req.app.get('db'));
+		res.send(dbResponse);
+	})
 
 module.exports = waitingListRouter;

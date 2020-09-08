@@ -1,4 +1,5 @@
 TRUNCATE TABLE 
+	waiting_list,
 	line_items,
 	orders,
 	users,
