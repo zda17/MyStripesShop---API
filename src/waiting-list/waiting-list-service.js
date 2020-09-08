@@ -9,7 +9,7 @@ const waitingListService = {
     },
     insertToWaitingList(db, data) {
         return db
-            .insert([data], ['*'])
+            .insert([data], ['*']) // Second argument implies to return all values inserted
             .into('waiting_list')
     }
 };
