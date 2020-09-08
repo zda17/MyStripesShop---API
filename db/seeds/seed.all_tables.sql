@@ -424,3 +424,9 @@ VALUES
 	(2, 'ATC-OK-Beanie-M-WHITE', 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
 	(2, 'ATC-OK-DadHat-M-WHITE', 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
 	(1, 'MSCM-Hoodie-XS-WHITE', '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8');
+
+INSERT INTO waiting_list (name, email, product_sku)
+VALUES
+	('Prince', 'theartistformerlyknownasprince@therevolution.com', 'Converse-High-Rose-9'),
+	('Gage', 'gageeide@gmail.com', 'Champ-Jacket-Navy-M-BLUE'),
+	('Hank Hill', 'bringthepro-pain@propaneandpropaneaccessories.com', 'ATC-OK-DadHat-M-WHITE');
