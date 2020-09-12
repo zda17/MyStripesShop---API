@@ -40,15 +40,13 @@ confirmationRouter
 
         const userShipInfo = `
             <section style="text-align: center;">
-                <p style="color:rgb(0, 38, 72);">${userInfo.address}, ${userInfo.apartmentsuiteetc.optional && '#' + userInfo.apartmentsuiteetc.optional + ', '}${userInfo.city}, ${userInfo.state}, ${userInfo.zipCode}, ${userInfo.country}</p>
+                <p style="color:rgb(0, 38, 72);">${userInfo.address}, ${userInfo.apartment && '#' + userInfo.apartment + ', '}${userInfo.city}, ${userInfo.state}, ${userInfo.zipCode}, ${userInfo.country}</p>
             </section>
         `
 
         const mailOptions = {
             from: 'mystripesapp@gmail.com',
-            // put user email below 
-            // to: email,
-            to: 'shanscirg7@gmail.com',
+            to: userInfo.email,
             cc: 'mystripesapp@gmail.com',
             subject: `My Stripes Order Confirmation`,
             html: `
