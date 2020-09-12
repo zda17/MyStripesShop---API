@@ -10,28 +10,34 @@ const ProductService = {
 	// Gender based product queries
 	getAllMens(db) {
 		return db('products')
-			.whereNot({gender: 'F'});
+			.whereNot({gender: 'F'})
+			.distinctOn('base_sku');
 	},
 	getAllWomens(db) {
 		return db('products')
-			.whereNot({gender: 'M'});
+			.whereNot({gender: 'M'})
+			.distinctOn('base_sku');
 	},
 	getAllUnisex(db) {
 		return db('products')
-			.where({gender: 'U'});
+			.where({gender: 'U'})
+			.distinctOn('base_sku');
 	},
 	// Category based product queries
 	getAllTops(db) {
 		return db('products')
-			.where({category: 'tops'});
+			.where({category: 'tops'})
+			.distinctOn('base_sku');
 	},
 	getAllBottoms(db) {
 		return db('products')
-			.where({category: 'bottoms'});
+			.where({category: 'bottoms'})
+			.distinctOn('base_sku');
 	},
 	getAllAccessories(db) {
 		return db('products')
-			.where({category: 'accessories'});
+			.where({category: 'accessories'})
+			.distinctOn('base_sku');
 	},
 };
 
