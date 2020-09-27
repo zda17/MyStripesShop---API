@@ -415,10 +415,10 @@ VALUES
 	('user@test.com', '$2a$10$hU98gp5TgV65aHgylvurcOZwMjsZspfhCsZdNYEWKXN6kF0bCSdfC', FALSE),
 	('demo@email.com', '$2a$10$3TFONhx44jc5xeEb23PmVOuq7LtQsNsLy1Rthjomspza02eJr94SS', FALSE);
 
-INSERT INTO orders (email, address, state, product_skus_and_quantity, amount_cents, UUID)
+INSERT INTO orders (email, address, product_skus_and_quantity, amount_cents, UUID, confCode, isFulfilled)
 VALUES
-	('user@test.com', '123 Address Lane', 'OK', '{{ATC-OK-Beanie-S-GREEN, 1}, {ATC-OK-Beanie-M-DKBL, 3}, {ATC-OK-DadHat-XS, 5}}', 7900, 'a6b14dc5-8102-4d14-8d43-73bf16118eec'),
-	('demo@email.com', '123 Address Lane', 'MN', '{{ATC-OK-DadHat-XS, 3}, {MSCM-Hoodie-XS, 4}, {ATC-OK-Tee-XS, 5}}', 8200, '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8');
+	('user@test.com', '123 Address Lane', '{{ATC-OK-Beanie-S-GREEN, 1}, {ATC-OK-Beanie-M-DKBL, 3}, {ATC-OK-DadHat-XS, 5}}', 7900, 'a6b14dc5-8102-4d14-8d43-73bf16118eec', 'abc123', false),
+	('demo@email.com', '123 Address Lane', '{{ATC-OK-DadHat-XS, 3}, {MSCM-Hoodie-XS, 4}, {ATC-OK-Tee-XS, 5}}', 8200, '8f3a2cd3-3fc5-42e3-8ca8-c235e034e3a8', '123abc', false);
 
 INSERT INTO line_items (quantity, product_sku, cart_id)
 VALUES
