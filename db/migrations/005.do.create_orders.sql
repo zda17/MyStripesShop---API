@@ -7,10 +7,7 @@ CREATE TABLE orders (
         NOT NULL,
     address
         TEXT
-        NOT NULL,
-    state
-        TEXT
-        NOT NULL,   
+        NOT NULL,  
     product_skus_and_quantity
         -- this column stores skus and quantity a 2-dimensional array of text
         -- since the array is text, the quantity must be a string, not an integer
@@ -23,6 +20,13 @@ CREATE TABLE orders (
     UUID 
         TEXT
         NOT NULL,
+    confCode
+        TEXT
+        NOT NULL,
+    isFulfilled
+        BOOLEAN
+        NOT NULL
+        DEFAULT FALSE,
     created_at
         TIMESTAMPTZ
         NOT NULL
