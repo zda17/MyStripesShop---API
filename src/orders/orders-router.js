@@ -1,7 +1,7 @@
 const express = require('express');
 const ordersService = require('./orders-service');
 
-const ordersRouter = express.Router();
+const orderRouter = express.Router();
 const bodyParser = express.json();
 
 // Change product quantity from string to integer
@@ -17,26 +17,32 @@ const quantityStrToInt = (ordersArr) => {
   });
 };
 
-ordersRouter
+orderRouter
   .route('/')
   .get(bodyParser, async (req, res, next) => {
     const orders = await ordersService.getAllOrders(req.app.get('db'));
     // Change product quantity from string to integer and send it
     res.send(quantityStrToInt(orders));
   })
-  .post(bodyParser, async (req, res, next) => {
-    const { orderData } = req.body;
-    /** Data should contain all of these properties:
-		 * {
-				"email" : "user@test.com",
-				"address" : "123 Address Lane",
-				"state" : "OK",                 [product_sku string, qty integer]
-				"product_skus_and_quantity" : [ ["ATC-OK-Beanie-S-GREEN", 1], ["ATC-OK-Beanie-M-DKBL", 3], ["ATC-OK-DadHat-XS", 5] ],
-				"amount_cents" : 7900,
-				"uuid" : "a6b14dc5-8102-4d14-8d43-73bf16asd8eec"
-			} */
-    const dbResponse = await ordersService.insertOrder(req.app.get('db'), orderData);
-    res.send(dbResponse.id);
+  .post(bodyParser, async (req, res) => {
+    const { cart, userInfo, confCode, cartUUID } = req.body;
+    const productSkuArray = cart.map(item => new Array(item.sku, item.quantity));
+    const totalPrice = cart.map(product => product.totalProductPrice).reduce((prev, next) => prev + next);
+    const orderData = {
+      email: userInfo.email,
+      address: `${userInfo.address}, ${userInfo.apartment && '#' + userInfo.apartment + ', '}${userInfo.city}, ${userInfo.state}, ${userInfo.zipCode}, ${userInfo.country}`,
+      product_skus_and_quantity: productSkuArray,
+      amount_cents: totalPrice * 100,
+      uuid: cartUUID,
+      confcode: confCode,
+      isfulfilled: false
+    }
+    try {
+      const dbResponse = await ordersService.insertOrder(req.app.get('db'), orderData);
+      res.send(dbResponse);
+    } catch (err) {
+      throw err;
+    }
   });
 
-module.exports = ordersRouter;
+module.exports = orderRouter;
