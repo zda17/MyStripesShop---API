@@ -18,6 +18,14 @@ const quantityStrToInt = (ordersArr) => {
 };
 
 orderRouter
+  .route('/fulfilled')
+  .get(bodyParser, async (req, res, next) => {
+    const orders = await ordersService.getAllFulfilledOrders(req.app.get('db'));
+    // Change product quantity from string to integer and send it
+    res.send(quantityStrToInt(orders));
+  })
+
+orderRouter
   .route('/')
   .get(bodyParser, async (req, res, next) => {
     const orders = await ordersService.getAllOrders(req.app.get('db'));
