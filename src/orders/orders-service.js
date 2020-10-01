@@ -2,12 +2,12 @@ const ordersService = {
   getAllOrders(db) {
     return db('orders')
       .select('*')
-      .where({isFulfilled: 0});
+      .where({isFulfilled: false});
   },
   getAllFulfilledOrders(db) {
     return db('orders')
       .select('*')
-      .where({isFulfilled: 1});
+      .where({isFulfilled: true});
   },
   insertOrder(db, data) {
     return db
