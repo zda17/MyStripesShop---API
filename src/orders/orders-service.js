@@ -13,6 +13,11 @@ const ordersService = {
     return db
       .insert([data], ['*']) // Second argument implies to return all values inserted
       .into('orders');
+  },
+  updateOrder(db, data) {
+    return db('orders')
+      .where({ id: data.id })
+      .update({ isFulfilled: data.isFulfilled });
   }
 };
 
