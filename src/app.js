@@ -26,6 +26,7 @@ const morganOption = (NODE_ENV === 'production')
 
 // Enable static serving of built client if in production environment
 if (NODE_ENV === "production") {
+  console.log("--- Serving Static Build ---")
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
