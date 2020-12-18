@@ -1,0 +1,103 @@
+$color:  #1f7bc5;
+
+.Admin-Panel {
+    width: 100%;
+    height: auto;
+    margin: 10px 0px 0px;
+}
+
+.admin-tab-container {
+    
+    margin: 20px auto 0px auto;
+    text-align: center;
+
+	// Each tab button
+	.admin-tab-item {
+        font-size: 13px;
+        width: 92px;
+        height: 106px;
+        position: relative;
+        float: none;
+		padding: 15px;
+		overflow: visible;
+        background: $color;
+        color: white;
+		border: none;
+		outline: none;
+		border-radius: 0;
+		cursor: pointer;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+
+        img {
+            position: absolute;
+            right: 30%;
+            bottom: 35%;
+        }
+
+        span {
+            position: absolute;
+            bottom: 15%;
+            width: 100%;
+            left: 0%;
+        }
+
+        .tab-number {
+            position: absolute;
+            bottom: 35%;
+            width: 100%;
+            left: 0%;
+
+            font: {
+                weight: bold;
+                size: 42px;
+            }
+        }
+
+	}
+	// Set Margin on next tab
+	.admin-tab-item + .admin-tab-item {
+		margin-left: 28px;
+    }
+    
+	.admin-tab-item::before {
+		transition: width 0.25s ease-in-out
+    }
+    .admin-tab-item::after {
+		transition: width 0.25s ease-in-out
+    }
+    
+	//active tab
+	.admin-tab-item.is-active {
+		border-radius: 25px;
+	}
+}
+
+.Admin-Component {
+    .orders-list {
+
+        .order-item {
+            margin: 5px 10px;
+
+            span {
+                display: inline-block;
+                margin: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 335px) {
+.admin-tab-container {
+    .admin-tab-item {
+        width: 66px;
+        height: 80px;
+
+        img {
+            right: 22.5%;
+            bottom: 35%;
+        }
+    }
+}
+
+}

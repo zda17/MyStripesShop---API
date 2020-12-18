@@ -1,0 +1,50 @@
+#Banner {
+	// Set Height to 100% viewheight minus the Header height
+	height: calc(100vh - 100px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: url(../utils/images/mystripesphoto3-desktop.jpeg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	// New Arrivals text and Buttons
+	.banner-content {
+		padding: 0 24px;
+		text-align: center;
+		margin-top: 150px;
+		h2 {
+			color: #ffefca;
+			margin-top: -0.325em;
+			font-family: "Cooper BT";
+			font-weight: 900;
+			font-style: italic;
+			letter-spacing: .1rem;
+			line-height: 1.65;
+		}
+		.button-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			margin-top: 20px;
+		}
+	}
+}
+
+#BannerSlim {
+	.button-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		margin-top: 20px;
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	#Banner {
+		background-image: url(../utils/images/mystripesphoto3-mobile.jpg)
+	}
+}
