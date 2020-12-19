@@ -27,8 +27,10 @@ orderRouter
   //update order to isFulfilled = true
   //need to make updateOrder() in orders-service.js
   .post(bodyParser, async (req, res) => {
+    const { id } = req.body;
     const updateData = {
-      isFulfilled: true
+      isFulfilled: true,
+      id
     }
     try {
       const dbResponse = await ordersService.updateOrder(req.app.get('db'), updateData);

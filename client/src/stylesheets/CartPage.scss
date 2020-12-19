@@ -1,0 +1,137 @@
+@import './UserInfoForm.scss';
+@import './Cart.scss';
+@import './Burger.scss';
+
+.cart-page-container {
+    margin: 50px;
+    h1 {
+        text-align: center;
+        margin-bottom: 50px;
+        font-weight: bold;
+        font-size: 28px;
+        font-family: "ITC Avant Garde Gothic",sans-serif;
+    }
+    .horizontal-line, .horizontal-line-bottom {
+        color: $dark-blue-line;
+        position: relative;
+        top: 65px;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    .horizontal-line-bottom {
+        top: 5px;
+    }
+    .cart-info-wrapper {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 30px;
+        margin: 0 10px;
+        .cart-items-list, .quantity-list, .item-price-times-quantity {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 0;
+            #product {
+                margin-left: 23px;
+                margin-bottom: 20px;
+            }
+            #quantity {
+                margin-left: 15px;
+            }
+            #total {
+                margin-right: 11px;
+            }
+            .cart-item {
+                border-bottom: none;
+                height: 160px;
+                margin: 10px 0;
+            }
+        }
+    }
+
+    .cart-total-wrapper {
+        display: block;
+        text-align: right;
+        margin: 50px 130px;
+        .usd {
+            font-size: 14px;
+        }
+        .checkout-btn {
+            margin: 8px;
+            background: $dark-blue;
+            color: white;
+            padding: 10px;
+            font-family: $font;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .checkout-btn:hover {
+            cursor: pointer;
+            box-shadow: 0 0 11px rgba(33,33,33,.2);
+        }
+    }
+}
+
+.cart-page-article {
+    height: 160px;
+}
+.cart-page-article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .quantity-input {
+        margin: 0;
+    }
+    .out-stock-wrapper-cart-page {
+        right: 0;
+        width: 255px;
+      }
+}
+
+@media only screen and (max-width: 1200px) {
+    .cart-page-container {
+        .horizontal-line, .horizontal-line-bottom {
+            width: 95%;
+        }
+        .cart-info-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 30px;
+            height: auto;
+            .cart-items-list {
+                .cart-item {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .cart-page-container {
+        margin: 10px;
+        .cart-total-wrapper {
+            margin: 10px;
+        }
+        h1 {
+            margin-bottom: 0;
+        }
+        .cart-info-wrapper {
+            .cart-items-list {
+                margin-top: 0;
+                .cart-page-article-item {
+                    .cart-item {
+                        width: 100%;
+                        max-width: 350px;
+                        .cart-image {
+                            margin-right: 30px;
+                        }
+                        .cart-info {
+                            width: 65%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

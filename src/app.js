@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -23,6 +24,13 @@ const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
 
+// Enable static serving of built client if in production environment
+if (NODE_ENV === "production") {
+  console.log("--- Serving Static Build ---")
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use('*', express.static(path.join(__dirname, '../client/build')));
+}
+
 // cors middleware for allowing cross origin
 app.use(cors());
 // morgan middleware for logging information
@@ -42,9 +50,6 @@ app.use('/api/orders', orderRouter);
 app.use('/api/checkout', checkoutRouter);
 app.use('/api/confirm', confirmationRouter);
 app.use('/api/waiting-list', waitingListRouter);
-app.get('/', (req, res) => {
-  res.send('Hello, boilerplate!');
-});
 
 
 // Error handler

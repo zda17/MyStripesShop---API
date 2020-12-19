@@ -1,0 +1,161 @@
+@import './NavBar.scss';
+
+form {
+    display: flex;
+    flex-direction: column;
+    h3 {
+        margin: 18px 20px 5px 20px;
+        font-size: 18px;
+        font-family: $font;
+        font-weight: 500;
+    }
+    h5 {
+        margin: 0 20px;
+        color: rgb(135, 13, 13);
+    }
+    input[type=text], select {
+        border: 1px solid $dark-blue;
+        border-radius: 3px;
+        margin: 8px 20px;
+        padding: 12px;
+        font-size: 14px;
+    }
+    select:invalid {
+        color: gray;
+    }
+    input[type=text]:focus {
+        border: 2px;
+    }
+    .name-div {
+        display: flex;
+        flex-direction: column;
+    }
+    .button-div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .back-to-cart-btn {
+            margin: 20px;
+            color: $dark-blue;
+            text-align: center;
+        }
+        .back-to-cart-btn:hover {
+            color: $darker-blue;
+        }
+        .fa-angle-double-left {
+            padding: 10px;
+        }
+        .pay-btn {
+            margin: 20px;
+            background: $dark-blue;
+            color: white;
+            padding: 10px;
+            font-family: $font;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .pay-btn:hover {
+            cursor: pointer;
+            box-shadow: 0 0 11px rgba(33,33,33,.2);
+        }
+    }
+}
+
+.user-info-filled-container {
+    .user-contact-ship-info {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border: 1px solid $dark-blue;
+        border-radius: 5px;
+        padding: 15px;
+        max-width: 600px;
+        .contact-div, .ship-div {
+            display: flex;
+            justify-content: space-between;
+            .back-to-form:hover {
+                cursor: pointer;
+            }
+        }
+        .contact-div {
+            .user-email {
+                width: 65%;
+                text-align: left;
+            }
+        }
+        .ship-div {
+            .user-ship-info {
+                width: 65%;
+                word-wrap: normal;
+            }
+        }
+    }
+    .shipping-methods {
+        background: white;
+        border: 1px solid $dark-blue;
+        border-radius: 5px;
+        padding: 15px;
+        display: inline-block;
+        form {
+            input {
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+
+    .button-div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .back-to-cart-btn {
+            margin: 20px;
+            color: $dark-blue;
+            font-weight: bold;
+        }
+        .fa-angle-double-left {
+            padding: 10px;
+        }
+        .back-to-cart-btn:hover, .pay-btn:hover {
+            cursor: pointer;
+        }
+        .pay-btn {
+            margin: 20px;
+            background: $dark-blue;
+            color: white;
+            padding: 10px;
+            font-family: $font;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+    }
+
+}
+
+
+@media screen and (min-width: 800px) {
+    form {
+        .name-div {
+            flex-direction: row;
+            justify-content: space-between;
+            .name {
+                width: 46%;
+            }
+            .first-name {
+                margin-right: 5px;
+            }
+            .last-name {
+                margin-left: 2px;
+            }
+            .country-select {
+                margin-right: 0px;
+            }
+            .state-select {
+                margin: 8px 7px;
+            }
+            .zip {
+                margin-left: 0px;
+            }
+        }
+    }
+}
