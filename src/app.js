@@ -51,7 +51,7 @@ app.use('/api/confirm', confirmationRouter);
 app.use('/api/waiting-list', waitingListRouter);
 
 if (NODE_ENV === "production") {
-  app.use('*', express.static(path.join(__dirname, '../client/build')));
+  app.use('/*', express.static(path.join(__dirname, '../client/build/index.html')));
 }
 
 
