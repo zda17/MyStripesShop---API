@@ -28,7 +28,6 @@ const morganOption = (NODE_ENV === 'production')
 if (NODE_ENV === "production") {
   console.log("--- Serving Static Build ---")
   app.use(express.static(path.join(__dirname, '../client/build')));
-  app.use('*', express.static(path.join(__dirname, '../client/build')));
 }
 
 // cors middleware for allowing cross origin
@@ -50,6 +49,10 @@ app.use('/api/orders', orderRouter);
 app.use('/api/checkout', checkoutRouter);
 app.use('/api/confirm', confirmationRouter);
 app.use('/api/waiting-list', waitingListRouter);
+
+if (NODE_ENV === "production") {
+  app.use('/*', express.static(path.join(__dirname, '../client/build/index.html')));
+}
 
 
 // Error handler
