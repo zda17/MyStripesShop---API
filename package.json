@@ -15,7 +15,7 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
+    "build": "cd client && env INLINE_RUNTIME_CHUNK=false npm run build",
     "predeploy": "npm audit",
     "deploy": "git push heroku master",
     "seed": "psql -U postgres -d mystripes -f ./db/seeds/seed.all_tables.sql"
