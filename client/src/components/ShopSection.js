@@ -19,13 +19,14 @@ function ShopSection(props) {
     useEffect(() => {
         axios.get(`/products/${props.path}`)
             .then(res => {
+                console.log("Get still fires")
                 const product = res.data;
                 setAllProduct(product);
                 setTopsProduct(product.filter(item => item.category === 'tops'));
                 setBottomsProduct(product.filter(item => item.category === 'bottoms'));
                 setMiscProduct(product.filter(item => item.category === 'accessories'));
             });
-    }, [props.path]);
+    }, []);
 
     useEffect(() => {
         if (searched) {
