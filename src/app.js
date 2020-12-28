@@ -37,6 +37,12 @@ app.use(morgan(morganOption));
 // helmet middleware for hiding our server type
 app.use(helmet());
 
+// Set Response Headers
+app.use(function(req, res, next) {
+  res.setHeader("Content-Security-Policy", "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2 https://js.stripe.com/v3; img-src 'self' https://i.imgur.com https://res.cloudinary.com");
+  return next();
+});
+
 
 // Routes
 // User Authorization
