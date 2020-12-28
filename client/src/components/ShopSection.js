@@ -6,6 +6,7 @@ import { MyContext } from '../utils/Context';
 import axios from '../utils/axios';
 
 import Image from './Image';
+import LazyLoad from 'react-lazyload';
 
 function ShopSection(props) {
 
@@ -33,6 +34,14 @@ function ShopSection(props) {
         };
     }, [searched])
 
+    const Loading = () => (
+        <article className="productLoading">
+            <section className='name-and-price'>
+                <h3>Loading...</h3>
+            </section>
+        </article>
+    )
+
     return (
         <section className="featured-collections" id="ShopSection">
             <header>
@@ -51,24 +60,8 @@ function ShopSection(props) {
                     activeSection === 'tops' ?
                         <>
                             {topsProduct.map((product, index) => (
-                                <article key={index}>
-                                    <Image
-                                        to={`/Products/${product.base_sku}`}
-                                        imgDivClass='img-div-home'
-                                        imgClass='product-img-home'
-                                        product={product}
-                                    />
-                                    <section className='name-and-price'>
-                                        <h3>{product.name}</h3>
-                                        <h4>${(product.price_cents / 100).toFixed(2)}</h4>
-                                    </section>
-                                </article>
-                            ))}
-                        </>
-                        : activeSection === 'bottoms' ?
-                            <>
-                                {bottomsProduct.map((product, index) => (
-                                    <article key={index}>
+                                <LazyLoad key={index} placeholder={<Loading />}>
+                                    <article key={index} className="product">
                                         <Image
                                             to={`/Products/${product.base_sku}`}
                                             imgDivClass='img-div-home'
@@ -80,40 +73,64 @@ function ShopSection(props) {
                                             <h4>${(product.price_cents / 100).toFixed(2)}</h4>
                                         </section>
                                     </article>
+                                </LazyLoad>
+                            ))}
+                        </>
+                        : activeSection === 'bottoms' ?
+                            <>
+                                {bottomsProduct.map((product, index) => (
+                                    <LazyLoad key={index} placeholder={<Loading />}>
+                                        <article key={index} className="product">
+                                            <Image
+                                                to={`/Products/${product.base_sku}`}
+                                                imgDivClass='img-div-home'
+                                                imgClass='product-img-home'
+                                                product={product}
+                                            />
+                                            <section className='name-and-price'>
+                                                <h3>{product.name}</h3>
+                                                <h4>${(product.price_cents / 100).toFixed(2)}</h4>
+                                            </section>
+                                        </article>
+                                    </LazyLoad>
                                 ))}
                             </>
                             : activeSection === 'accessories' ?
                                 <>
                                     {miscProduct.map((product, index) => (
-                                        <article key={index}>
-                                            <Image
-                                                to={`/Products/${product.base_sku}`}
-                                                imgDivClass='img-div-home'
-                                                imgClass='product-img-home'
-                                                product={product}
-                                            />
-                                            <section className='name-and-price'>
-                                                <h3>{product.name}</h3>
-                                                <h4>${(product.price_cents / 100).toFixed(2)}</h4>
-                                            </section>
-                                        </article>
+                                        <LazyLoad key={index} placeholder={<Loading />}>
+                                            <article key={index} className="product">
+                                                <Image
+                                                    to={`/Products/${product.base_sku}`}
+                                                    imgDivClass='img-div-home'
+                                                    imgClass='product-img-home'
+                                                    product={product}
+                                                />
+                                                <section className='name-and-price'>
+                                                    <h3>{product.name}</h3>
+                                                    <h4>${(product.price_cents / 100).toFixed(2)}</h4>
+                                                </section>
+                                            </article>
+                                        </LazyLoad>
                                     ))}
                                 </>
                                 :
                                 <>
                                     {allProduct.map((product, index) => (
-                                        <article key={index}>
-                                            <Image
-                                                to={`/Products/${product.base_sku}`}
-                                                imgDivClass='img-div-home'
-                                                imgClass='product-img-home'
-                                                product={product}
-                                            />
-                                            <section className='name-and-price'>
-                                                <h3>{product.name}</h3>
-                                                <h4>${(product.price_cents / 100).toFixed(2)}</h4>
-                                            </section>
-                                        </article>
+                                        <LazyLoad key={index} placeholder={<Loading />}>
+                                            <article key={index} className="product">
+                                                <Image
+                                                    to={`/Products/${product.base_sku}`}
+                                                    imgDivClass='img-div-home'
+                                                    imgClass='product-img-home'
+                                                    product={product}
+                                                />
+                                                <section className='name-and-price'>
+                                                    <h3>{product.name}</h3>
+                                                    <h4>${(product.price_cents / 100).toFixed(2)}</h4>
+                                                </section>
+                                            </article>
+                                        </LazyLoad>
                                     ))}
                                 </>
                 }
