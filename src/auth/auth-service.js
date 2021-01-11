@@ -2,6 +2,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
+/**
+ * 
+ * ***NOT YET IMPLEMENTED***
+ * 
+ */
+
 const AuthService = {
   // Gets a user row with a given email
   getUserWithEmail(db, email) {

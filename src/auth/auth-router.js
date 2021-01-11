@@ -5,6 +5,12 @@ const { requireAuth } = require('../middleware/jwt-auth');
 const authRouter = express.Router();
 const jsonBodyParser = express.json();
 
+/**
+ * 
+ * ***NOT YET IMPLEMENTED***
+ * 
+ */
+
 // Route for authenticating a user login request
 authRouter
   .route('/')
