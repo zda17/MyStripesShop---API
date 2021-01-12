@@ -26,8 +26,6 @@ const Admin = lazy(() => import("./routes/Admin"));
 const Home = lazy(() => import("./routes/Home"));
 const CartPage = lazy(() => import("./routes/CartPage"));
 
-const renderLoader = () => <p>Loading</p>;
-
 
 function App() {
 
