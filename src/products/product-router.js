@@ -6,8 +6,13 @@ const productRouter = express.Router();
 productRouter
 	.route('/all')
 	.get(async (req, res, next) => {
-		const allProducts = await ProductService.getAllProducts(req.app.get('db'))
-		res.send(allProducts);
+		try {
+			const allProducts = await ProductService.getAllProducts(req.app.get('db'))
+			res.send(allProducts);
+		} catch(e) {
+			console.log(e);
+			res.status(500).send(e);
+		}
 	});
 
 productRouter
