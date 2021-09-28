@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { MyContext } from '../src/utils/Context';
 import { CartContext } from '../src/utils/CartContext';
 import localStorage from './utils/localStorage';
-import { useBeforeunload } from "react-beforeunload";
 
 //components
 import NavBar from "./components/NavBar";
@@ -44,8 +43,6 @@ function App() {
             setCart(newCart);
         }
     }, []);
-
-    useBeforeunload((event) => event.preventDefault());
 
     return (
         <div className="App">
